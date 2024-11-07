@@ -1,0 +1,222 @@
+[
+  {
+      "product_id": 101,
+      "product_name": "Classic Leather Wallet",
+      "price": 2500,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.6,
+      "description": "A handcrafted leather wallet with multiple card slots and a sleek design.",
+      "liked": false,
+      "stock_availability": true,
+      "categories": ["wallets", "featuredProduct"]
+  },
+  {
+      "product_id": 102,
+      "product_name": "Premium Leather Belt",
+      "price": 3500,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.8,
+      "description": "Durable leather belt, perfect for both casual and formal wear.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["belts", "trendingProduct"]
+  },
+  {
+      "product_id": 103,
+      "product_name": "Leather Watch Strap",
+      "price": 1800,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.5,
+      "description": "Genuine leather watch strap with a classic buckle design.",
+      "liked": false,
+      "stock_availability": true,
+      "categories": ["otherAccessories"]
+  },
+  {
+      "product_id": 104,
+      "product_name": "Leather Loafers",
+      "price": 4000,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.7,
+      "description": "Comfortable leather loafers, perfect for any occasion.",
+      "liked": true,
+      "stock_availability": false,
+      "categories": ["shoe", "featuredProduct"]
+  },
+  {
+      "product_id": 105,
+      "product_name": "Minimalist Leather Card Holder",
+      "price": 1200,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.3,
+      "description": "Compact leather card holder with a slim profile.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["wallets"]
+  },
+  {
+      "product_id": 106,
+      "product_name": "Vintage Leather Backpack",
+      "price": 3800,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.9,
+      "description": "Vintage-style leather backpack with multiple compartments.",
+      "liked": false,
+      "stock_availability": true,
+      "categories": ["otherAccessories", "trendingProduct"]
+  },
+  {
+      "product_id": 107,
+      "product_name": "Leather Ankle Boots and supplies",
+      "price": 3600,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.6,
+      "description": "Stylish leather ankle boots suitable for all weather.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["shoe"]
+  },
+  {
+      "product_id": 108,
+      "product_name": "Luxury Leather Keychains",
+      "price": 800,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.4,
+      "description": "Elegant leather keychain, perfect for organizing keys.",
+      "liked": false,
+      "stock_availability": true,
+      "categories": ["otherAccessories"]
+  },
+  {
+      "product_id": 109,
+      "product_name": "Leather Messenger Bag",
+      "price": 3500,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.8,
+      "description": "Spacious leather messenger bag with adjustable strap.",
+      "liked": true,
+      "stock_availability": false,
+      "categories": ["otherAccessories", "trendingProduct"]
+  },
+  {
+      "product_id": 110,
+      "product_name": "Slim Leather Dress Shoes",
+      "price": 3900,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.9,
+      "description": "Elegant leather dress shoes, perfect for formal events.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["shoe", "featuredProduct"]
+  },
+  {
+      "product_id": 111,
+      "product_name": "Elegant Leather Clutch",
+      "price": 2500,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.7,
+      "description": "A sleek and elegant leather clutch for evening events.",
+      "liked": false,
+      "stock_availability": true,
+      "categories": ["wallets", "featuredProduct"]
+  },
+  {
+      "product_id": 112,
+      "product_name": "Casual Leather Sandals",
+      "price": 2700,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.4,
+      "description": "Comfortable and stylish leather sandals for casual wear.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["shoe", "trendingProduct"]
+  },
+  {
+      "product_id": 113,
+      "product_name": "Classic Leather Crossbody Bag",
+      "price": 3500,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.8,
+      "description": "A versatile leather crossbody bag with adjustable strap.",
+      "liked": false,
+      "stock_availability": false,
+      "categories": ["otherAccessories", "featuredProduct"]
+  },
+  {
+      "product_id": 114,
+      "product_name": "Formal Leather Belt",
+      "price": 1500,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.7,
+      "description": "Elegant leather belt ideal for formal wear.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["belts"]
+  },
+  {
+      "product_id": 115,
+      "product_name": "Vintage Leather Gloves",
+      "price": 1200,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.6,
+      "description": "Soft and durable leather gloves with a vintage touch.",
+      "liked": false,
+      "stock_availability": true,
+      "categories": ["otherAccessories"]
+  },
+  {
+      "product_id": 116,
+      "product_name": "Leather Bifold Wallet",
+      "price": 1800,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.5,
+      "description": "Compact leather bifold wallet with room for essentials.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["wallets", "trendingProduct"]
+  },
+  {
+      "product_id": 117,
+      "product_name": "Leather Travel Duffle Bag",
+      "price": 3900,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.9,
+      "description": "Spacious leather duffle bag, ideal for travel.",
+      "liked": true,
+      "stock_availability": false,
+      "categories": ["otherAccessories"]
+  },
+  {
+      "product_id": 118,
+      "product_name": "Leather Dress Shoes",
+      "price": 3600,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.8,
+      "description": "Elegant leather dress shoes for formal occasions.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["shoe"]
+  },
+  {
+      "product_id": 119,
+      "product_name": "Leather ID Card Holder",
+      "price": 800,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.4,
+      "description": "Compact leather ID card holder with clip.",
+      "liked": false,
+      "stock_availability": true,
+      "categories": ["wallets", "featuredProduct"]
+  },
+  {
+      "product_id": 120,
+      "product_name": "Leather Casual Sneakers",
+      "price": 3200,
+      "image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-8174.jpg?size=626&ext=jpg",
+      "rating": 4.7,
+      "description": "Comfortable leather sneakers for casual wear.",
+      "liked": true,
+      "stock_availability": true,
+      "categories": ["shoe", "trendingProduct"]
+  }
+]

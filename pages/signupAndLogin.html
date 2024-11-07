@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In / Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <div class="container">
+    <div class="form-container">
+      <div class="sign-in" id="signInForm">
+        <h2>Sign In</h2>
+        <form class="form-section" id="sign-in-form">
+          <div class="input-field">
+            <i class="fas fa-envelope left-icon"></i>
+            <input type="email" placeholder="Email" id="username" required>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock left-icon"></i>
+            <input type="password" placeholder="Password" id="password" required>
+            <i class="right-icon fa fa-eye"></i>
+          </div>
+          <button type="submit" class="btn" id="signInButton">Sign In</button>
+          <!-- <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+          </div> -->
+          <div class="signup-link">
+            <a href="#" id="showSignUp">Don't have an account? Sign up</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="sign-up" id="signUpForm" style="display: none;">
+        <h2>Sign Up</h2>
+        <form class="form-section" id="sign-up-form" novalidate>
+          <div style="display: flex; justify-content: space-between; width: 100%;">
+          <div class="input-field">
+            <input type="text" id = "fname" placeholder="First name" required minlength="2">
+            <i class="fas fa-user left-icon"></i>
+            <span class="fname-error"></span>
+          </div>
+          <div class="input-field">
+            <input type="text" id="lname" placeholder="Last name "required minlength="2">
+            <i class="fas fa-user left-icon"></i>
+            <span class="lname-error"></span>
+          </div>
+        </div>
+          <div class="input-field">
+            <i class="fas fa-envelope left-icon"></i>
+            <input type="email" placeholder="Email" id="new-username" required>
+            <span class="email-error"></span>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-phone left-icon"></i>
+            <input type="number" id="Phone" placeholder="Phone" required>
+            <span class="phone-error"></span>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock left-icon"></i>
+            <input type="password" placeholder="Password" id="new-password" minlength="8" required>
+            <i class="right-icon fa fa-eye"></i>
+            <span class="password-error"></span>
+          </div>
+          <button type="submit" class="btn" id="signUpButton">Sign Up</button>
+          <div class="signup-link">
+            <a href="#" id="showSignIn">Already have an account? Sign in</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="image-section">
+      <img src="../assets/icons/Login-amico.png" alt="login-image">
+    </div>
+  </div>
+  <div class="status-msg">
+  </div>
+
+  <script>
+    document.getElementById('showSignUp').addEventListener('click', function(event) {
+      event.preventDefault();
+      toggleForm();
+    });
+
+    document.getElementById('showSignIn').addEventListener('click', function(event) {
+      event.preventDefault();
+      toggleForm();
+    });
+    let eyeBtn = document.querySelectorAll('.right-icon');
+    eyeBtn.forEach(eye => { eye.addEventListener('click',()=>{
+      const signUpPassword = document.getElementById('new-password');
+      const signInpassword = document.getElementById('password');
+      if(signUpPassword.type == "password" || signInpassword.type == "password"){
+        signInpassword.type = "text";
+        signUpPassword.type = "text";
+        eye.classList.add('fa-eye-slash');
+        eye.classList.remove('fa-eye');
+      }
+      else{
+        if(signUpPassword.type == "text" || signInpassword.type == "text"){
+        signInpassword.type = "password";
+        signUpPassword.type = "password";
+        eye.classList.add('fa-eye');
+        eye.classList.remove('fa-eye-slash');
+      }
+    }
+  });
+    });
+    
+    function toggleForm() {
+      const signInForm = document.getElementById('signInForm');
+      const signUpForm = document.getElementById('signUpForm');
+      if (signInForm.style.display === "none") {
+        signInForm.style.display = "block";
+        signUpForm.style.display = "none";
+      }
+      
+       else {
+        signInForm.style.display = "none";
+        signUpForm.style.display = "block";
+      }
+    }
+  </script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/auth.js" type="module" defer></script>
+</body>
+</html>
