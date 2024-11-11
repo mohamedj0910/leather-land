@@ -81,6 +81,9 @@ nav ul{
   border-radius: 10px;
   padding: 10px;
 }
+#logout-btn{
+  display: none;
+}
 @media (max-width: 575.98px) {
     .container {
       max-width: 100%;
