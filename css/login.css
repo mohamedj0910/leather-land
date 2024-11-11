@@ -16,12 +16,13 @@ body {
 .container {
     display: flex;
     width: 80%;
-    gap: 20px;
+    gap: 30px;
     align-items: center;
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .form-container {
@@ -30,11 +31,13 @@ body {
     flex-direction: column;
     gap: 30px;
 }
-.form-section{
+
+.form-section {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
+
 .image-section {
     width: 50%;
 }
@@ -51,6 +54,13 @@ h2 {
     margin-bottom: 20px;
 }
 
+.name-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+}
+
 .input-field {
     position: relative;
     gap: 10px;
@@ -61,7 +71,9 @@ h2 {
     padding: 15px 50px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    &::-webkit-outer-spin-button,&::-webkit-inner-spin-button{
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }
 }
@@ -73,13 +85,13 @@ h2 {
     transform: translateY(-50%);
     font-size: 18px;
     color: #999;
-    padding-right:10px ;
+    padding-right: 10px;
     border-right: 1px solid #999;
 }
 
 
 
-.input-field .right-icon{
+.input-field .right-icon {
     position: absolute;
     top: 50%;
     right: 15px;
@@ -88,6 +100,7 @@ h2 {
     color: #999;
     cursor: pointer;
 }
+
 .btn {
     width: 100%;
     padding: 15px 20px;
@@ -102,9 +115,11 @@ h2 {
 .btn:hover {
     background-color: hsl(33, 75%, 50%);
 }
-input:focus{
+
+input:focus {
     outline: none;
 }
+
 .signup-link {
     text-align: center;
 }
@@ -118,6 +133,35 @@ input:focus{
     color: hsl(33, 85%, 55%);
 }
 
+.fa-spin {
+    display: none;
+    color: hsl(33, 75%, 50%);
+    font-size: 100px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+.invalid-cred{
+    text-align: center;
+    color: crimson;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    & span{
+        color: crimson;
+        font-size: small;
+    }
+}
+.error {
+    color: crimson;
+    display: flex;
+    font-size: small;
+    flex-direction: column;
+    gap: 10px;
+}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -125,7 +169,10 @@ input:focus{
         flex-direction: column;
         width: 90%;
     }
-
+    .name-container{
+        flex-direction: column;
+        gap: 30px;
+    }
     .form-container {
         width: 100%;
     }

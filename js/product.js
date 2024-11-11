@@ -3,15 +3,9 @@
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, addDoc,collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { firebaseConfig } from "./config.js";
 // Firebase configuration (replace with your own config)
-const firebaseConfig = {
-    apiKey: "AIzaSyAmPY0O2PPJuvMDtyA4snO-lqTYlllnxfg",
-    authDomain: "register-form-practice.firebaseapp.com",
-    projectId: "register-form-practice",
-    storageBucket: "register-form-practice.appspot.com",
-    messagingSenderId: "69428738471",
-    appId: "1:69428738471:web:605853b64d3034d7721e82"
-};
+
 
 // Initialize Firebase
 // Initialize Firebase
