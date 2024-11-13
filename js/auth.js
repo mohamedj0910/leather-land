@@ -87,6 +87,7 @@ if (signUpForm) {
           });
       })
       .catch((error) => {
+        loader.style.display = 'none'
         const errorMessage = error.message;
 
         lowercaseError.textContent = '';
