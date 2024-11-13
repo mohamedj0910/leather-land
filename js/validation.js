@@ -1,9 +1,16 @@
+//error feilds
 const fnameError = document.querySelector('.fname-error');
 const lnameError = document.querySelector('.lname-error');
 const emailError = document.querySelector('.email-error');
 const phoneError = document.querySelector('.phone-error');
 const emailErr = document.querySelector('.email-err');
 const passErr = document.querySelector('.pass-err');
+
+//input feilds
+const fname = document.getElementById('fname');
+const lname = document.getElementById('lname');
+const email = document.getElementById('new-username');
+const phone = document.getElementById('phone');
 
 
 function validateSignUpForm() {
@@ -16,10 +23,6 @@ function validateSignUpForm() {
     e.preventDefault();
 
     // Get values from input fields
-    const fname = document.getElementById('fname');
-    const lname = document.getElementById('lname');
-    const email = document.getElementById('new-username');
-    const phone = document.getElementById('phone');
 
 
     // Clear previous error messages and reset the input field border color
@@ -126,4 +129,73 @@ function validateSignUpForm() {
     }
   });
 }
+
+function wrongCharacters() {
+  const newPassword = document.getElementById('new-password');
+  const password = document.getElementById('password');
+  password.addEventListener('input', function (e) {
+    if (e.target.value.includes(" ")) {
+      alert("Sapces are not allowed in password");
+    }
+    password.value = password.value.replace(/\s+/, '').trim();
+  });
+  newPassword.addEventListener('input', function (e) {
+    if (e.target.value.includes(" ")) {
+      alert("Sapces are not allowed in password");
+    }
+    newPassword.value = newPassword.value.replace(/\s+/, '').trim();
+  });
+  fname.addEventListener('input', function(e) {
+    if (/\d/.test(e.target.value)) {  // Check if there are numbers in the first name
+      alert("Numbers are not allowed in first name");
+    }
+    if (e.target.value.includes(" ")) {
+      alert("Sapces are not allowed in first name");
+    }
+    fname.value = fname.value.replace(/\s+/, '').trim();
+    fname.value = fname.value.replace(/\d/, '').trim();
+  });
+  lname.addEventListener('input', function(e) {
+    if (/\d/.test(e.target.value)) {  // Check if there are numbers in the first name
+      alert("Numbers are not allowed in last name");
+    }
+    if (e.target.value.includes(" ")) {
+      alert("Sapces are not allowed in last name");
+    }
+    lname.value = lname.value.replace(/\s+/, '').trim();
+    lname.value = lname.value.replace(/\d/, '').trim();
+  });
+}
+
+function inputValidation() {
+  fname.addEventListener('input', function (e) {
+    e.preventDefault();
+    if (fname.value.length < 3) {
+      fnameError.textContent = 'Firstnamr should be atleast 3 characters';
+    }
+    else {
+      fnameError.textContent = '';
+    }
+  })
+  lname.addEventListener('input', function (e) {
+    e.preventDefault();
+    if (lname.value.length < 3) {
+      lnameError.textContent = 'Last name should be atleast 3 characters';
+    }
+    else {
+      lnameError.textContent = '';
+    }
+  })
+  phone.addEventListener('input', function (e) {
+    e.preventDefault();
+    if (phone.value.length < 10) {
+      phoneError.textContent = `You have to enter ${10 - phone.value.length} numbers`;
+    }
+    else {
+      phoneError.textContent = '';
+    }
+  });
+}
 validateSignUpForm();
+wrongCharacters();
+inputValidation();

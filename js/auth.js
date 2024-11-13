@@ -49,7 +49,6 @@ onAuthStateChanged(auth, (user) => {
     logoutBtn.style.display = 'none';
   }
 });
-
 // Sign-up form submit
 const signUpForm = document.getElementById('sign-up-form');
 const lengthError = document.querySelector('.length-error');
@@ -66,23 +65,24 @@ if (signUpForm) {
     const firstName = document.getElementById('fname').value;
     const lastName = document.getElementById('lname').value;
     const phone = document.getElementById('phone').value;
-
     lengthError.textContent = '';
     if (password.length < 8) {
       lengthError.textContent = "Password should be at least 8 characters";
     }
-
+    
+    loader.style.display = 'inline';
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-
         // Save user details after successful registration
         saveUserDetails(firstName, lastName, phone, user.email)
           .then(() => {
+            loader.style.display = 'none';
             alert('Registered successfully! Logging in...');
             window.location.href = '/';  // Redirect to homepage or another page
           })
           .catch((error) => {
+            loader.style.display = 'none';
             console.error('Error saving user details: ', error);
           });
       })
@@ -140,8 +140,9 @@ if (loginForm) {
           .catch((error) => {
             console.error('Error fetching user details:', error);
           });
-
+        alert("Login successfully")
         window.location.href = '/';  // Redirect to homepage or dashboard
+
       })
       .catch((error) => {
         loader.style.display = 'none';

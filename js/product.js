@@ -1,92 +1,54 @@
-
-
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, addDoc,collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { firebaseConfig } from "./config.js";
-// Firebase configuration (replace with your own config)
 
-
-// Initialize Firebase
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);  // Move db initialization outside of try block
+const db = getFirestore(app);
 
-async function fetchAndDisplayFeaturedProducts() {
-    const featuredProductsCollection = collection(db, "leatherProducts");
-    const querySnapshot = await getDocs(query(featuredProductsCollection, where("categories", "array-contains", "featuredProduct")));
-  
-    const featuredProducts = [];
-    querySnapshot.forEach((doc) => {
-      featuredProducts.push(doc.data());
-    });
-  
-    // Assuming you have an HTML element with the ID "hero-section"
-    const featuredContainer = document.querySelector(".scroll-container");
-  
-    // Clear the hero section before adding new products
-  
-    featuredProducts.forEach((product) => {
-      const productCard = document.createElement("div");
-      productCard.classList.add("product-card");
-  
-      // Add product details to the card (customize as needed)
-      productCard.innerHTML = `
-      <div class="image-div">
-        <img src="${product.image}" alt="${product.product_name}">
-      </div>
-      <div class="details-div">
-        <h2>${product.product_name}</h2>
-        <p>₹${product.price}</p>
-        <p>${product.description}</p>
-      </div>
-      `; 
-      featuredContainer.appendChild(productCard);
-    });
+// Get product ID from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
+
+// Select the container where the product details will be displayed
+const productContainer = document.querySelector('.product-container');
+
+// Fetch and display the product
+async function fetchAndDisplayProduct() {
+  if (!productId) {
+    productContainer.innerHTML = "<p>Product not found.</p>";
+    return;
   }
-  
-  // Call the function to fetch and display featured products
-  fetchAndDisplayFeaturedProducts();
 
-  async function uploadProductsFromJson() {
-    const collectionName = "leatherProducts";
-    let appConfig = "appconfig";
-    const jsonUrl = "../data/products.json";
-    const collectionRef = collection(db, collectionName);
-    const appRef = collection(db,appConfig);
-    try {
-      // Check if the collection is empty
-      const appConfigSnapshot = await getDocs(appRef);
-      const snapshot = await getDocs(collectionRef);
-      if (snapshot.empty || appConfigSnapshot.dataModified==true) {
-        console.log(`Collection '${collectionName}' is empty or does not exist. Creating collection...`);
-        const response = await fetch(jsonUrl);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch product.json: ${response.statusText}`);
-        }
-    
-        const productsData = await response.json();
-    
-        // Loop through each product and add to Firestore, checking for duplicates
-        for (const product of productsData) {
-            await addDoc(collectionRef, product)
-              .then((docRef) => {
-                console.log(`Product added with ID: ${docRef.id}`);
-              })
-              .catch((error) => {
-                console.error(`Error adding product: ${error.message}`);
-              });
-        }
-      } else {
-        console.log(`Collection '${collectionName}' already exists. Adding data...`);
-      }
-  
-      // Fetch JSON data from the hosted product.json URL
-  
-      console.log("Products uploaded to Firestore successfully.");
-    } catch (error) {
-      console.error("Error uploading products:", error);
+  try {
+    // Reference the product document by ID
+    const productRef = doc(db, "leatherProducts", productId);
+    const productSnapshot = await getDoc(productRef);
+
+    if (productSnapshot.exists()) {
+      const productData = productSnapshot.data();
+      
+      // Construct product display
+      productContainer.innerHTML = `
+        <div class="product-details">
+          <h1>${productData.product_name}</h1>
+          <div class="image-div">
+            <img src="${productData.image}" alt="${productData.product_name}">
+          </div>
+          <p><strong>Price:</strong> ₹${productData.price}</p>
+          <p><strong>Description:</strong> ${productData.description}</p>
+          <!-- Add more details as needed -->
+        </div>
+      `;
+    } else {
+      productContainer.innerHTML = "<p>Product not found.</p>";
     }
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    productContainer.innerHTML = "<p>Failed to load product details. Please try again later.</p>";
   }
-// Run the function
-uploadProductsFromJson();
+}
+
+// Call the function to fetch and display the product
+fetchAndDisplayProduct();
