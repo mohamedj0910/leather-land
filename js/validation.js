@@ -145,26 +145,20 @@ function wrongCharacters() {
     }
     newPassword.value = newPassword.value.replace(/\s+/, '').trim();
   });
-  fname.addEventListener('input', function(e) {
-    if (/\d/.test(e.target.value)) {  // Check if there are numbers in the first name
-      alert("Numbers are not allowed in first name");
+  fname.addEventListener('input', function (e) {
+    if (/[^a-zA-Z]/.test(e.target.value)) {
+      alert("Only alphabets are allowed in the last name");
     }
-    if (e.target.value.includes(" ")) {
-      alert("Sapces are not allowed in first name");
-    }
-    fname.value = fname.value.replace(/\s+/, '').trim();
-    fname.value = fname.value.replace(/\d/, '').trim();
+    fname.value = fname.value.replace(/[^a-zA-Z]/g, '').trim();
   });
-  lname.addEventListener('input', function(e) {
-    if (/\d/.test(e.target.value)) {  // Check if there are numbers in the first name
-      alert("Numbers are not allowed in last name");
+  lname.addEventListener('input', function (e) {
+    // Check if there are any non-alphabetic characters (not A-Z or a-z)
+    if (/[^a-zA-Z]/.test(e.target.value)) {
+      alert("Only alphabets are allowed in the last name");
     }
-    if (e.target.value.includes(" ")) {
-      alert("Sapces are not allowed in last name");
-    }
-    lname.value = lname.value.replace(/\s+/, '').trim();
-    lname.value = lname.value.replace(/\d/, '').trim();
+    lname.value = lname.value.replace(/[^a-zA-Z]/g, '').trim();
   });
+
 }
 
 function inputValidation() {
@@ -172,27 +166,33 @@ function inputValidation() {
     e.preventDefault();
     if (fname.value.length < 3) {
       fnameError.textContent = 'Firstnamr should be atleast 3 characters';
+      fname.style.borderColor = 'crimson';
     }
     else {
       fnameError.textContent = '';
+      fname.style.borderColor = 'green';
     }
-  })
+  });
   lname.addEventListener('input', function (e) {
     e.preventDefault();
     if (lname.value.length < 3) {
       lnameError.textContent = 'Last name should be atleast 3 characters';
+      lname.style.borderColor = 'crimson';
     }
     else {
       lnameError.textContent = '';
+      lname.style.borderColor = 'green';
     }
   })
   phone.addEventListener('input', function (e) {
     e.preventDefault();
     if (phone.value.length < 10) {
       phoneError.textContent = `You have to enter ${10 - phone.value.length} numbers`;
+      phone.style.borderColor = 'crimson';
     }
     else {
       phoneError.textContent = '';
+      phone.style.borderColor = 'green';
     }
   });
 }
