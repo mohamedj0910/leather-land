@@ -51,8 +51,8 @@
                     <a href="./pages/signupAndLogin.html" class="sign-in" id="signIn">Sign in</a>
                 </div>
 
-                <div class="hamburger" id="hamburger">
-                    <i class="fa-solid fa-bars"></i>
+                <div class="hamburger">
+                    <i class="fa-solid fa-bars icon"></i>
                 </div>
                 <div class="cart" id="cartButton">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -63,10 +63,12 @@
             </div>
         </header>
         <section id="profile-content">
-            <div class="profile-contents">
-                <span id="display-username"></span>
-                <span id="view-profile"></span>
-                <button type="button" id="logout-btn">Logout</button>
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-content">
+                    <span id="display-username">Username</span>
+                    <a href="#">View Profile</a>
+                    <button type="button" id="logout-btn">Logout</button>
+                </div>
             </div>
         </section>
         <section class="hero" id="hero-section">
@@ -79,6 +81,7 @@
                 </div>
             </div>
         </section>
+        <script src="./js/menu.js"></script>
         <script src="./js/admin.js" type="module" defer></script>
         <script src="./js/auth.js" type="module" defer></script>
     </body>
