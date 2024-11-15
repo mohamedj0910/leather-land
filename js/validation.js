@@ -147,7 +147,7 @@ function wrongCharacters() {
   });
   fname.addEventListener('input', function (e) {
     if (/[^a-zA-Z]/.test(e.target.value)) {
-      alert("Only alphabets are allowed in the last name");
+      alert("Only alphabets are allowed in the first name");
     }
     fname.value = fname.value.replace(/[^a-zA-Z]/g, '').trim();
   });
@@ -196,6 +196,8 @@ function inputValidation() {
     }
   });
 }
+
+
 validateSignUpForm();
 wrongCharacters();
 inputValidation();

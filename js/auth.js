@@ -34,7 +34,7 @@ onAuthStateChanged(auth, (user) => {
           userDetails.firstName = userDetails.firstName.split("");
           userDetails.firstName[0]=userDetails.firstName[0].toUpperCase();
           userDetails.firstName = userDetails.firstName.join("");
-          document.getElementById('display-username').textContent = `${userDetails.firstName} ${userDetails.lastName}`;
+          document.getElementById('display-username').textContent = `Hello...${userDetails.firstName} ${userDetails.lastName}`;
           // document.getElementById('profile-phone').textContent = userDetails.phone;
         }
       })
@@ -94,7 +94,7 @@ if (signUpForm) {
         uppercaseError.textContent = '';
         numberError.textContent = '';
         spcharError.textContent = '';
-
+        
         if (errorMessage.includes("Password must contain a numeric character")) {
           numberError.textContent = "Password must include at least one number.";
         }
@@ -109,6 +109,9 @@ if (signUpForm) {
         }
         if (errorMessage.includes("Password should be at least 6 characters")) {
           lengthError.textContent = "Password must be at least 6 characters long.";
+        }
+        if(error.code == 'auth/email-already-in-use'){
+          document.querySelector('.email-error').textContent = 'Email already in use . Please use another email.'
         }
       });
   });
@@ -159,11 +162,13 @@ const logoutBtn = document.getElementById('logout-btn');
 if (logoutBtn) {
   logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    signOut(auth).then(() => {
-      alert("Logged out successfully");
-      window.location.href = '/';  // Redirect after logout
-    }).catch((error) => {
-      alert("Logout error: ", error);
-    });
+    if(confirm("Are you want to logout")){
+      signOut(auth).then(() => {
+        alert("Logged out successfully");
+        window.location.href = '/';  // Redirect after logout
+      }).catch((error) => {
+        alert("Logout error: ", error);
+      });
+    }
   });
 }

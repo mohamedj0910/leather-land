@@ -8,7 +8,6 @@ import { firebaseConfig } from "./config.js";
 
 
 // Initialize Firebase
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);  // Move db initialization outside of try block
 

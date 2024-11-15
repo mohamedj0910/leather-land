@@ -10,6 +10,7 @@ const db = getFirestore(app);
 // Get product ID from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
+console.log(productId);
 
 // Select the container where the product details will be displayed
 const productContainer = document.querySelector('.product-container');
@@ -28,7 +29,7 @@ async function fetchAndDisplayProduct() {
 
     if (productSnapshot.exists()) {
       const productData = productSnapshot.data();
-      
+      document.title = productData.product_name;
       // Construct product display
       productContainer.innerHTML = `
         <div class="product-details">
