@@ -28,7 +28,7 @@
             <div class="input-field">
               <i class="fas fa-lock left-icon"></i>
               <input type="password" placeholder="Password" id="password" required>
-              <i class="right-icon fa fa-eye"></i>
+              <i class="right-icon fa fa-eye-slash"></i>
             </div>
             <span class="pass-err"></span>
           </div>
@@ -81,7 +81,7 @@
             <div class="input-field">
               <i class="fas fa-lock left-icon"></i>
               <input type="password" placeholder="Password" id="new-password" minlength="8" required>
-              <i class="right-icon fa fa-eye"></i>
+              <i class="right-icon fa fa-eye-slash"></i>
             </div>
             <div class="error">
               <span class="length-error"></span>
@@ -124,17 +124,17 @@
         if (signUpPassword.type == "password" || signInpassword.type == "password") {
           signInpassword.type = "text";
           signUpPassword.type = "text";
-          eye.classList.add('fa-eye-slash');
-          eye.classList.remove('fa-eye');
+          eye.classList.add('fa-eye');
+          eye.classList.remove('fa-eye-slash');
+
         }
         else {
-          if (signUpPassword.type == "text" || signInpassword.type == "text") {
             signInpassword.type = "password";
             signUpPassword.type = "password";
-            eye.classList.add('fa-eye');
-            eye.classList.remove('fa-eye-slash');
+            eye.classList.add('fa-eye-slash');
+            eye.classList.remove('fa-eye');
           }
-        }
+        
       });
     });
 
