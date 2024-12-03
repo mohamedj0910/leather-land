@@ -11,27 +11,27 @@ const db = getFirestore(app);
 const container = document.querySelector('.product-container');
 
 // Function to fetch and display featured products
-async function fetchAndDisplayFeaturedProducts() {
+async function fetchAndDisplayOtherProducts() {
   const heading = document.createElement('h1');
-  heading.textContent = "Featured Products";
+  heading.textContent = "Other Accessories";
   container.appendChild(heading);
 
-  const featuredContainer = document.createElement('div');
-  featuredContainer.classList.add('scroll-container');
-  container.appendChild(featuredContainer);
+  const othersContainer = document.createElement('div');
+  othersContainer.classList.add('scroll-container');
+  container.appendChild(othersContainer);
 
   // Fetch featured products from Firestore
-  const featuredProductsCollection = collection(db, "leatherProducts");
-  const querySnapshot = await getDocs(query(featuredProductsCollection, where("categories", "array-contains", "featuredProduct")));
-  const featuredProducts = [];
+  const otherProductsCollection = collection(db, "leatherProducts");
+  const querySnapshot = await getDocs(query(otherProductsCollection, where("categories", "array-contains", "others")));
+  const otherProducts = [];
   querySnapshot.forEach((doc) => {
     const product = doc.data();
     product.id = doc.id;  // This will add the Firestore document ID to the product object
-    featuredProducts.push(product);
+    otherProducts.push(product);
   });
 
   // Loop through the fetched products and create product cards
-  featuredProducts.forEach((product) => {
+  otherProducts.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.classList.add("product-card");
 
@@ -53,10 +53,12 @@ async function fetchAndDisplayFeaturedProducts() {
 
     // Add hover functionality for swapping images
     const productImage = productCard.querySelector('.product-image');
+
     productCard.addEventListener('click',(e)=>{
       e.preventDefault();
-      window.location.href = `../pages/product.html?id=${product.id}`
+      window.location.href = `./product.html?id=${product.id}`
     });
+
     productImage.addEventListener('mouseenter', () => {
       productImage.src = product.image[1];  // Swap to the second image
     });
@@ -65,7 +67,7 @@ async function fetchAndDisplayFeaturedProducts() {
     });
 
     // Append product card to the container
-    featuredContainer.appendChild(productCard);
+    othersContainer.appendChild(productCard);
   });
 }
 
@@ -80,4 +82,4 @@ function formatPrice(price) {
 }
 
 // Fetch and display featured products when page loads
-fetchAndDisplayFeaturedProducts();
+fetchAndDisplayOtherProducts();

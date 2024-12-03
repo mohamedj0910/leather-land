@@ -1,6 +1,6 @@
 // Initialize Firestore and Firebase Auth
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, where, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, setDoc} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { firebaseConfig } from "./config.js";  // Adjust the path to your config file
 
@@ -14,18 +14,18 @@ const auth = getAuth();
 // Function to save user details to Firestore (called after sign-up)
 async function saveUserDetails(firstName, lastName, phone, email) {
   try {
-    const usersRef = collection(db, 'users');
-    // Check if a user with the same email already exists
-    const q = query(collection(db, 'users'), where("email", "==", email));
-    const querySnapshot = await getDocs(q);
+    const userDocRef = doc(db, 'users', email);  // Use email as the document ID
+    
+    // Check if the user document with the given email exists
+    const userDoc = await getDoc(userDocRef);
 
-    if (!querySnapshot.empty) {
+    if (userDoc.exists()) {
       console.log('User with this email already exists.');
       return;
     }
 
-    // Save the user details
-    await addDoc(usersRef, {
+    // If user does not exist, save the user details
+    await setDoc(userDocRef, {
       firstName: firstName,
       lastName: lastName,
       phone: phone,
@@ -38,19 +38,14 @@ async function saveUserDetails(firstName, lastName, phone, email) {
   }
 }
 
-// Function to retrieve user details from Firestore by email
+// Function to retrieve user details from Firestore by email (using email as document ID)
 async function getUserDetailsByEmail(email) {
   try {
-    const q = query(collection(db, 'users'), where("email", "==", email));
-    const querySnapshot = await getDocs(q);
+    const userDocRef = doc(db, 'users', email);  // Use email as the document ID
+    const userDoc = await getDoc(userDocRef);
 
-    if (!querySnapshot.empty) {
-      const userDoc = querySnapshot.docs[0];
-      const userData = userDoc.data();
-      const userId = userDoc.id;  // Get the document ID
-
-      // Return both user data and the ID
-      return { ...userData, id: userId };  
+    if (userDoc.exists()) {
+      return { ...userDoc.data(), id: userDoc.id };
     } else {
       console.log('No user found with the provided email.');
       return null;
@@ -59,6 +54,7 @@ async function getUserDetailsByEmail(email) {
     console.error('Error fetching user details: ', error);
   }
 }
+
 
 // Listen for authentication state change to fetch user data after login
 onAuthStateChanged(auth, (user) => {

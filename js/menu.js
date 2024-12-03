@@ -39,3 +39,8 @@ document.addEventListener('click', (event) => {
         sidebar.classList.remove('active');
     }
 });
+
+let topLogo = document.querySelector('.img-div');
+topLogo.addEventListener('click',()=>{
+  window.location.href = '/';
+})
