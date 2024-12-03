@@ -25,7 +25,7 @@
         "rating": 4.7,
         "description": "Elevate your formal attire with this elegant leather belt featuring an exclusive buckle in brown. Designed for the discerning gentleman, this belt not only adds a touch of sophistication to your outfit but also ensures a secure fit. Perfect for business meetings or formal events.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts", "trendingProduct", "featuredProduct"]
     },
     {
         "product_id": "1053",
@@ -39,7 +39,7 @@
         "rating": 4.6,
         "description": "This sleek black formal leather belt with an exclusive buckle is the perfect accessory for any formal occasion. Its refined design and premium leather construction ensure that you make a lasting impression at weddings, interviews, or any upscale event.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts", "trendingProduct", "featuredProduct"]
     },
     {
         "product_id": "1054",
@@ -82,7 +82,7 @@
         "rating": 4.4,
         "description": "Stylish and sophisticated, this tan formal belt is perfect for adding a touch of elegance to your formal attire. Its durable construction ensures it will last, while the rich color complements a variety of outfits.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1057",
@@ -96,7 +96,7 @@
         "rating": 4.7,
         "description": "This reversible leather belt is designed for versatility, featuring a sleek black side and a rich brown side. Perfect for any occasion, it combines style and practicality, making it an essential accessory for the modern man.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1058",
@@ -110,7 +110,7 @@
         "rating": 4.5,
         "description": "Quality and style come together in this tan leather belt. Its classic design makes it suitable for both casual and formal wear, ensuring you always look your best, whether at work or out on the town.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1059",
@@ -124,7 +124,7 @@
         "rating": 4.6,
         "description": "Innovative and stylish, this auto lock belt features a sleek black design that not only looks great but also provides a secure fit. Perfect for the modern man who values both functionality and fashion, this belt is ideal for everyday wear.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1060",
@@ -138,7 +138,7 @@
         "rating": 4.7,
         "description": "Elevate your formal look with this exquisite leather belt featuring an exclusive buckle in brown. Its sophisticated design and premium materials make it a perfect choice for business meetings, weddings, or any formal occasion.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1061",
@@ -152,7 +152,7 @@
         "rating": 4.6,
         "description": "This reversible auto lock belt combines functionality with style, featuring a sleek black design that can be flipped to reveal a different color. Ideal for the man who wants versatility in his accessories, this belt is perfect for any occasion.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1062",
@@ -166,7 +166,7 @@
         "rating": 4.4,
         "description": "This classic tan formal belt is a must-have for any wardrobe. Its elegant design and high-quality leather make it suitable for both formal and semi-formal occasions, ensuring you always look polished and professional.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1063",
@@ -180,7 +180,7 @@
         "rating": 4.8,
         "description": "Crafted from premium materials, this brown formal belt is designed for the discerning gentleman. Its luxurious finish and classic style make it the perfect accessory for any formal outfit, ensuring you make a lasting impression at any event.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1064",
@@ -194,7 +194,7 @@
         "rating": 4.5,
         "description": "This stylish tan belt for women is perfect for adding a touch of elegance to any outfit. Its versatile design allows it to be worn with dresses, skirts, or trousers, making it a great addition to your wardrobe.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1065",
@@ -208,7 +208,7 @@
         "rating": 4.6,
         "description": "Elegant and sophisticated, this tan formal belt for women is designed to complement your formal attire. Its refined look and quality craftsmanship make it an essential accessory for any professional setting.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1066",
@@ -222,7 +222,7 @@
         "rating": 4.7,
         "description": "This classic black formal belt for women is a timeless accessory that pairs well with any formal outfit. Its sleek design and durable material ensure that it will be a staple in your wardrobe for years to come.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1067",
@@ -236,7 +236,7 @@
         "rating": 4.5,
         "description": "Trendy and vibrant, this red belt for women adds a pop of color to any outfit. Perfect for casual outings or to brighten up your work attire, it’s a versatile accessory that enhances your style.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1068",
@@ -250,7 +250,7 @@
         "rating": 4.4,
         "description": "This casual tan belt for men is designed for comfort and style. Its relaxed look makes it perfect for everyday wear, whether paired with jeans or shorts. Made from high-quality materials, it ensures durability while providing a laid-back vibe that suits any casual occasion.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1069",
@@ -264,7 +264,7 @@
         "rating": 4.5,
         "description": "This formal brown belt for men is a classic accessory that enhances your professional look. Its elegant design and sturdy construction make it suitable for business meetings, interviews, and formal events, ensuring you always present yourself well.",
         "stock_availability": true,
-        "categories": ["belts", "trendingProduct"]
+        "categories": ["belts"]
     },
     {
         "product_id": "1070",
@@ -304,11 +304,12 @@
         "rating": 4.8,
         "description": "This stylish tan leather jacket for men is perfect for adding a touch of rugged sophistication to your wardrobe. Made from high-quality leather, it offers both comfort and durability, making it ideal for casual outings or evening events.",
         "stock_av ailability": true,
-        "categories": ["others"]
+        "categories": ["others","trendingProduct", "featuredProduct"],
+        "size": ["M","L","XL"]
     },
     {
         "product_id": "1088",
-        "product_name": "men leather jacket black",
+        "product_name": "men leather jacket brown",
         "price": 4999,
         "image": [
             "https://ik.imagekit.io/mommu/images/others/1088%20mens%20leather%20jacket%20black/m-img.webp",
@@ -317,7 +318,8 @@
         "rating": 4.9,
         "description": "Classic and timeless, this black leather jacket for men is a wardrobe essential. Its sleek design and premium leather construction provide a perfect fit and style, making it suitable for both casual and formal occasions.",
         "stock_availability": true,
-        "categories": ["others"]
+        "categories": ["others","trendingProduct", "featuredProduct"],
+        "size": ["M","L","XL"]
     },
     {
         "product_id": "1089",
@@ -330,7 +332,8 @@
         "rating": 4.6,
         "description": "This trendy brown jacket for women is designed to keep you warm while looking stylish. Its modern cut and soft fabric make it a versatile piece that can be dressed up or down for any occasion.",
         "stock_availability": true,
-        "categories": ["others"]
+        "categories": ["others","trendingProduct", "featuredProduct"],
+        "size": ["M","L","XL"]
     },
     {
         "product_id": "1090",
@@ -344,7 +347,7 @@
         "rating": 4.7,
         "description": "Versatile and stylish, this two-in-one handbag in tan is perfect for the modern woman. It can be used as a tote or a crossbody bag, making it ideal for both everyday use and special occasions.",
         "stock_availability": true,
-        "categories": ["others"]
+        "categories": ["others","trendingProduct"]
     },
     {
         "product_id": "1091",
@@ -428,7 +431,7 @@
         "rating": 4.5,
         "description": "Stylish and functional, this peach handbag for women is perfect for adding a touch of color to your outfit. Its spacious design allows you to carry all your essentials, making it a practical choice for both casual and formal occasions.",
         "stock_availability": true,
-        "categories": ["others", "trendingProduct"]
+        "categories": ["others"]
     },
     {
         "product_id": "1097",
@@ -442,7 +445,7 @@
         "rating": 4.8,
         "description": "Durable and stylish, this brown leather laptop bag is designed for the modern professional. Its spacious interior accommodates laptops and documents, while the elegant design ensures you look polished and professional on the go.",
         "stock_availability": true,
-        "categories": ["others", "trendingProduct"]
+        "categories": ["others"]
     },
     {
         "product_id": "1098",
@@ -456,7 +459,7 @@
         "rating": 4.9,
         "description": "This stylish black leather laptop bag combines functionality with elegance. Designed to protect your laptop while providing ample storage for your essentials, it’s perfect for business meetings or daily commutes.",
         "stock_availability": true,
-        "categories": ["others", "trendingProduct"]
+        "categories": ["others"]
     },
     {
         "product_id": "1099",
@@ -470,7 +473,7 @@
         "rating": 4.6,
         "description": "Trendy and practical, this tan leather sling bag is perfect for everyday use. Its compact design allows for easy carrying, while the stylish look makes it a great accessory for any outfit.",
         "stock_availability": true,
-        "categories": ["others", "trendingProduct"]
+        "categories": ["others"]
     },
     {
         "product_id": "1001",
@@ -484,7 +487,8 @@
         "rating": 4.8,
         "description": "Premium quality brown formal shoes for men, crafted from the finest leather. These shoes are designed for comfort and style, making them perfect for business meetings, formal events, or any occasion where you want to make a great impression.",
         "stock_availability": true,
-        "categories": ["shoes", "featuredProduct"]
+        "categories": ["shoes", "featuredProduct", "trendingProduct"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1002",
@@ -498,7 +502,8 @@
         "rating": 4.7,
         "description": "Stylish tan leather loafers designed for formal occasions. These premium loafers provide a perfect blend of comfort and elegance, making them an ideal choice for office wear or special events.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1003",
@@ -512,7 +517,8 @@
         "rating": 4.9,
         "description": "Classic black formal shoes made from premium leather, perfect for any formal occasion. Their timeless design ensures that you will always look sharp and professional, whether at work or at a special event.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes", "trendingProduct"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1004",
@@ -526,7 +532,8 @@
         "rating": 4.6,
         "description": "Elegant brown leather loafers designed for the modern man. These shoes offer a sophisticated look while ensuring comfort, making them suitable for both formal and semi-formal occasions.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes ", "trendingProduct"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1005",
@@ -540,7 +547,8 @@
         "rating": 4.7,
         "description": "Stylish tan leather shoes that combine comfort and elegance. Perfect for both casual and formal settings, these shoes are a versatile addition to any man's wardrobe.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1006",
@@ -554,7 +562,8 @@
         "rating": 4.8,
         "description": "Premium black leather loafers that offer a perfect blend of style and comfort. Ideal for formal occasions, these loafers are designed to keep you looking sharp while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1007",
@@ -568,7 +577,8 @@
         "rating": 4.5,
         "description": "Casual brown loafers designed for everyday wear. These comfortable shoes are perfect for running errands or casual outings, providing both style and ease.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1008",
@@ -582,7 +592,8 @@
         "rating": 4.9,
         "description": "Formal black leather shoes that are a staple for any man's wardrobe. Their classic design ensures you look professional and polished, making them perfect for business meetings and formal events.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1009",
@@ -596,7 +607,8 @@
         "rating": 4.8,
         "description": "Classic brown formal leather shoes that provide a sophisticated look for any formal occasion. Their premium quality ensures comfort and durability, making them a reliable choice for the modern man.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes", "featuredProduct"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1010",
@@ -610,7 +622,8 @@
         "rating": 4.7,
         "description": "Stylish tan formal leather shoes that are perfect for any formal event. Their elegant design and comfortable fit make them a great choice for long hours at work or special occasions.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1011",
@@ -624,7 +637,8 @@
         "rating": 4.6,
         "description": "Elegant party wear shoes designed for the modern man. These shoes combine style and comfort, making them perfect for parties, weddings, and other special occasions where you want to stand out.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1012",
@@ -638,7 +652,8 @@
         "rating": 4.8,
         "description": "Durable black leather boots designed for both style and functionality. Perfect for outdoor adventures or casual outings, these boots provide comfort and support while keeping you looking sharp.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1013",
@@ -647,12 +662,13 @@
         "image": [
             "https://ik.imagekit.io/mommu/images/shoes/1013%20mens%20business%20leather%20shoe%20brown/m-img.webp",
             "https://ik.imagekit.io/mommu/images/shoes/1013%20mens%20business%20leather%20shoe%20brown/s-img-1.webp",
-            "https://ik.imagekit.io/mommu/images/shoes/1013%20mens%20business%20leather%20shoe%20brown/s-img-2.webp"
+            "https://ik.imagekit.io/mommu/images/shoes/1013%20mens%20business%leather%20shoe%20brown/s-img-2.webp"
         ],
         "rating": 4.7,
         "description": "Professional brown leather shoes designed for business settings. Their classic style and comfortable fit make them ideal for long days at the office or important meetings.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1014",
@@ -666,7 +682,8 @@
         "rating": 4.9,
         "description": "Classic black oxford shoes that are a must-have for any formal wardrobe. Their elegant design and premium materials ensure you look your best at any formal event.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1015",
@@ -680,10 +697,11 @@
         "rating": 4.5,
         "description": "Stylish black shoes designed for boys aged 10. These shoes are perfect for school or casual outings, providing both comfort and durability while ensuring a trendy look.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
-        "product _id": "1016",
+        "product_id": "1016",
         "product_name": "mens casual boot black",
         "price": 2999,
         "image": [
@@ -694,7 +712,8 @@
         "rating": 4.6,
         "description": "Casual black boots that combine style and comfort. Perfect for everyday wear, these boots are designed to keep your feet comfortable while providing a fashionable look.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1017",
@@ -708,7 +727,8 @@
         "rating": 4.5,
         "description": "Comfortable brown casual leather shoes that are perfect for everyday wear. Their stylish design makes them suitable for both casual outings and relaxed office environments.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes", "trendingProduct"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1018",
@@ -722,7 +742,8 @@
         "rating": 4.7,
         "description": "Premium quality brown casual shoes designed for comfort and style. Ideal for both casual and semi-formal occasions, these shoes are a versatile addition to any man's wardrobe.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1019",
@@ -736,7 +757,8 @@
         "rating": 4.4,
         "description": "Traditional jalsa shoes for men that combine comfort with cultural style. Perfect for festive occasions or casual gatherings, these shoes are designed to keep you looking stylish.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1020",
@@ -750,7 +772,8 @@
         "rating": 4.5,
         "description": "Comfortable casual boots with a sandal design, perfect for warm weather. These versatile shoes provide the support of boots while allowing breathability, making them ideal for outdoor activities or casual outings.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1021",
@@ -764,7 +787,8 @@
         "rating": 4.6,
         "description": "Stylish white shoes designed for girls aged 10. These shoes are perfect for school or casual outings, providing both comfort and durability while ensuring a trendy look.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1022",
@@ -778,7 +802,8 @@
         "rating": 4.8,
         "description": "Durable brown leather boots designed for both style and functionality. Perfect for outdoor adventures or casual outings, these boots provide comfort and support while keeping you looking sharp.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1023",
@@ -792,7 +817,8 @@
         "rating": 4.7,
         "description": "Elegant tan loafers designed for formal occasions. These premium loafers provide a perfect blend of comfort and elegance, making them an ideal choice for office wear or special events.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1024",
@@ -806,7 +832,8 @@
         "rating": 4.9,
         "description": "Premium quality black leather shoes for men, designed for both comfort and style. These shoes are perfect for any formal occasion, ensuring you look sharp and professional.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1025",
@@ -820,7 +847,8 @@
         "rating": 4.8,
         "description": "Classic brown formal shoes designed for the modern man. These shoes are perfect for business meetings, formal events, or any occasion where you want to make a great impression. Their premium leather construction ensures durability and comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1026",
@@ -834,7 +862,8 @@
         "rating": 4.9,
         "description": "Professional black shoes designed for office wear. Their sleek design and comfortable fit make them ideal for long days at work, ensuring you look polished and put-together.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1027",
@@ -848,7 +877,8 @@
         "rating": 4.5,
         "description": "Comfortable brown leather casual shoes that are perfect for everyday wear. Their stylish design makes them suitable for both casual outings and relaxed office environments.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1028",
@@ -862,7 +892,8 @@
         "rating": 4.6,
         "description": "Stylish black half loafers designed for comfort and elegance. Ideal for formal occasions, these loafers are perfect for the man who wants to look sharp while enjoying all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1029",
@@ -876,7 +907,8 @@
         "rating": 4.5,
         "description": "Durable black school shoes designed for girls aged 5. These shoes provide comfort and support for all-day wear, making them perfect for school activities and casual outings.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1030",
@@ -890,7 +922,8 @@
         "rating": 4.5,
         "description": "Comfortable brown casual shoes designed for everyday wear. Their stylish design makes them suitable for both casual outings and relaxed office environments, providing versatility and comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1031",
@@ -904,7 +937,8 @@
         "rating": 4.6,
         "description": "Stylish tan formal casual shoes designed for the modern man. These shoes are perfect for both formal and casual settings, ensuring you look sharp and feel comfortable throughout the day.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1032",
@@ -918,7 +952,8 @@
         "rating": 4.9,
         "description": "Classic black formal shoes designed for the modern man. These shoes are perfect for any formal occasion, ensuring you look sharp and professional.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1033",
@@ -932,7 +967,8 @@
         "rating": 4.8,
         "description": "Professional black shoes designed for business settings. Their classic style and comfortable fit make them ideal for long days at work or important meetings.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1034",
@@ -946,21 +982,23 @@
         "rating": 4.5,
         "description": "Stylish tan shoes designed for the modern man. These shoes are perfect for casual outings or relaxed office environments, providing both comfort and a fashionable look.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1035",
         "product_name": "ladies formal shoe black",
         "price": 2999,
         "image": [
-            "https://ik.imagekit.io/mommu/images/shoes/1035%20ladies%20formal%20shoe%20black/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/shoes/1035%20ladies%20formal%shoe%20black/m-img.webp",
             "https://ik.imagekit.io/mommu/images/shoes/1035%20ladies%20formal%20shoe%20black/s-img-1.webp",
             "https://ik.imagekit.io/mommu/images/shoes/1035%20ladies%20formal%20shoe%20black/s-img-2.webp"
         ],
         "rating": 4.6,
         "description": "Elegant black formal shoes designed for ladies. These shoes are perfect for any formal occasion, ensuring you look polished and professional while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1036",
@@ -974,7 +1012,8 @@
         "rating": 4.5,
         "description": "Stylish brown loafers designed for women. These comfortable shoes are perfect for casual outings, providing both style and ease for everyday wear.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1037",
@@ -988,7 +1027,8 @@
         "rating": 4.7,
         "description": "Quality brown leather shoes designed for the modern man. These shoes are perfect for both casual and formal occasions, ensuring you look sharp and feel comfortable.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1038",
@@ -1002,7 +1042,8 @@
         "rating": 4.8,
         "description": "Durable brown boots designed for both style and functionality. Perfect for outdoor adventures or casual outings, these boots provide comfort and support while keeping you looking sharp.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1039",
@@ -1016,7 +1057,8 @@
         "rating": 4.6,
         "description": "Stylish tan formal shoes designed for the modern man. These shoes are perfect for any formal occasion, ensuring you look sharp and professional while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1040",
@@ -1030,7 +1072,8 @@
         "rating": 4.7,
         "description": "Classic brown formal shoes designed for the modern man. These shoes are perfect for business meetings, formal events, or any occasion where you want to make a great impression. Their premium leather construction ensures durability and comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1041",
@@ -1044,7 +1087,8 @@
         "rating": 4.5,
         "description": "Stylish semi-formal brown shoes designed for the modern man. These shoes are perfect for both formal and casual settings, ensuring you look sharp and feel comfortable throughout the day.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1042",
@@ -1058,7 +1102,8 @@
         "rating": 4.9,
         "description": "Classic black formal shoes designed for the modern man. These shoes are perfect for any formal occasion, ensuring you look sharp and professional.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1043",
@@ -1072,7 +1117,8 @@
         "rating": 4.6,
         "description": "Elegant black semi-formal shoes designed for women. These shoes are perfect for any formal occasion, ensuring you look polished and professional while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1044",
@@ -1086,7 +1132,8 @@
         "rating": 4.8,
         "description": "Classic brown formal shoes designed for the modern man. These shoes are perfect for business meetings, formal events, or any occasion where you want to make a great impression. Their premium leather construction ensures durability and comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1045",
@@ -1100,7 +1147,8 @@
         "rating": 4.9,
         "description": "Premium quality black formal shoes for men, designed for both comfort and style. These shoes are perfect for any formal occasion, ensuring you look sharp and professional while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1046",
@@ -1114,7 +1162,8 @@
         "rating": 4.5,
         "description": "Comfortable brown half loafers for men, perfect for casual outings or relaxed office environments. Their stylish design ensures you look good while enjoying all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1047",
@@ -1128,7 +1177,8 @@
         "rating": 4.6,
         "description": "Stylish tan formal shoes designed for the modern man. These shoes are perfect for any formal occasion, ensuring you look sharp and professional while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1048",
@@ -1137,12 +1187,13 @@
         "image": [
             "https://ik.imagekit.io/mommu/images/shoes/1048%20mens%20formal%20shoe%20brown/m-img.webp",
             "https://ik.imagekit.io/mommu/images/shoes/1048%20mens%20formal%20shoe%20brown/s-img-1.webp",
- "https://ik.imagekit.io/mommu/images/shoes/1048%20mens%20formal%20shoe%20brown/s-img-2.webp"
+            "https://ik.imagekit.io/mommu/images/shoes/1048%20mens%20formal%20shoe%20brown/s-img-2.webp"
         ],
         "rating": 4.7,
         "description": "Classic brown formal shoes designed for the modern man. These shoes are perfect for business meetings, formal events, or any occasion where you want to make a great impression. Their premium leather construction ensures durability and comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1049",
@@ -1156,7 +1207,8 @@
         "rating": 4.9,
         "description": "Premium quality black formal shoes for men, designed for both comfort and style. These shoes are perfect for any formal occasion, ensuring you look sharp and professional while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
     },
     {
         "product_id": "1050",
@@ -1170,6 +1222,71 @@
         "rating": 4.8,
         "description": "Premium quality tan formal shoes designed for the modern man. These shoes are perfect for any formal occasion, ensuring you look sharp and professional while providing all-day comfort.",
         "stock_availability": true,
-        "categories": ["shoes", "trendingProduct"]
+        "categories": ["shoes"],
+        "size": [8, 9, 10, 11]
+    },
+    {
+        "product_id": "1072",
+        "product_name": "mens leather wallet brown",
+        "price": 799,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1072%20mens%20leather%20wallet%20brown/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1072%20mens%20leather%20wallet%20brown/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1072%20mens%20leather%20wallet%20brown/s-img-2.webp"
+        ],
+        "rating": 4.5,
+        "description": "A durable and stylish brown leather wallet for men. Compact design with multiple compartments for easy organization.",
+        "stock_availability": true,
+        "categories": [
+            "wallets", "trendingProduct", "featuredProduct"
+        ]
+    },
+    {
+        "product_id": "1073",
+        "product_name": "mens wallet with key ring combo black",
+        "price": 999,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1073%20mens%20wallet%20with%20key%20ring%20combo%20black/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1073%20mens%20wallet%20with%20key%20ring%20combo%20black/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1073%20mens%20wallet%20with%20key%20ring%20combo%20black/s-img-2.webp"
+        ],
+        "rating": 4.7,
+        "description": "A sleek black wallet and key ring combo set for the modern man. Crafted with premium leather for durability and style.",
+        "stock_availability": true,
+        "categories": [
+            "wallets", "trendingProduct", "featuredProduct"
+        ]
+    },
+    {
+        "product_id": "1074",
+        "product_name": "mens wallet and key ring combo tan",
+        "price": 899,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1074%20mens%20wallet%20and%20key%20ring%20combo%20tan/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1074%20mens%20wallet%20and%20key%20ring%20combo%20tan/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1074%20mens%20wallet%20and%20key%20ring%20combo%20tan/s-img-2.webp"
+        ],
+        "rating": 4.6,
+        "description": "Elegant tan wallet with matching key ring. Perfect gift set for style-conscious men.",
+        "stock_availability": true,
+        "categories": [
+            "wallets", "trendingProduct", "featuredProduct"
+        ]
+    },
+    {
+        "product_id": "1075",
+        "product_name": "mens wallet with key ring combo brown",
+        "price": 999,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1075%20mens%20wallet%20with%20key%20ring%20combo%20brown/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1075%20mens%20wallet%20with%20key%20ring%20combo%20brown/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1075%20mens%20wallet%20with%20key%20ring%20combo%20brown/s-img-2.webp"
+        ],
+        "rating": 4.6,
+        "description": "Classic brown leather wallet and key ring combo. Designed for practicality and elegance.",
+        "stock_availability": true,
+        "categories": [
+            "wallets", "trendingProduct"
+        ]
     }
 ]

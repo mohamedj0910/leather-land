@@ -1,7 +1,7 @@
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { firebaseConfig } from "./config.js";
+import { firebaseConfig } from "./config.js"; // Your Firebase config file
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -23,11 +23,12 @@ async function fetchAndDisplayProduct() {
   }
 
   try {
-    const productRef = doc(db, "leatherProducts", productId);
+    const productRef = doc(db, "leatherProducts", productId); // "products" collection in Firestore
     const productSnapshot = await getDoc(productRef);
 
     if (productSnapshot.exists()) {
       const productData = productSnapshot.data();
+      console.log(productData);
 
       // Update product details
       document.getElementById("product-name").innerText = productData.product_name.toUpperCase();
@@ -47,17 +48,41 @@ async function fetchAndDisplayProduct() {
         )
         .join("");
 
-      // Thumbnail click event
+      // Handle thumbnail click
       const thumbnails = document.querySelectorAll(".thumbnail");
       thumbnails.forEach((thumbnail) => {
         thumbnail.addEventListener("click", (e) => {
           mainImageElement.src = e.target.dataset.src;
-
           // Update active thumbnail
           thumbnails.forEach((thumb) => thumb.classList.remove("active"));
           e.target.classList.add("active");
         });
       });
+
+      // Display size options if available
+      if (productData.size && productData.size.length > 0) {
+        const sizeOptionsDiv = document.getElementById("size-buttons");
+        sizeOptionsDiv.innerHTML = productData.size
+          .map(
+            (size) =>
+              `<button class="size-btn" data-size="${size}">${size}</button>`
+          )
+          .join("");
+
+        // Add size selection logic
+        const sizeButtons = document.querySelectorAll(".size-btn");
+        sizeButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            sizeButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+            console.log(`Selected size: ${button.dataset.size}`);
+          });
+        });
+      } else {
+        // Hide the size options section if the product doesn't have sizes
+        document.getElementById("size-options").style.display = 'none';
+      }
+
     } else {
       productContainer.innerHTML = "<p>Product not found.</p>";
     }
@@ -66,10 +91,11 @@ async function fetchAndDisplayProduct() {
     productContainer.innerHTML = "<p>Failed to load product details. Please try again later.</p>";
   }
 }
-fetchAndDisplayProduct();
-
 
 // Function to format the price with commas (Indian Standard)
 function formatPrice(price) {
   return price.toLocaleString('en-IN'); // Indian locale formatting
 }
+
+// Call the function to fetch product details
+fetchAndDisplayProduct();

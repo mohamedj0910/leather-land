@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/checkout.css">
+  <title>Checkout</title>
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+  </header>
+  <main>
+    <section class="order-summary">
+      <h2>Order Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="order-items">
+          <!-- Product details will be dynamically inserted -->
+        </tbody>
+      </table>
+    </section>
+    <section class="summary">
+      <h2>Summary</h2>
+      <p>Subtotal: ₹<span id="subtotal">0</span></p>
+      <p>Delivery Fee: ₹<span id="delivery-fee">50</span></p>
+      <p>Total: ₹<span id="total">0</span></p>
+      <button id="proceed-to-payment">Proceed to Payment</button>
+    </section>
+    <section class="address">
+      <h2>Address</h2>
+      <form id="address-form">
+        <div>
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="Enter your name">
+        </div>
+        <div>
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="Enter your phone number">
+        </div>
+        <div>
+          <label for="address">Address</label>
+          <textarea id="address" placeholder="Enter your address"></textarea>
+        </div>
+        <div class="delivery-options">
+          <label>Delivery Options</label>
+          <div>
+            <label><input type="radio" name="delivery-option" value="cod" checked> Cash on Delivery</label>
+            <label><input type="radio" name="delivery-option" value="upi"> UPI</label>
+          </div>
+        </div>
+        <button type="submit">Save Address</button>
+      </form>
+    </section>
+  </main>
+  <script src="../js/checkout.js" type="module"></script>
+</body>
+</html>

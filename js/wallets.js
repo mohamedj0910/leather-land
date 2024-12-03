@@ -11,34 +11,34 @@ const db = getFirestore(app);
 const container = document.querySelector('.product-container');
 
 // Function to fetch and display featured products
-async function fetchAndDisplayFeaturedProducts() {
+async function fetchAndDisplayWalletProducts() {
   const heading = document.createElement('h1');
-  heading.textContent = "Featured Products";
+  heading.textContent = "Wallets";
   container.appendChild(heading);
 
-  const featuredContainer = document.createElement('div');
-  featuredContainer.classList.add('scroll-container');
-  container.appendChild(featuredContainer);
+  const walletsContainer = document.createElement('div');
+  walletsContainer.classList.add('scroll-container');
+  container.appendChild(walletsContainer);
 
   // Fetch featured products from Firestore
-  const featuredProductsCollection = collection(db, "leatherProducts");
-  const querySnapshot = await getDocs(query(featuredProductsCollection, where("categories", "array-contains", "featuredProduct")));
-  const featuredProducts = [];
+  const walletProductsCollection = collection(db, "leatherProducts");
+  const querySnapshot = await getDocs(query(walletProductsCollection, where("categories", "array-contains", "wallets")));
+  const walletProducts = [];
   querySnapshot.forEach((doc) => {
     const product = doc.data();
     product.id = doc.id;  // This will add the Firestore document ID to the product object
-    featuredProducts.push(product);
+    walletProducts.push(product);
   });
 
   // Loop through the fetched products and create product cards
-  featuredProducts.forEach((product) => {
+  walletProducts.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.classList.add("product-card");
 
     // Create product card HTML
     productCard.innerHTML = `
       <div class="image-div">
-        <img class="product-image" src="${product.image[0]}" alt="${product.id}">
+        <img class="product-image" src="${product.image[0]}" alt="${product.product_name}">
       </div>
       <div class="details-div">
         <h2 class="product-name"><a href="../pages/product.html?id=${product.id}">${capitalizeProductName(product.product_name)}</a></h2>
@@ -52,11 +52,11 @@ async function fetchAndDisplayFeaturedProducts() {
     `;
 
     // Add hover functionality for swapping images
-    const productImage = productCard.querySelector('.product-image');
     productCard.addEventListener('click',(e)=>{
       e.preventDefault();
-      window.location.href = `../pages/product.html?id=${product.id}`
+      window.location.href = `./product.html?id=${product.id}`
     });
+    const productImage = productCard.querySelector('.product-image');
     productImage.addEventListener('mouseenter', () => {
       productImage.src = product.image[1];  // Swap to the second image
     });
@@ -65,7 +65,7 @@ async function fetchAndDisplayFeaturedProducts() {
     });
 
     // Append product card to the container
-    featuredContainer.appendChild(productCard);
+    walletsContainer.appendChild(productCard);
   });
 }
 
@@ -80,4 +80,4 @@ function formatPrice(price) {
 }
 
 // Fetch and display featured products when page loads
-fetchAndDisplayFeaturedProducts();
+fetchAndDisplayWalletProducts();

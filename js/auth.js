@@ -1,9 +1,8 @@
 // auth.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { saveUserDetails, getUserDetailsByEmail } from './users.js';  // Import functions from user.js
-import { firebaseConfig } from "./config.js";
-// Your Firebase config
+import { saveUserDetails, getUserDetailsByEmail } from './users.js';  // Import functions from users.js
+import { firebaseConfig } from "./config.js";  // Your Firebase config
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -12,43 +11,6 @@ const auth = getAuth();
 const loader = document.querySelector('.fa-spin');
 const invalidCred = document.querySelector('.invalid-cred');
 
-// Handle authentication state changes
-onAuthStateChanged(auth, (user) => {
-  const signInButton = document.getElementById('signIn');
-  const profileButton = document.getElementById('profileButton');
-  const cartButton = document.getElementById('cartButton');
-  const logoutBtn = document.getElementById('logout-btn');
-
-  if (user) {
-    // User is signed in
-    signInButton.style.display = 'none';
-    profileButton.style.display = 'block';
-    cartButton.style.display = 'block';
-    logoutBtn.style.display = 'block';
-
-    // Fetch user details after login
-    getUserDetailsByEmail(user.email)
-      .then((userDetails) => {
-        if (userDetails) {
-          // Display user details on the profile page (or wherever you want)
-          userDetails.firstName = userDetails.firstName.split("");
-          userDetails.firstName[0]=userDetails.firstName[0].toUpperCase();
-          userDetails.firstName = userDetails.firstName.join("");
-          document.getElementById('display-username').textContent = `Hello...${userDetails.firstName} ${userDetails.lastName}`;
-          // document.getElementById('profile-phone').textContent = userDetails.phone;
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching user details:', error);
-      });
-  } else {
-    // User is not signed in
-    signInButton.style.display = 'block';
-    profileButton.style.display = 'none';
-    cartButton.style.display = 'none';
-    logoutBtn.style.display = 'none';
-  }
-});
 // Sign-up form submit
 const signUpForm = document.getElementById('sign-up-form');
 const lengthError = document.querySelector('.length-error');
@@ -65,6 +27,7 @@ if (signUpForm) {
     const firstName = document.getElementById('fname').value;
     const lastName = document.getElementById('lname').value;
     const phone = document.getElementById('phone').value;
+
     lengthError.textContent = '';
     if (password.length < 8) {
       lengthError.textContent = "Password should be at least 8 characters";
@@ -87,7 +50,7 @@ if (signUpForm) {
           });
       })
       .catch((error) => {
-        loader.style.display = 'none'
+        loader.style.display = 'none';
         const errorMessage = error.message;
 
         lowercaseError.textContent = '';
@@ -144,7 +107,7 @@ if (loginForm) {
           .catch((error) => {
             console.error('Error fetching user details:', error);
           });
-        alert("Login successfully")
+        alert("Login successfully");
         window.location.href = '/';  // Redirect to homepage or dashboard
 
       })
@@ -154,21 +117,5 @@ if (loginForm) {
         email.style.borderColor = 'red';
         password.style.borderColor = 'red';
       });
-  });
-}
-
-// Logout button
-const logoutBtn = document.getElementById('logout-btn');
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if(confirm("Are you want to logout")){
-      signOut(auth).then(() => {
-        alert("Logged out successfully");
-        window.location.href = '/';  // Redirect after logout
-      }).catch((error) => {
-        alert("Logout error: ", error);
-      });
-    }
   });
 }

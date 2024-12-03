@@ -11,34 +11,34 @@ const db = getFirestore(app);
 const container = document.querySelector('.product-container');
 
 // Function to fetch and display featured products
-async function fetchAndDisplayFeaturedProducts() {
+async function fetchAndDisplayShoesProducts() {
   const heading = document.createElement('h1');
-  heading.textContent = "Featured Products";
+  heading.textContent = "Shoes";
   container.appendChild(heading);
 
-  const featuredContainer = document.createElement('div');
-  featuredContainer.classList.add('scroll-container');
-  container.appendChild(featuredContainer);
+  const shoesContainer = document.createElement('div');
+  shoesContainer.classList.add('scroll-container');
+  container.appendChild(shoesContainer);
 
   // Fetch featured products from Firestore
-  const featuredProductsCollection = collection(db, "leatherProducts");
-  const querySnapshot = await getDocs(query(featuredProductsCollection, where("categories", "array-contains", "featuredProduct")));
-  const featuredProducts = [];
+  const shoesProductsCollection = collection(db, "leatherProducts");
+  const querySnapshot = await getDocs(query(shoesProductsCollection, where("categories", "array-contains", "shoes")));
+  const shoesProducts = [];
   querySnapshot.forEach((doc) => {
     const product = doc.data();
     product.id = doc.id;  // This will add the Firestore document ID to the product object
-    featuredProducts.push(product);
+    shoesProducts.push(product);
   });
 
   // Loop through the fetched products and create product cards
-  featuredProducts.forEach((product) => {
+  shoesProducts.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.classList.add("product-card");
 
     // Create product card HTML
     productCard.innerHTML = `
       <div class="image-div">
-        <img class="product-image" src="${product.image[0]}" alt="${product.id}">
+        <img class="product-image" src="${product.image[0]}" alt="${product.product_name}">
       </div>
       <div class="details-div">
         <h2 class="product-name"><a href="../pages/product.html?id=${product.id}">${capitalizeProductName(product.product_name)}</a></h2>
@@ -53,19 +53,18 @@ async function fetchAndDisplayFeaturedProducts() {
 
     // Add hover functionality for swapping images
     const productImage = productCard.querySelector('.product-image');
-    productCard.addEventListener('click',(e)=>{
-      e.preventDefault();
-      window.location.href = `../pages/product.html?id=${product.id}`
-    });
     productImage.addEventListener('mouseenter', () => {
       productImage.src = product.image[1];  // Swap to the second image
     });
     productImage.addEventListener('mouseleave', () => {
       productImage.src = product.image[0];  // Revert to the original image
     });
-
+    productCard.addEventListener('click',(e)=>{
+      e.preventDefault();
+      window.location.href = `./product.html?id=${product.id}`
+    });
     // Append product card to the container
-    featuredContainer.appendChild(productCard);
+    shoesContainer.appendChild(productCard);
   });
 }
 
@@ -80,4 +79,4 @@ function formatPrice(price) {
 }
 
 // Fetch and display featured products when page loads
-fetchAndDisplayFeaturedProducts();
+fetchAndDisplayShoesProducts();
