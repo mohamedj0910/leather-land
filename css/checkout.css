@@ -41,8 +41,9 @@ body {
   }
   
   .quantity-input {
-    width: 50px;
+    width: 25px;
     text-align: center;
+    padding: 5px;
   }
   
   .quantity-btn {
@@ -134,4 +135,13 @@ body {
   input[type="radio"]:checked + label {
     font-weight: bold;
   }
-  
+  @media (max-width:972px) {
+    .order-summary{
+      width: 100%;
+    }
+    .quantity-input {
+      width: 15px;
+      text-align: center;
+      padding: 3px;
+  }
+  }

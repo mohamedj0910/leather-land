@@ -77,10 +77,13 @@ orderItemsContainer.addEventListener("click", (e) => {
     let quantity = parseInt(quantityInput.value, 10);
 
     // Adjust quantity based on the action
-    if (action === "increase") quantity++;
+    if (action === "increase" && quantity < 10) quantity++;
     else if (action === "decrease" && quantity > 1) quantity--;
 
     quantityInput.value = quantity;
+    if(quantity>10){
+      
+    }
     updateTotals(basePrice, quantity);
   }
 });

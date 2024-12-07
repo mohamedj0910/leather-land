@@ -2,16 +2,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { firebaseConfig } from "./config.js"; // Your Firebase config file
-
+import { checkState } from "./productpagestatecheck.js";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+let selectedSize = false;
 // Get product ID from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 console.log(productId);
-
+const sizeError = document.getElementById('size-error')
 // Select the container where the product details will be displayed
 const productContainer = document.querySelector('.product-container');
 
@@ -73,8 +73,10 @@ async function fetchAndDisplayProduct() {
         const sizeButtons = document.querySelectorAll(".size-btn");
         sizeButtons.forEach((button) => {
           button.addEventListener("click", () => {
+            sizeError.textContent = '';
             sizeButtons.forEach((btn) => btn.classList.remove("active"));
             button.classList.add("active");
+            selectedSize = true;
             console.log(`Selected size: ${button.dataset.size}`);
           });
         });
@@ -82,6 +84,55 @@ async function fetchAndDisplayProduct() {
         // Hide the size options section if the product doesn't have sizes
         document.getElementById("size-options").style.display = 'none';
       }
+
+      // Add to Cart functionality
+      const cartBtn = document.querySelector('.add-to-cart');
+      const cartCountElement = document.querySelector('.cart-count');
+      cartCountElement.textContent = 0;
+
+      cartBtn.addEventListener('click', async function() {
+        try {
+          const isSignedIn = await checkState();  // Wait for the authentication state check
+          if (isSignedIn) {
+            // Get the current count, increment it, and update the cart count
+            let count = parseInt(cartCountElement.textContent, 10);  // Convert text content to number
+            count = isNaN(count) ? 0 : count;  // Check if NaN and reset to 0 if necessary
+            count++;  // Increment the count
+            cartCountElement.textContent = count;
+          } else {
+            alert('You are not signed in!');
+            // Redirect to sign-up/login page if the user is not signed in
+            window.location.href = '../pages/signupAndLogin.html';
+          }
+        } catch (error) {
+          alert("An error occurred while checking your authentication status.");
+          console.error("Error in handleCart:", error);
+        }
+      });
+
+      // Buy Now functionality
+      const buyBtn = document.querySelector('.buy-now');
+      buyBtn.addEventListener('click', async function() {
+        try {
+          
+          const isSignedIn = await checkState();  // Wait for the authentication state check
+          if (isSignedIn) {
+            if(selectedSize){
+            window.location.href = `./checkout.html?id=${productId}`;
+            }
+            else{
+              sizeError.textContent = 'Size not not selected'
+            }
+          } else {
+            alert('You are not signed in!');
+            // Redirect to sign-up/login page if the user is not signed in
+            window.location.href = '../pages/signupAndLogin.html';
+          }
+        } catch (error) {
+          alert("An error occurred while checking your authentication status.");
+          console.error("Error in handleCart:", error);
+        }
+      });
 
     } else {
       productContainer.innerHTML = "<p>Product not found.</p>";

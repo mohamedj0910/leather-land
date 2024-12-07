@@ -6,6 +6,8 @@ const phoneError = document.querySelector('.phone-error');
 const emailErr = document.querySelector('.email-err');
 const passErr = document.querySelector('.pass-err');
 const sBtn = document.getElementById('signUpButton');
+const checkName = document.querySelector('.check-name');
+
 
 //input fields
 const fname = document.getElementById('fname');
@@ -35,13 +37,15 @@ function validateSignUpForm() {
       fname.style.borderColor = 'red';  // Highlight the field with a red border
       fnameError.textContent = 'First name cannot be empty';  // Show the error message
     }
-
+    
     if (lname.value.trim() == "") {
       valid = false;
       lname.style.borderColor = 'red';
       lnameError.textContent = 'Last name cannot be empty';
     }
-
+    
+    // Check if first name and last name are equal
+    
     if (email.value.trim() == "") {
       email.style.borderColor = 'red';
       emailError.textContent = 'Email cannot be empty';
@@ -167,6 +171,22 @@ function inputValidation() {
       fnameError.textContent = '';
       fname.style.borderColor = 'green';
     }
+
+    if (fname.value === lname.value && fname.value !== '') {
+      checkName.textContent = 'First and last names are the same';
+      fname.style.borderColor = 'orange';
+      lname.style.borderColor = 'orange';
+      sBtn.style.pointerEvents = 'none';
+      sBtn.style.opacity = '0.5';
+    } else {
+      checkName.textContent = '';
+      if (fname.value.length >= 3 && lname.value.length >= 3) {
+        fname.style.borderColor = 'green';
+        lname.style.borderColor = 'green';
+        sBtn.style.pointerEvents = 'auto';  // Allow click
+        sBtn.style.opacity = '1'; 
+      }
+    }
     // toggleSubmitButton(); // Check the button state after each input
   });
 
@@ -179,11 +199,29 @@ function inputValidation() {
       sBtn.style.opacity = '0.5'; 
       lnameError.textContent = 'Last name should be at least 3 characters';
       lname.style.borderColor = 'crimson';
-    } else {
+    }
+     else {
       sBtn.style.pointerEvents = 'auto';  // Allow click
       sBtn.style.opacity = '1'; 
       lnameError.textContent = '';
       lname.style.borderColor = 'green';
+    }
+    if (fname.value === lname.value && lname.value !== '') {
+      checkName.textContent = 'First name and last name should be not same';
+      fname.style.borderColor = 'orange';
+      lname.style.borderColor = 'orange';
+      sBtn.style.pointerEvents = 'none';
+      sBtn.style.opacity = '0.5';
+    } else {
+      checkName.textContent = '';
+      if (fname.value.length >= 3) {
+        fname.style.borderColor = 'green';
+      }
+      if (lname.value.length >= 3) {
+        lname.style.borderColor = 'green';
+      }
+      sBtn.style.pointerEvents = 'auto';
+      sBtn.style.opacity = '1';
     }
     // toggleSubmitButton(); // Check the button state after each input
   });
@@ -197,7 +235,11 @@ function inputValidation() {
       sBtn.style.opacity = '0.5'; 
       phoneError.textContent = `You have to enter ${10 - phone.value.length} numbers`;
       phone.style.borderColor = 'crimson';
-    } else {
+    }
+    else if (phone.value.length > 10) {
+      phone.value = phone.value.substring(0, 10)
+    }
+     else {
       sBtn.style.pointerEvents = 'auto';  // Allow click
       sBtn.style.opacity = '1'; 
       phoneError.textContent = '';
@@ -205,6 +247,18 @@ function inputValidation() {
     }
     // toggleSubmitButton(); // Check the button state after each input
   });
+  email.addEventListener('input',(e)=>{
+    e.preventDefault();
+    
+      if (email.validity.typeMismatch) {
+        email.style.borderColor = 'red';
+        emailError.textContent = 'Please enter a valid email address';  // Invalid email format
+      } else {
+      email.style.borderColor = 'green';  // Highlight the field with a green border
+      emailError.textContent = '';  // Show the error message
+    }
+    
+  })
 }
 
 // Function to check if any input is invalid and disable/enable the submit button
