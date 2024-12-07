@@ -24,15 +24,19 @@ onAuthStateChanged(auth, (user) => {
     profileButton.style.display = 'block';
     cartButton.style.display = 'block';
     logoutBtn.style.display = 'block';
-
     // Fetch user details after login using email as the document ID
     getUserDetailsByEmail(user.email)
-      .then((userDetails) => {
-        if (userDetails) {
-          // Display user details on the profile page
+    .then((userDetails) => {
+      if (userDetails) {
+        // Display user details on the profile page
+          localStorage.setItem('fname',userDetails.firstName);
+          localStorage.setItem('lname',userDetails.lastName);
+          localStorage.setItem('email',userDetails.email);
+          localStorage.setItem('phone',userDetails.phone);
           userDetails.firstName = userDetails.firstName.split("");
           userDetails.firstName[0] = userDetails.firstName[0].toUpperCase();
           userDetails.firstName = userDetails.firstName.join("");
+          
           document.getElementById('display-username').textContent = `Hello...${userDetails.firstName} ${userDetails.lastName}`;
         }
       })
@@ -41,6 +45,10 @@ onAuthStateChanged(auth, (user) => {
       });
   } else {
     // User is not signed in
+    localStorage.removeItem('fname');
+    localStorage.removeItem('lname');
+    localStorage.removeItem('email');
+    localStorage.removeItem('phone');
     signInButton.style.display = 'block';
     profileButton.style.display = 'none';
     cartButton.style.display = 'none';

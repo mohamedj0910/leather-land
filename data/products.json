@@ -82,7 +82,7 @@
         "rating": 4.4,
         "description": "Stylish and sophisticated, this tan formal belt is perfect for adding a touch of elegance to your formal attire. Its durable construction ensures it will last, while the rich color complements a variety of outfits.",
         "stock_availability": true,
-        "categories": ["belts"]
+        "categories": ["belts","featuredProduct"]
     },
     {
         "product_id": "1057",
@@ -502,7 +502,7 @@
         "rating": 4.7,
         "description": "Stylish tan leather loafers designed for formal occasions. These premium loafers provide a perfect blend of comfort and elegance, making them an ideal choice for office wear or special events.",
         "stock_availability": true,
-        "categories": ["shoes"],
+        "categories": ["shoes", "trendingProduct"],
         "size": [8, 9, 10, 11]
     },
     {

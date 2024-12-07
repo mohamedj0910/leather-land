@@ -6,6 +6,7 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: "Comic Neue", cursive;
+  scrollbar-width: thin;
 }
 
 body {
@@ -30,16 +31,60 @@ header .container {
   align-items: center;
 }
 
+.nav-links {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: large;
+  font-style: normal;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+      color: #ee962b;
+  }
+}
+.nav-active{
+  color: #ee962b;
+}
+.nav-active::before,
+.nav-links::before {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  border-radius: 0 2px 2px 0;
+  bottom: -5px;
+  transition: all 0.5s;
+}
+
+.nav-active::after,
+.nav-links::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 2px 0px 0px 2px;
+  right: 50%;
+  bottom: -5px;
+  transition: all 0.5s;
+}
+
+.nav-links:hover::before,
+.nav-links:hover::after,.nav-active::before,
+.nav-active::after {
+  width: 50%;
+}
 nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
 }
 
-nav ul a {
-  text-decoration: none;
-  color: #fff;
-}
+
 .img-div{
   cursor: pointer;
 }

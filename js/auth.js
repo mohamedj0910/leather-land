@@ -52,7 +52,10 @@ if (signUpForm) {
       .catch((error) => {
         loader.style.display = 'none';
         const errorMessage = error.message;
-
+        alert(errorMessage)
+        if(errorMessage=='auth/invalid-email'){
+          document.getElementById('email-error').textContent = 'invalid email'
+        }
         lowercaseError.textContent = '';
         uppercaseError.textContent = '';
         numberError.textContent = '';
