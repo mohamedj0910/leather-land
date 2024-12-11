@@ -3,7 +3,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 import { getAuth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { saveUserDetails, getUserDetailsByEmail } from './users.js';  // Import functions from users.js
 import { firebaseConfig } from "./config.js";  // Your Firebase config
-
+// import { firebaseConfig } from '../data/firebaseConfig.json';
+// fetch('../data/firebaseConfig.json')
+//     .then((response) => response.json())
+//     .then((firebaseConfig) => {
+//         const app = initializeApp(firebaseConfig);
+//     })
+//     .catch((error) => {
+//         console.error("Error loading Firebase config:", error);
+// });
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
