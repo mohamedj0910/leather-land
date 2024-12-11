@@ -18,6 +18,7 @@ const confirmOrderButton = document.getElementById("proceed-to-payment");
 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
+console.log(productId)
 // Fetch product details
 async function fetchProductDetails() {
 
@@ -145,10 +146,13 @@ async function saveAddress(e) {
   try {
     const userRef = doc(db, "users", email);
 
-    // Save the address as a single object
+    // Save the address as a single object in Firestore
     await updateDoc(userRef, {
       address: { fullName, phone, address }
     });
+
+    // Save the address in localStorage as well
+    localStorage.setItem("address", JSON.stringify({ fullName, phone, address }));
 
     alert("Address updated successfully!");
     setReadOnlyMode(true);
@@ -200,7 +204,12 @@ async function confirmOrder() {
     return;
   }
 
-  // Get the product ID from the URL
+  // Check if address fields are empty
+  const address = JSON.parse(localStorage.getItem("address"));
+  if (!address || !address.fullName || !address.phone || !address.address) {
+    alert("Please fill in your address before confirming the order.");
+    return;
+  }
 
   if (!productId) {
     alert("Product ID is missing.");
@@ -212,12 +221,10 @@ async function confirmOrder() {
     const orderSnapshot = await getDoc(orderRef);
 
     // Generate a unique ID for the order
-    const orderId =  nanoid();
-    // Using uuidv4 to generate a unique ID
+    const orderId = nanoid();
 
     // Extract product details from the DOM
     const productName = document.getElementById("product-name").textContent;
-    console.log(productName)
     const productPrice = parseInt(document.querySelector(".base-price").textContent.replace('₹', '').trim(), 10);
     const productQuantity = parseInt(document.querySelector(".quantity-input").value, 10);
     const productImage = document.getElementById("product-image").src;
@@ -257,7 +264,7 @@ async function confirmOrder() {
     }
 
     alert("Order confirmed successfully!");
-    window.location.href =`../pages/order-status.html?orderId=${orderId}`; // Redirect to order status page
+    window.location.href = `../pages/order-status.html?orderId=${orderId}`; // Redirect to order status page
   } catch (error) {
     console.error("Error confirming order:", error);
     alert("Error confirming order. Please try again.");

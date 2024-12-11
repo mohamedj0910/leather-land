@@ -31,7 +31,6 @@ async function fetchAndDisplayProduct() {
     if (productSnapshot.exists()) {
       const productData = productSnapshot.data();
       console.log(productData);
-
       // Update product details
       document.getElementById("product-name").innerText = productData.product_name.toUpperCase();
       document.getElementById("product-price").innerText = formatPrice(productData.price);
@@ -123,10 +122,10 @@ async function fetchAndDisplayProduct() {
           if (isSignedIn) {
             if (selectedSize) {
               if(size){
-                window.location.href = `./checkout.html?id=${productId}?size=${size}`;
+                window.location.href = `./checkout.html?id=${productId}&size=${size}`;
               }
               else{
-                window.location.href = `./checkout.html?id=${productId}`
+                window.location.href = `./checkout.html?id=${productId}`;
               }
             } else {
               sizeError.textContent = 'Size not selected';
