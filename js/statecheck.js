@@ -15,14 +15,14 @@ const invalidCred = document.querySelector('.invalid-cred');
 onAuthStateChanged(auth, (user) => {
   const signInButton = document.getElementById('signIn');
   const profileButton = document.getElementById('profileButton');
-  const cartButton = document.getElementById('cartButton');
+  // const cartButton = document.getElementById('cartButton');
   const logoutBtn = document.getElementById('logout-btn');
 
   if (user) {
     // User is signed in
     signInButton.style.display = 'none';
     profileButton.style.display = 'block';
-    cartButton.style.display = 'block';
+    // cartButton.style.display = 'block';
     logoutBtn.style.display = 'block';
     // Fetch user details after login using email as the document ID
     getUserDetailsByEmail(user.email)
@@ -49,9 +49,10 @@ onAuthStateChanged(auth, (user) => {
     localStorage.removeItem('lname');
     localStorage.removeItem('email');
     localStorage.removeItem('phone');
+    localStorage.removeItem('address');
     signInButton.style.display = 'block';
     profileButton.style.display = 'none';
-    cartButton.style.display = 'none';
+    // cartButton.style.display = 'none';
     logoutBtn.style.display = 'none';
   }
 });

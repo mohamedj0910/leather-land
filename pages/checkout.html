@@ -32,7 +32,7 @@
       <p>Subtotal: ₹<span id="subtotal">0</span></p>
       <p>Delivery Fee: ₹<span id="delivery-fee">50</span></p>
       <p>Total: ₹<span id="total">0</span></p>
-      <button id="proceed-to-payment">Proceed to Payment</button>
+      <button id="proceed-to-payment">Confirm order</button>
     </section>
     <section class="address">
       <h2>Address</h2>
@@ -50,13 +50,14 @@
           <textarea id="address" placeholder="Enter your address"></textarea>
         </div>
         <div class="delivery-options">
-          <label>Delivery Options</label>
-          <div>
-            <label><input type="radio" name="delivery-option" value="cod" checked> Cash on Delivery</label>
-            <label><input type="radio" name="delivery-option" value="upi"> UPI</label>
-          </div>
+          <label>Delivery Options : </label><span class="del-mode"> Cash on Delivery</span>
+          
         </div>
-        <button type="submit">Save Address</button>
+        <div class="btns">
+          <button type="submit" id="save-btn">Save Address</button>
+        <button type="button" id="edit-address" style="display: none;">Edit</button>
+        </div>
+        
       </form>
     </section>
   </main>

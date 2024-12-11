@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Status</title>
+  <link rel="stylesheet" href="../css/order-status.css">
+</head>
+<body>
+  <header>
+    <h1>Order Status</h1>
+  </header>
+  
+  <main>
+      <section id="order-details">
+      <h2>Order Details</h2>
+      <div id="order-info">
+          <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+          <p><strong>Status:</strong> <span id="order-status"></span></p>
+          
+          <p id="order-delivery-status"></p> <!-- Display delivery status here -->
+          
+          <h3>Products</h3>
+          <div id="product-details"></div>
+          
+          <!-- Address Details Section -->
+          <section id="address-details">
+              <h3>Delivery Address</h3>
+              <p class="address-item" id = "fullname"><strong>Full Name:</strong> <span id="full-name"></span></p>
+              <p class="address-item" id = "phone"><strong>Phone:</strong> <span id="phone"></span></p>
+              <p class="address-item" id = "address"><strong>Address:</strong> <span id="address"></span></p>
+            </section>
+        </div>
+    </section>
+</main>
+<script type="module" src="../js/orderstatus.js" defer></script>
+</body>
+</html>

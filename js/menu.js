@@ -2,6 +2,7 @@ const menu = document.querySelector('.hamburger');
 const menuList = document.querySelector('ul');
 const icon = document.querySelector('.icon');
 const links = document.querySelectorAll('nav ul li a');
+const viewHistory = document.getElementById('order-history');
 menu.addEventListener('click', () => {
   if (menuList.style.left === '0px') {
     menuList.style.left = '-100dvw';
@@ -43,4 +44,10 @@ document.addEventListener('click', (event) => {
 let topLogo = document.querySelector('.img-div');
 topLogo.addEventListener('click',()=>{
   window.location.href = '/';
+})
+
+viewHistory.addEventListener('click',(e)=>{
+  e.preventDefault();
+
+  window.location.href = '../pages/orderhistory.html';
 })
