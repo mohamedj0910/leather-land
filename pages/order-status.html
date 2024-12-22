@@ -12,27 +12,35 @@
   </header>
   
   <main>
-      <section id="order-details">
+    <section id="order-details">
       <h2>Order Details</h2>
       <div id="order-info">
-          <p><strong>Order ID:</strong> <span id="order-id"></span></p>
-          <p><strong>Status:</strong> <span id="order-status"></span></p>
-          
-          <p id="order-delivery-status"></p> <!-- Display delivery status here -->
-          
-          <h3>Products</h3>
-          <div id="product-details"></div>
-          
-          <!-- Address Details Section -->
-          <section id="address-details">
-              <h3>Delivery Address</h3>
-              <p class="address-item" id = "fullname"><strong>Full Name:</strong> <span id="full-name"></span></p>
-              <p class="address-item" id = "phone"><strong>Phone:</strong> <span id="phone"></span></p>
-              <p class="address-item" id = "address"><strong>Address:</strong> <span id="address"></span></p>
-            </section>
+        <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+        <p><strong>Status:</strong> <span id="order-status"></span></p>
+        <p><strong>Order Date:</strong> <span id="order-date"></span></p>
+        <p><strong>Delivery Date:</strong> <span id="delivery-date"></span></p>
+        
+        <h3>Product Details</h3>
+        <div id="product-details"></div>
+
+        <h3>Pricing</h3>
+        <div id="pricing-details">
+          <p><strong>Product Price:</strong> ₹<span id="product-price"></span></p>
+          <p><strong>Quantity:</strong> <span id="quantity"></span></p>
+          <p><strong>Delivery Fee:</strong> ₹<span id="delivery-fee"></span></p>
+          <p><strong>Total Price:</strong> ₹<span id="total-price"></span></p>
         </div>
+        
+        <section id="address-details">
+          <h3>Delivery Address</h3>
+          <p class="address-item" id="fullname"><strong>Full Name:</strong> <span id="full-name"></span></p>
+          <p class="address-item" id="phone"><strong>Phone:</strong> <span id="phone"></span></p>
+          <p class="address-item" id="address"><strong>Address:</strong> <span id="address"></span></p>
+        </section>
+      </div>
     </section>
-</main>
-<script type="module" src="../js/orderstatus.js" defer></script>
+    <button class="go-to-home">Go to Home </button>
+  </main>
+  <script type="module" src="../js/orderstatus.js" defer></script>
 </body>
 </html>

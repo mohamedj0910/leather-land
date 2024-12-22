@@ -7,8 +7,10 @@ import { firebaseConfig } from "./config.js";  // Your Firebase config
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
+let preUrl = document.referrer;
 // DOM Elements
-const loader = document.querySelector('.fa-spin');
+const loader = document.querySelector('.loader-container');
+
 const invalidCred = document.querySelector('.invalid-cred');
 
 // Handle authentication state changes
@@ -63,12 +65,16 @@ if (logoutBtn) {
   logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
     if (confirm("Are you sure you want to logout?")) {
-      signOut(auth).then(() => {
-        alert("Logged out successfully");
-        window.location.href = '/';  // Redirect after logout
-      }).catch((error) => {
-        alert("Logout error: ", error);
-      });
+      loader.style.display = 'flex'
+      setTimeout(()=>{
+        signOut(auth).then(() => {
+          loader.style.display = 'none'
+          alert("Logged out successfully");
+          window.location.href = preUrl;  // Redirect after logout
+        }).catch((error) => {
+          alert("Logout error: ", error);
+        });
+      },3000)
     }
   });
 }

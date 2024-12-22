@@ -64,7 +64,7 @@
         </div>
     </section>
     <div class="container">
-        <div class="product-page">
+        <div class="product-page product-container">
             <div class="product-image-section">
                 <div class="main-image-container">
                     <img id="main-image" src="" alt="Product Image">
@@ -78,7 +78,12 @@
                 <p class="price">₹<span id="product-price">Price</span></p>
                 <p class="availability">Availability: <span id="product-availability">In Stock</span></p>
                 <p class="description">Description:<br><span id="product-description">Lorem ipsum dolor sit amet...</span></p>
-                
+                <div class="details"><p class="material">Material : <span id="product-material">Lorem ipsum dolor sit amet...</span></p>
+                <p class="dimension">Dimension : <span id="product-dimension">Lorem ipsum dolor sit amet...</span></p>
+                <p class="usage">Usage : <span id="product-usage">Lorem ipsum dolor sit amet...</span></p>
+                <p class="feature">Feature : <span id="product-feature">Lorem ipsum dolor sit amet...</span></p>
+                <p class="care">Care Instructions : <span id="product-care">Lorem ipsum dolor sit amet...</span></p>
+            </div>
                 <div class="size-options" id="size-options">
                     <p>Select Size:</p>
                     <div class="sizes" id="size-buttons"></div>
@@ -92,7 +97,33 @@
             </div>
         </div>
     </div>
+    <div class="container related-products">
 
+    </div>
+    <div class="loader-container">
+        <div>
+          <div class="loader">
+            <svg viewBox="0 0 80 80">
+              <circle r="32" cy="40" cx="40" id="test"></circle>
+            </svg>
+          </div>
+          
+          <div class="loader triangle">
+            <svg viewBox="0 0 86 80">
+              <polygon points="43 8 79 72 7 72"></polygon>
+            </svg>
+          </div>
+          
+          <div class="loader">
+            <svg viewBox="0 0 80 80">
+              <rect height="64" width="64" y="8" x="8"></rect>
+            </svg>
+          </div>
+        </div>
+        <div> 
+          <p>Loading</p>
+        </div>
+      </div>
     
     <script type="module" src="../js/productpagestatecheck.js"></script>
     <script src="../js/menu.js" defer></script>

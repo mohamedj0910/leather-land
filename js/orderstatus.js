@@ -1,21 +1,22 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { firebaseConfig } from "./config.js";  // Replace with actual config
+import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { firebaseConfig } from "./config.js"; // Replace with your Firebase config
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const goHome = document.querySelector('.go-to-home');
 
-// Get the orderId from the URL
+const DELIVERY_FEE = 50;
+
 const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get("orderId");
 
 if (!orderId) {
   alert("Order ID is missing from the URL.");
-  window.location.href = "/";  // Redirect to home page if no orderId is provided
+  window.location.href = "/";
 }
 
-// Fetch order data from Firestore using orderId and email (email as document ID)
 async function fetchOrderDetails() {
   try {
     const email = localStorage.getItem("email");
@@ -32,42 +33,54 @@ async function fetchOrderDetails() {
       const order = orderData.orders.find(o => o.orderId === orderId);
 
       if (order) {
-        // Populate order details
-        document.getElementById("order-id").textContent = orderId;
-        document.getElementById("order-status").textContent = order.status;
+        const orderIdContainer = document.getElementById("order-id");
+        const orderStatus = document.getElementById("order-status");
+        const orderStatusClass = order.status === "Pending" ? "pending" : "completed";
+        orderStatus.classList.add(orderStatusClass)
+        orderIdContainer.textContent = orderId;
+        orderStatus.textContent = order.status;
+        const orderDate = new Date(order.orderDate);
+        document.getElementById("order-date").textContent = orderDate.toLocaleDateString();
 
-        // Populate product details
+        const deliveryDate = new Date(orderDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+        document.getElementById("delivery-date").textContent = deliveryDate.toLocaleDateString();
+
         const productDetailsContainer = document.getElementById("product-details");
+        let totalPrice = 0;
+
         order.items.forEach(product => {
           const productDiv = document.createElement("div");
           productDiv.classList.add("product");
 
+          totalPrice += product.price * product.quantity;
+
           productDiv.innerHTML = `
             <img src="${product.image}" alt="${product.productName}">
-            <div class="product-details">
-              <span class="product-name">${product.productName}</span>
-              <span class="product-quantity">Quantity: ${product.quantity}</span>
-              <span class="product-price">Price: ₹${product.totalPrice}</span>
+            <div class="product-info">
+              <p><strong>Product Name:</strong> ${product.productName}</p>
+              <p><strong>Price (each):</strong> ₹${product.price}</p>
+              <p><strong>Quantity:</strong> ${product.quantity}</p>
             </div>
           `;
 
           productDetailsContainer.appendChild(productDiv);
         });
 
-        // Calculate days since order
-        const orderDate = new Date(order.orderDate);
-        const currentDate = new Date();
-        const timeDiff = currentDate - orderDate;
-        const daysSinceOrder = Math.floor(timeDiff / (1000 * 3600 * 24));
+        const finalPrice = totalPrice + DELIVERY_FEE;
 
-        let deliveryMessage;
-        if (daysSinceOrder >= 7) {
-          deliveryMessage = "Your order has been delivered to the mentioned address.";
-        } else {
-          deliveryMessage = `Your order will be delivered in ${7 - daysSinceOrder} day${daysSinceOrder === 6 ? '' : 's'}.`;
+        document.getElementById("product-price").textContent = totalPrice;
+        document.getElementById("quantity").textContent = order.items.length;
+        document.getElementById("delivery-fee").textContent = DELIVERY_FEE;
+        document.getElementById("total-price").textContent = finalPrice;
+
+        if (new Date() >= deliveryDate) {
+          const updatedOrders = orderData.orders.map(o =>
+            o.orderId === orderId ? { ...o, status: "Completed" } : o
+          );
+
+          await updateDoc(orderRef, { orders: updatedOrders });
+          document.getElementById("order-status").textContent = "Completed";
         }
-
-        document.getElementById("order-delivery-status").textContent = deliveryMessage;
       } else {
         alert("Order not found.");
       }
@@ -79,16 +92,20 @@ async function fetchOrderDetails() {
     alert("Failed to load order details.");
   }
 }
-function updateAddress(){
-    let storedAddressData = JSON.parse(localStorage.getItem('address'));
-console.log(storedAddressData);
-const fullName = document.getElementById('fullname');
-const phone = document.getElementById('phone');
-const address = document.getElementById('address');
-fullName.textContent += storedAddressData.fullName;
-phone.textContent += storedAddressData.phone;
-address.textContent += storedAddressData.address;
+
+function updateAddress() {
+  const address = JSON.parse(localStorage.getItem("address"));
+  if (address) {
+    document.getElementById("full-name").textContent = address.fullName || "";
+    document.getElementById("phone").textContent = address.phone || "";
+    document.getElementById("address").textContent = address.address || "";
+  }
 }
-updateAddress()
-// Fetch order details on page load
+
+goHome.addEventListener('click',(e)=>{
+  e.preventDefault();
+  window.location.href = '/'
+});
+
+updateAddress();
 fetchOrderDetails();

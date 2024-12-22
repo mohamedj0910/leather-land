@@ -14,9 +14,9 @@ import { firebaseConfig } from "./config.js";  // Your Firebase config
 // });
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-
+const preUrl = document.referrer;
 // DOM Elements
-const loader = document.querySelector('.fa-spin');
+const loader = document.querySelector('.loader-container');
 const invalidCred = document.querySelector('.invalid-cred');
 
 // Sign-up form submit
@@ -40,25 +40,32 @@ if (signUpForm) {
     if (password.length < 8) {
       lengthError.textContent = "Password should be at least 8 characters";
     }
+    loader.style.display = 'flex';
     
-    loader.style.display = 'inline';
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         // Save user details after successful registration
         saveUserDetails(firstName, lastName, phone, user.email)
           .then(() => {
+            
+            setTimeout(()=>{
             loader.style.display = 'none';
             alert('Registered successfully! Logging in...');
-            window.location.href = '/';  // Redirect to homepage or another page
+            window.location.href = preUrl;
+            },3000)
           })
           .catch((error) => {
-            loader.style.display = 'none';
+            setTimeout(()=>{
+              loader.style.display = 'none';
+            },3000)
             console.error('Error saving user details: ', error);
           });
       })
       .catch((error) => {
-        loader.style.display = 'none';
+        setTimeout(()=>{
+          loader.style.display = 'none';
+        },3000)
         const errorMessage = error.message;
         alert(errorMessage)
         if(errorMessage=='auth/invalid-email'){
@@ -95,35 +102,36 @@ if (signUpForm) {
 const loginForm = document.getElementById('sign-in-form');
 if (loginForm) {
   loginForm.addEventListener('submit', function (event) {
+    loader.style.display = 'flex';
     event.preventDefault();
     invalidCred.textContent = '';
     const email = document.getElementById('username');
     const password = document.getElementById('password');
-    loader.style.display = 'inline';
+    
 
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
-        loader.style.display = 'none';
         const user = userCredential.user;
-
-        // Fetch user details after successful login
-        getUserDetailsByEmail(user.email)
+        setTimeout(()=>{
+          getUserDetailsByEmail(user.email)
           .then((userDetails) => {
             if (userDetails) {
-              // Show user details on profile page
-              document.getElementById('profile-name').textContent = `${userDetails.firstName} ${userDetails.lastName}`;
-              document.getElementById('profile-phone').textContent = userDetails.phone;
-            }
-          })
-          .catch((error) => {
-            console.error('Error fetching user details:', error);
-          });
-        alert("Login successfully");
-        window.location.href = '/';  // Redirect to homepage or dashboard
+                // Show user details on profile page
+                document.getElementById('profile-name').textContent = `${userDetails.firstName} ${userDetails.lastName}`;
+                document.getElementById('profile-phone').textContent = userDetails.phone;
+              }
+            })
+            .catch((error) => {
+              console.error('Error fetching user details:', error);
+            });
+          window.location.href = preUrl;
+        },3000)
 
       })
       .catch((error) => {
-        loader.style.display = 'none';
+        setTimeout(()=>{
+          loader.style.display = 'none';
+        },3000)
         invalidCred.textContent = 'Incorrect password or email';
         email.style.borderColor = 'red';
         password.style.borderColor = 'red';

@@ -116,3 +116,22 @@ h1 {
     padding: 0;
   }
 }
+.g-btn{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+.go-to-home{
+  all :unset;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: 0.5s;
+  background-color: #ee962b;
+  color: #fff;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+  &:hover{
+    background-color: #de881e;
+  }
+}
