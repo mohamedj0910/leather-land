@@ -9,7 +9,7 @@ const db = getFirestore(app);
 
 // Product container
 const container = document.querySelector('.product-container');
-
+const loader = document.querySelector('.loader');
 // Function to fetch and display featured products
 async function fetchAndDisplayOtherProducts() {
   const heading = document.createElement('h1');

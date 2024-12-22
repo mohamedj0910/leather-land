@@ -104,11 +104,37 @@
 
     <div class="image-section">
       <img src="../assets/icons/Login-amico.png" alt="login-image">
-    </div>
+    <!-- </div>
     <i class="fa fa-spinner fa-spin"></i>
-  </div>
+  </div> -->
   <div class="status-msg">
   </div>
+  
+<div class="loader-container">
+  <div>
+    <div class="loader">
+      <svg viewBox="0 0 80 80">
+        <circle r="32" cy="40" cx="40" id="test"></circle>
+      </svg>
+    </div>
+    
+    <div class="loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+    </div>
+    
+    <div class="loader">
+      <svg viewBox="0 0 80 80">
+        <rect height="64" width="64" y="8" x="8"></rect>
+      </svg>
+    </div>
+  </div>
+  <div> 
+    <p>Loading</p>
+  </div>
+</div>
+
   <script>
     document.getElementById('showSignUp').addEventListener('click', function (event) {
       event.preventDefault();

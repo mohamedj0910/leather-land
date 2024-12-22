@@ -1,12 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, doc, getDoc,updateDoc  } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { firebaseConfig } from "./config.js"; // Replace with your Firebase config
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const email = localStorage.getItem("email");
-
+const goHome = document.querySelector('.go-to-home');
+goHome.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location.href = '/'
+});
 // Fetch and render order history
 async function fetchOrderHistory() {
   if (!email) {
@@ -58,7 +62,7 @@ function renderOrderHistory(orders) {
     order.items.forEach(item => {
       const itemLi = document.createElement("li");
       itemLi.classList.add("product-item");
-      
+
       const trackBtn = document.createElement("button");
       trackBtn.classList.add("track-btn");
       trackBtn.innerHTML = "Track order";
@@ -83,10 +87,12 @@ function renderOrderHistory(orders) {
         e.preventDefault();
         window.location.href = `../pages/order-status.html?orderId=${order.orderId}`;
       });
-
+      if (orderStatusClass == "completed") {
+        cancelOrder.style.display = 'none';
+      }
       cancelOrder.addEventListener("click", async (e) => {
         e.preventDefault();
-        if(confirm('Are you want to cancel order')){
+        if (confirm('Are you want to cancel order')) {
           await cancelOrderHandler(email, order.orderId);
         }
       });
@@ -123,5 +129,4 @@ async function cancelOrderHandler(email, orderId) {
   }
 }
 
-// Fetch order history on page load
 fetchOrderHistory();

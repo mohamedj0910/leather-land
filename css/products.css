@@ -49,7 +49,12 @@
 .product-details-section {
   flex: 1;
 }
-
+.details{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
 .product-details-section h1 {
   font-size: 28px;
   margin-bottom: 10px;
@@ -68,9 +73,9 @@
 }
 
 .description {
-  font-size: 16px;
   line-height: 1.6;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 .size-options {

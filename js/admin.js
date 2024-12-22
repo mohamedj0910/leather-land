@@ -12,7 +12,7 @@ const db = getFirestore(app);  // Move db initialization outside of try block
 
   async function uploadProductsFromJson() {
     const collectionName = "leatherProducts";
-    const jsonUrl = "../data/products.json";
+    const jsonUrl = "../data/products_detailed.json";
     const collectionRef = collection(db, collectionName);
     try {
       // Check if the collection is empty
