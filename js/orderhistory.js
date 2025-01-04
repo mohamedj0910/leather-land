@@ -5,7 +5,7 @@ import { firebaseConfig } from "./config.js"; // Replace with your Firebase conf
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const email = localStorage.getItem("email");
+const uid = localStorage.getItem("uid");
 const goHome = document.querySelector('.go-to-home');
 goHome.addEventListener('click', (e) => {
   e.preventDefault();
@@ -13,14 +13,14 @@ goHome.addEventListener('click', (e) => {
 });
 // Fetch and render order history
 async function fetchOrderHistory() {
-  if (!email) {
+  if (!uid) {
     alert("User not logged in.");
     window.location.href = "/";
     return;
   }
 
   try {
-    const orderRef = doc(db, "orders", email);
+    const orderRef = doc(db, "orders", uid);
     const orderSnapshot = await getDoc(orderRef);
 
     if (orderSnapshot.exists()) {
@@ -93,7 +93,7 @@ function renderOrderHistory(orders) {
       cancelOrder.addEventListener("click", async (e) => {
         e.preventDefault();
         if (confirm('Are you want to cancel order')) {
-          await cancelOrderHandler(email, order.orderId);
+          await cancelOrderHandler(uid, order.orderId);
         }
       });
 
@@ -107,8 +107,8 @@ function renderOrderHistory(orders) {
   });
 }
 
-async function cancelOrderHandler(email, orderId) {
-  const orderRef = doc(db, "orders", email);
+async function cancelOrderHandler(uid, orderId) {
+  const orderRef = doc(db, "orders", uid);
 
   try {
     const orderSnapshot = await getDoc(orderRef);

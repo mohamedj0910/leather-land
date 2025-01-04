@@ -91,11 +91,11 @@ orderItemsContainer.addEventListener("click", (e) => {
 
 // Pre-fill the form with existing address if available
 async function loadAddress() {
-  let email = localStorage.getItem("email");
-  if (!email) return;
+  let uid = localStorage.getItem("uid");
+  if (!uid) return;
 
   try {
-    const userRef = doc(db, "users", email);
+    const userRef = doc(db, "users", uid);
     const userSnapshot = await getDoc(userRef);
 
     if (userSnapshot.exists()) {
@@ -137,14 +137,14 @@ async function saveAddress(e) {
     return;
   }
   
-  let email = localStorage.getItem("email");
-  if (!email) {
+  let uid = localStorage.getItem("uid");
+  if (!uid) {
     alert("User not logged in.");
     return;
   }
 
   try {
-    const userRef = doc(db, "users", email);
+    const userRef = doc(db, "users", uid);
 
     // Save the address as a single object in Firestore
     await updateDoc(userRef, {
@@ -198,8 +198,8 @@ fetchProductDetails();
 confirmOrderButton.addEventListener("click", confirmOrder);
 
 async function confirmOrder() {
-  const email = localStorage.getItem("email");
-  if (!email) {
+  const uid = localStorage.getItem("uid");
+  if (!uid) {
     alert("Please log in to confirm your order.");
     return;
   }
@@ -217,7 +217,7 @@ async function confirmOrder() {
   }
 
   try {
-    const orderRef = doc(db, "orders", email);
+    const orderRef = doc(db, "orders", uid);
     const orderSnapshot = await getDoc(orderRef);
 
     // Generate a unique ID for the order
@@ -275,9 +275,9 @@ async function confirmOrder() {
 document.getElementById("proceed-to-payment").addEventListener("click", confirmOrder);
 
 // Auto-update status after 7 days
-async function autoUpdateOrderStatus(email) {
+async function autoUpdateOrderStatus(uid) {
   try {
-    const orderRef = doc(db, "orders", email);
+    const orderRef = doc(db, "orders", uid);
     const orderSnapshot = await getDoc(orderRef);
 
     if (orderSnapshot.exists()) {
@@ -310,4 +310,4 @@ async function autoUpdateOrderStatus(email) {
 }
 
 // Call the function to update the order status
-autoUpdateOrderStatus(localStorage.getItem("email"));
+autoUpdateOrderStatus(localStorage.getItem("uid"));

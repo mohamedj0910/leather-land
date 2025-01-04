@@ -12,18 +12,8 @@
 </head>
 
 <body>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/styles.css">
-        <title>Leather Land</title>
-    </head>
-
-    <body>
-        <header>
+    <div class="content">
+        <header id="header">
             <div class="container">
                 <div class="img-div">
                     <img src="./assets/images/main-logo.png" alt="">
@@ -36,7 +26,7 @@
                         <li><a href="./pages/shoes.html" class="nav-links">Shoes</a></li>
                         <li><a href="./pages/belts.html" class="nav-links">Belts</a></li>
                         <li><a href="./pages/wallets.html" class="nav-links">Wallets</a></li>
-                        <li><a href="./pages/accessories.html" class="nav-links">Other accessories</a></li>
+                        <li><a href="./pages/others.html" class="nav-links">Other accessories</a></li>
                         <li><a href="#footer" class="nav-links">Contact us</a></li>
                     </ul>
                 </nav>
@@ -66,9 +56,10 @@
             <div class="sidebar" id="sidebar">
                 <div class="sidebar-content">
                     <span id="display-username">Username</span>
-                    <a href="#">View Profile</a>
-                    <button type="button" id="logout-btn">Logout</button>
+                    
+                    <button type="button" id="view-profile">View Profile</button>
                     <button type="button" id="order-history">View Order History</button>
+                    <button type="button" id="logout-btn">Logout</button>
                 </div>
             </div>
         </section>
@@ -102,36 +93,54 @@
                 </div>
             </div>
         </footer>
-        <script src="./js/menu.js"></script>
-        <script src="./js/admin.js" type="module" defer></script>
-        <script src="./js/statecheck.js" type="module" defer></script>
-        <script src="./js/main.js" type="module" defer></script>
-    </body>
+    </div>
     <div class="loader-container">
         <div>
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <circle r="32" cy="40" cx="40" id="test"></circle>
-            </svg>
-          </div>
-          
-          <div class="loader triangle">
-            <svg viewBox="0 0 86 80">
-              <polygon points="43 8 79 72 7 72"></polygon>
-            </svg>
-          </div>
-          
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <rect height="64" width="64" y="8" x="8"></rect>
-            </svg>
-          </div>
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle r="32" cy="40" cx="40" id="test"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect height="64" width="64" y="8" x="8"></rect>
+                </svg>
+            </div>
         </div>
         <div>
-          <p>Loading</p>
+            <p>Loading</p>
         </div>
-      </div>
-    </html>
+    </div>
+    <div class="network-loader" style="display: none;">
+        <div id="wifi-loader">
+            <svg class="circle-outer" viewBox="0 0 86 86">
+                <circle class="back" cx="43" cy="43" r="40"></circle>
+                <circle class="front" cx="43" cy="43" r="40"></circle>
+                <circle class="new" cx="43" cy="43" r="40"></circle>
+            </svg>
+            <svg class="circle-middle" viewBox="0 0 60 60">
+                <circle class="back" cx="30" cy="30" r="27"></circle>
+                <circle class="front" cx="30" cy="30" r="27"></circle>
+            </svg>
+            <svg class="circle-inner" viewBox="0 0 34 34">
+                <circle class="back" cx="17" cy="17" r="14"></circle>
+                <circle class="front" cx="17" cy="17" r="14"></circle>
+            </svg>
+            <div class="text" data-text="Searching"></div>
+        </div>
+    </div>
+
+    <script src="./js/menu.js"></script>
+    <script src="./js/admin.js" type="module" defer></script>
+    <script src="./js/statecheck.js" type="module" defer></script>
+    <script src="./js/main.js" type="module" defer></script>
 </body>
 
 </html>
