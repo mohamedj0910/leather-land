@@ -43,7 +43,12 @@ async function fetchAndDisplayProduct() {
         productData.stock_availability ? "In Stock" : "Out of Stock";
       document.getElementById("product-description").innerText = productData.description; 
       document.getElementById("product-material").innerText = productData.material; 
-      document.getElementById("product-dimension").innerText = productData.dimensions; 
+      if(productData.dimensions){
+        document.getElementById("product-dimension").innerText = productData.dimensions;
+      }
+      else{
+        document.querySelector(".dimension").style.display = 'none';
+      }
       document.getElementById("product-usage").innerText = productData.usage; 
       document.getElementById("product-feature").innerText = productData.features; 
       document.getElementById("product-care").innerText = productData.careInstructions; 
@@ -160,25 +165,7 @@ async function fetchAndDisplayProduct() {
     productContainer.innerHTML = "<p>Failed to load product details. Please try again later.</p>";
   }
 }
-// Directly checking the online/offline status
-if (navigator.onLine) {
-  loader.style.display = 'none'
-  console.log("The browser is online");
-} else {
-  loader.style.display = 'flex'
-  console.log("The browser is offline");
-}
 
-// Event listeners for online and offline changes
-window.addEventListener('online', function() {
-  loader.style.display = 'none'
-  console.log("The browser is online");
-});
-
-window.addEventListener('offline', function() {
-  loader.style.display = 'flex'
-  console.log("The browser is offline");
-});
 // Function to format the price with commas (Indian Standard)
 function formatPrice(price) {
   return price.toLocaleString('en-IN'); // Indian locale formatting

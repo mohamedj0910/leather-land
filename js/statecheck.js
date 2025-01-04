@@ -7,7 +7,7 @@ import { firebaseConfig } from "./config.js";  // Your Firebase config
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-let preUrl = document.referrer;
+
 // DOM Elements
 const loader = document.querySelector('.loader-container');
 
@@ -22,12 +22,13 @@ onAuthStateChanged(auth, (user) => {
 
   if (user) {
     // User is signed in
+    localStorage.setItem("uid",user.uid)
     signInButton.style.display = 'none';
     profileButton.style.display = 'block';
     // cartButton.style.display = 'block';
     logoutBtn.style.display = 'block';
     // Fetch user details after login using email as the document ID
-    getUserDetailsByEmail(user.email)
+    getUserDetailsByEmail(user.uid)
     .then((userDetails) => {
       if (userDetails) {
         // Display user details on the profile page
@@ -47,11 +48,7 @@ onAuthStateChanged(auth, (user) => {
       });
   } else {
     // User is not signed in
-    localStorage.removeItem('fname');
-    localStorage.removeItem('lname');
-    localStorage.removeItem('email');
-    localStorage.removeItem('phone');
-    localStorage.removeItem('address');
+    localStorage.clear();
     signInButton.style.display = 'block';
     profileButton.style.display = 'none';
     // cartButton.style.display = 'none';
@@ -70,7 +67,7 @@ if (logoutBtn) {
         signOut(auth).then(() => {
           loader.style.display = 'none'
           alert("Logged out successfully");
-          window.location.href = preUrl;  // Redirect after logout
+          window.location.href = '/';  // Redirect after logout
         }).catch((error) => {
           alert("Logout error: ", error);
         });

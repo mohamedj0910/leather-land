@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Other Accessories</title>
 </head>
+
 <body>
+    <div class="content">
     <header>
         <div class="container">
             <div class="img-div">
@@ -54,7 +57,7 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-content">
                 <span id="display-username">Username</span>
-                <a href="#">View Profile</a>
+                <button type="button" id="view-profile">View Profile</button>
                 <button type="button" id="logout-btn">Logout</button>
                 <button type="button" id="order-history">View Order History</button>
             </div>
@@ -68,7 +71,8 @@
     <footer id="footer">
         <div class="container">
             <div class="logo">
-                <img src="../assets/images/main-logo.png" alt="Footer Logo"><h1>Leather Land</h1>
+                <img src="../assets/images/main-logo.png" alt="Footer Logo">
+                <h1>Leather Land</h1>
             </div>
             <!-- <ul class="nav">
                 <li><a href="#">Privacy Policy</a></li>
@@ -84,32 +88,54 @@
             </div>
         </div>
     </footer>
+</div>
     <div class="loader-container">
         <div>
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <circle r="32" cy="40" cx="40" id="test"></circle>
-            </svg>
-          </div>
-          
-          <div class="loader triangle">
-            <svg viewBox="0 0 86 80">
-              <polygon points="43 8 79 72 7 72"></polygon>
-            </svg>
-          </div>
-          
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <rect height="64" width="64" y="8" x="8"></rect>
-            </svg>
-          </div>
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle r="32" cy="40" cx="40" id="test"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect height="64" width="64" y="8" x="8"></rect>
+                </svg>
+            </div>
         </div>
-        <div> 
-          <p>Loading</p>
+        <div>
+            <p>Loading</p>
         </div>
-      </div>
-    <script type="module" src="../js/accessories.js"></script>
+    </div>
+
+
+    <div class="network-loader" style="display: none;">
+        <div id="wifi-loader">
+            <svg class="circle-outer" viewBox="0 0 86 86">
+                <circle class="back" cx="43" cy="43" r="40"></circle>
+                <circle class="front" cx="43" cy="43" r="40"></circle>
+                <circle class="new" cx="43" cy="43" r="40"></circle>
+            </svg>
+            <svg class="circle-middle" viewBox="0 0 60 60">
+                <circle class="back" cx="30" cy="30" r="27"></circle>
+                <circle class="front" cx="30" cy="30" r="27"></circle>
+            </svg>
+            <svg class="circle-inner" viewBox="0 0 34 34">
+                <circle class="back" cx="17" cy="17" r="14"></circle>
+                <circle class="front" cx="17" cy="17" r="14"></circle>
+            </svg>
+            <div class="text" data-text="Searching"></div>
+        </div>
+    </div>
+    <script src="../js/displayproduct.js" type="module"></script>
     <script type="module" src="../js/statecheck.js"></script>
     <script src="../js/menu.js"></script>
 </body>
+
 </html>

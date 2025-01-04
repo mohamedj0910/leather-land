@@ -9,13 +9,15 @@ const db = getFirestore(app);
 
 // Product container
 const container = document.querySelector('.product-container');
+const loader = document.querySelector('.loader-container')
 
 // Function to fetch and display featured products
 async function fetchAndDisplayFeaturedProducts() {
+  loader.style.display = 'flex'
   const heading = document.createElement('h1');
   heading.textContent = "Featured Products";
   container.appendChild(heading);
-
+  
   const featuredContainer = document.createElement('div');
   featuredContainer.classList.add('scroll-container');
   container.appendChild(featuredContainer);
@@ -29,7 +31,7 @@ async function fetchAndDisplayFeaturedProducts() {
     product.id = doc.id;  // This will add the Firestore document ID to the product object
     featuredProducts.push(product);
   });
-
+  
   // Loop through the fetched products and create product cards
   featuredProducts.forEach((product) => {
     const productCard = document.createElement("div");
@@ -37,37 +39,38 @@ async function fetchAndDisplayFeaturedProducts() {
 
     // Create product card HTML
     productCard.innerHTML = `
-      <div class="image-div">
+    <div class="image-div">
         <img class="product-image" src="${product.image[0]}" alt="${product.id}">
       </div>
       <div class="details-div">
-        <h2 class="product-name"><a href="../pages/product.html?id=${product.id}">${capitalizeProductName(product.product_name)}</a></h2>
-        <div class="price-rating">
+      <h2 class="product-name"><a href="../pages/product.html?id=${product.id}">${capitalizeProductName(product.product_name)}</a></h2>
+      <div class="price-rating">
       <div class="rating">
-        <span>${product.rating}</span> <i class="fa fa-star"></i>
+      <span>${product.rating}</span> <i class="fa fa-star"></i>
       </div>
       <div class="price">₹${formatPrice(product.price)}</div>
-    </div>
       </div>
-    `;
-
-    // Add hover functionality for swapping images
-    const productImage = productCard.querySelector('.product-image');
-    productCard.addEventListener('click',(e)=>{
-      e.preventDefault();
-      window.location.href = `../pages/product.html?id=${product.id}`
+      </div>
+      `;
+      
+      // Add hover functionality for swapping images
+      const productImage = productCard.querySelector('.product-image');
+      productCard.addEventListener('click',(e)=>{
+        e.preventDefault();
+        window.location.href = `../pages/product.html?id=${product.id}`
+      });
+      productImage.addEventListener('mouseenter', () => {
+        productImage.src = product.image[1];
+      });
+      productImage.addEventListener('mouseleave', () => {
+        productImage.src = product.image[0];  // Revert to the original image
+      });
+      
+      // Append product card to the container
+      featuredContainer.appendChild(productCard);
+      loader.style.display = 'none'
     });
-    productImage.addEventListener('mouseenter', () => {
-      productImage.src = product.image[1];  // Swap to the second image
-    });
-    productImage.addEventListener('mouseleave', () => {
-      productImage.src = product.image[0];  // Revert to the original image
-    });
-
-    // Append product card to the container
-    featuredContainer.appendChild(productCard);
-  });
-}
+  }
 
 // Function to capitalize product name
 function capitalizeProductName(name) {
@@ -81,3 +84,4 @@ function formatPrice(price) {
 
 // Fetch and display featured products when page loads
 fetchAndDisplayFeaturedProducts();
+

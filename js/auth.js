@@ -46,26 +46,25 @@ if (signUpForm) {
       .then((userCredential) => {
         const user = userCredential.user;
         // Save user details after successful registration
-        saveUserDetails(firstName, lastName, phone, user.email)
+        saveUserDetails(firstName, lastName, phone, user.email, user.uid)
           .then(() => {
-            
-            setTimeout(()=>{
+
             loader.style.display = 'none';
             alert('Registered successfully! Logging in...');
             window.location.href = preUrl;
-            },3000)
+
           })
           .catch((error) => {
-            setTimeout(()=>{
+
               loader.style.display = 'none';
-            },3000)
+
             console.error('Error saving user details: ', error);
           });
       })
       .catch((error) => {
-        setTimeout(()=>{
+
           loader.style.display = 'none';
-        },3000)
+
         const errorMessage = error.message;
         alert(errorMessage)
         if(errorMessage=='auth/invalid-email'){
@@ -112,7 +111,7 @@ if (loginForm) {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        setTimeout(()=>{
+
           getUserDetailsByEmail(user.email)
           .then((userDetails) => {
             if (userDetails) {
@@ -125,13 +124,11 @@ if (loginForm) {
               console.error('Error fetching user details:', error);
             });
           window.location.href = preUrl;
-        },3000)
+
 
       })
       .catch((error) => {
-        setTimeout(()=>{
           loader.style.display = 'none';
-        },3000)
         invalidCred.textContent = 'Incorrect password or email';
         email.style.borderColor = 'red';
         password.style.borderColor = 'red';

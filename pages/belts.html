@@ -1,76 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <title>Other Accessories</title>
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>Other Accessories</title>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="img-div">
-                <img src="../assets/images/main-logo.png" alt="">
-                <span class="brand-name">Leather Land</span>
-            </div>
-            <nav class="nav-bar">
-                <ul>
-                    <li><a href="../index.html" class="nav-links">Home</a></li>
-                    <li><a href="./trendings.html" class="nav-links">Trending</a></li>
-                    <li><a href="./shoes.html" class="nav-links">Shoes</a></li>
-                    <li><a href="#" class="nav-links nav-active">Belts</a></li>
-                    <li><a href="./wallets.html" class="nav-links">Wallets</a></li>
-                    <li><a href="./accessories.html" class="nav-links">Other accessories</a></li>
-                    <li><a href="#footer" class="nav-links">Contact us</a></li>
-                </ul>
-            </nav>
 
-            <!-- <div class="search-bar">
+<body>
+    <div class="content">
+        <header>
+            <div class="container">
+                <div class="img-div">
+                    <img src="../assets/images/main-logo.png" alt="">
+                    <span class="brand-name">Leather Land</span>
+                </div>
+                <nav class="nav-bar">
+                    <ul>
+                        <li><a href="../index.html" class="nav-links">Home</a></li>
+                        <li><a href="./trendings.html" class="nav-links">Trending</a></li>
+                        <li><a href="./shoes.html" class="nav-links">Shoes</a></li>
+                        <li><a href="#" class="nav-links nav-active">Belts</a></li>
+                        <li><a href="./wallets.html" class="nav-links">Wallets</a></li>
+                        <li><a href="./others.html" class="nav-links">Other accessories</a></li>
+                        <li><a href="#footer" class="nav-links">Contact us</a></li>
+                    </ul>
+                </nav>
+
+                <!-- <div class="search-bar">
                 <form action="">
                     <input type="text" name="search" id="search-box" placeholder="Search...">
                 </form>
             </div> -->
 
-            <div class="btn-container">
-                <a href="./signupAndLogin.html" class="sign-in" id="signIn">Sign in</a>
-            </div>
+                <div class="btn-container">
+                    <a href="./signupAndLogin.html" class="sign-in" id="signIn">Sign in</a>
+                </div>
 
-            <div class="hamburger">
-                <i class="fa-solid fa-bars icon"></i>
-            </div>
-            <!-- <div class="cart" id="cartButton">
+                <div class="hamburger">
+                    <i class="fa-solid fa-bars icon"></i>
+                </div>
+                <!-- <div class="cart" id="cartButton">
                 <i class="fa-solid fa-cart-shopping"></i>
             </div> -->
-            <div class="profile" id="profileButton">
-                <i class="fa-solid fa-circle-user"></i>
+                <div class="profile" id="profileButton">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+            </div>
+        </header>
+        <section id="profile-content">
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-content">
+                    <span id="display-username">Username</span>
+                    <button type="button" id="view-profile">View Profile</button>
+                    <button type="button" id="logout-btn">Logout</button>
+                    <button type="button" id="order-history">View Order History</button>
+                </div>
+            </div>
+        </section>
+        <section class="belts">
+            <div class="filter-cont">
+                <i class='bx bx-filter-alt filter-icon'></i>
+                <div class="filter-list">
+                    <div class="ascending-order">Price Low to High</div>
+                    <div class="descending-order">Price High to Low</div>
+                </div>
             </div>
         </div>
-    </header>
-    <section id="profile-content">
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-content">
-                <span id="display-username">Username</span>
-                <a href="#">View Profile</a>
-                <button type="button" id="logout-btn">Logout</button>
-                <button type="button" id="order-history">View Order History</button>
-            </div>
-        </div>
-    </section>
-    <section class="belts">
-        <div class="container product-container">
-
-        </div>
-    </section>
-    <footer id="footer">
-        <div class="container">
-            <div class="logo">
-                <img src="../assets/images/main-logo.png" alt="Footer Logo"><h1>Leather Land</h1>
-            </div>
-            <!-- <ul class="nav">
+            <div class="container product-container">
+        </section>
+        <footer id="footer">
+            <div class="container">
+                <div class="logo">
+                    <img src="../assets/images/main-logo.png" alt="Footer Logo">
+                    <h1>Leather Land</h1>
+                </div>
+                <!-- <ul class="nav">
                 <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">Terms of Service</a></li>
                 <li><a href="#">Help</a></li>
@@ -79,37 +89,59 @@
                 <input type="email" placeholder="Subscribe to our newsletter">
                 <button>Subscribe</button>
             </div> -->
-            <div class="copyright">
-                &copy; 2024 Leather Land. All rights reserved.
+                <div class="copyright">
+                    &copy; 2024 Leather Land. All rights reserved.
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
     <div class="loader-container">
         <div>
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <circle r="32" cy="40" cx="40" id="test"></circle>
-            </svg>
-          </div>
-          
-          <div class="loader triangle">
-            <svg viewBox="0 0 86 80">
-              <polygon points="43 8 79 72 7 72"></polygon>
-            </svg>
-          </div>
-          
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <rect height="64" width="64" y="8" x="8"></rect>
-            </svg>
-          </div>
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle r="32" cy="40" cx="40" id="test"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect height="64" width="64" y="8" x="8"></rect>
+                </svg>
+            </div>
         </div>
-        <div> 
-          <p>Loading</p>
+        <div>
+            <p>Loading</p>
         </div>
-      </div>
-    <script type="module" src="../js/belts.js"></script>
+    </div>
+
+    <div class="network-loader" style="display: none;">
+        <div id="wifi-loader">
+            <svg class="circle-outer" viewBox="0 0 86 86">
+                <circle class="back" cx="43" cy="43" r="40"></circle>
+                <circle class="front" cx="43" cy="43" r="40"></circle>
+                <circle class="new" cx="43" cy="43" r="40"></circle>
+            </svg>
+            <svg class="circle-middle" viewBox="0 0 60 60">
+                <circle class="back" cx="30" cy="30" r="27"></circle>
+                <circle class="front" cx="30" cy="30" r="27"></circle>
+            </svg>
+            <svg class="circle-inner" viewBox="0 0 34 34">
+                <circle class="back" cx="17" cy="17" r="14"></circle>
+                <circle class="front" cx="17" cy="17" r="14"></circle>
+            </svg>
+            <div class="text" data-text="Searching"></div>
+        </div>
+    </div>
+    <!-- <script type="module" src="../js/belts.js"></script> -->
+    <script src="../js/displayproduct.js" type="module"></script>
     <script type="module" src="../js/statecheck.js"></script>
     <script src="../js/menu.js"></script>
 </body>
+
 </html>

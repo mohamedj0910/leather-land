@@ -12,20 +12,21 @@ const DELIVERY_FEE = 50;
 const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get("orderId");
 
-if (!orderId) {
-  alert("Order ID is missing from the URL.");
-  window.location.href = "/";
-}
 
 async function fetchOrderDetails() {
   try {
-    const email = localStorage.getItem("email");
-    if (!email) {
+    const uid = localStorage.getItem("uid");
+    if (!uid) {
       alert("User not logged in.");
+      window.location.href = "/";
       return;
     }
 
-    const orderRef = doc(db, "orders", email);
+    if (!orderId) {
+      alert("Order ID is missing from the URL.");
+      window.location.href = "/";
+    }
+    const orderRef = doc(db, "orders", uid);
     const orderSnapshot = await getDoc(orderRef);
 
     if (orderSnapshot.exists()) {

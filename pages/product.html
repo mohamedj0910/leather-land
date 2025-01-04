@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div class="content">
     <header>
         <div class="container">
             <div class="img-div">
@@ -22,11 +23,11 @@
             <nav class="nav-bar">
                 <ul>
                     <li><a href="../index.html" class="nav-links">Home</a></li>
-                    <li><a href="./trendings.html"  class="nav-links">Trending</a></li>
+                    <li><a href="./trendings.html" class="nav-links">Trending</a></li>
                     <li><a href="./shoes.html" class="nav-links">Shoes</a></li>
                     <li><a href="./belts.html" class="nav-links">Belts</a></li>
                     <li><a href="./wallets.html" class="nav-links">Wallets</a></li>
-                    <li><a href="./accessories.html" class="nav-links">Other accessories</a></li>
+                    <li><a href="./others.html" class="nav-links">Other accessories</a></li>
                     <li><a href="#footer" class="nav-links">Contact us</a></li>
                 </ul>
             </nav>
@@ -57,7 +58,7 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-content">
                 <span id="display-username">Username</span>
-                <a href="#">View Profile</a>
+                <button type="button" id="view-profile">View Profile</button>
                 <button type="button" id="logout-btn">Logout</button>
                 <button type="button" id="order-history">View Order History</button>
             </div>
@@ -77,19 +78,20 @@
                 <h1 id="product-name">Product Name</h1>
                 <p class="price">₹<span id="product-price">Price</span></p>
                 <p class="availability">Availability: <span id="product-availability">In Stock</span></p>
-                <p class="description">Description:<br><span id="product-description">Lorem ipsum dolor sit amet...</span></p>
-                <div class="details"><p class="material">Material : <span id="product-material">Lorem ipsum dolor sit amet...</span></p>
-                <p class="dimension">Dimension : <span id="product-dimension">Lorem ipsum dolor sit amet...</span></p>
-                <p class="usage">Usage : <span id="product-usage">Lorem ipsum dolor sit amet...</span></p>
-                <p class="feature">Feature : <span id="product-feature">Lorem ipsum dolor sit amet...</span></p>
-                <p class="care">Care Instructions : <span id="product-care">Lorem ipsum dolor sit amet...</span></p>
-            </div>
+                <p class="description">Description:<br><span id="product-description"></span></p>
+                <div class="details">
+                    <p class="material">Material : <span id="product-material"></span></p>
+                    <p class="dimension">Dimension : <span id="product-dimension"></span></p>
+                    <p class="usage">Usage : <span id="product-usage"></span></p>
+                    <p class="feature">Feature : <span id="product-feature"></span></p>
+                    <p class="care">Care Instructions : <span id="product-care"></span></p>
+                </div>
                 <div class="size-options" id="size-options">
                     <p>Select Size:</p>
                     <div class="sizes" id="size-buttons"></div>
                     <span id="size-error"></span>
                 </div>
-                
+
                 <div class="action-buttons">
                     <!-- <button class="btn add-to-cart">Add to Cart</button> -->
                     <button class="btn buy-now">Buy Now</button>
@@ -100,31 +102,71 @@
     <div class="container related-products">
 
     </div>
+    <footer id="footer">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/main-logo.png" alt="Footer Logo">
+                <h1>Leather Land</h1>
+            </div>
+            <!-- <ul class="nav">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <div class="subscribe">
+                <input type="email" placeholder="Subscribe to our newsletter">
+                <button>Subscribe</button>
+            </div> -->
+            <div class="copyright">
+                &copy; 2024 Leather Land. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</div>
     <div class="loader-container">
         <div>
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <circle r="32" cy="40" cx="40" id="test"></circle>
-            </svg>
-          </div>
-          
-          <div class="loader triangle">
-            <svg viewBox="0 0 86 80">
-              <polygon points="43 8 79 72 7 72"></polygon>
-            </svg>
-          </div>
-          
-          <div class="loader">
-            <svg viewBox="0 0 80 80">
-              <rect height="64" width="64" y="8" x="8"></rect>
-            </svg>
-          </div>
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle r="32" cy="40" cx="40" id="test"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect height="64" width="64" y="8" x="8"></rect>
+                </svg>
+            </div>
         </div>
-        <div> 
-          <p>Loading</p>
+        <div>
+            <p>Loading</p>
         </div>
-      </div>
-    
+    </div>
+
+
+    <div class="network-loader" style="display: none;">
+        <div id="wifi-loader">
+            <svg class="circle-outer" viewBox="0 0 86 86">
+                <circle class="back" cx="43" cy="43" r="40"></circle>
+                <circle class="front" cx="43" cy="43" r="40"></circle>
+                <circle class="new" cx="43" cy="43" r="40"></circle>
+            </svg>
+            <svg class="circle-middle" viewBox="0 0 60 60">
+                <circle class="back" cx="30" cy="30" r="27"></circle>
+                <circle class="front" cx="30" cy="30" r="27"></circle>
+            </svg>
+            <svg class="circle-inner" viewBox="0 0 34 34">
+                <circle class="back" cx="17" cy="17" r="14"></circle>
+                <circle class="front" cx="17" cy="17" r="14"></circle>
+            </svg>
+            <div class="text" data-text="Searching"></div>
+        </div>
+    </div>
     <script type="module" src="../js/productpagestatecheck.js"></script>
     <script src="../js/menu.js" defer></script>
     <script type="module" src="../js/statecheck.js"></script>
