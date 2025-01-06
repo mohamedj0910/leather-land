@@ -10,6 +10,103 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Product Page</title>
+    <style>
+        /* Default styles for headings and text */
+        
+        /* Product Card styles */
+        .product-card {
+            overflow: visible;
+            transition: transform 0.3s ease;
+            height: auto;
+        }
+        .product-card
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+    
+        .headings {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        a{
+            font-size: large;
+        }
+        .product-container {
+            margin-bottom: 20px;
+        }
+    
+        /* Desktop view: Grid Layout */
+        .scroll-container {
+            display: grid;
+            margin-top: 20px;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid layout */
+        }
+    
+        /* Mobile-specific styles */
+        @media screen and (max-width: 768px) {
+            /* Reduce font size for mobile */
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1.3rem; /* Smaller headings on mobile */
+            }
+    
+            .product-name {
+                font-size: 0.9rem; /* Smaller product name font */
+            }
+    
+            .price, .rating {
+                font-size: 0.9rem; /* Smaller price and rating */
+            }
+    
+            .scroll-container {
+                display: flex;  /* Use flexbox on mobile */
+                flex-wrap: nowrap; /* Prevent wrapping to the next line */
+                gap: 10px;
+                overflow-x: scroll;  /* Enable horizontal scrolling */
+                padding-bottom: 10px;
+                width: 100%; /* Make sure the container takes up the full width */
+            }
+    
+            .product-card {
+                width: 250px; /* Adjust product card width for mobile */
+            }
+    
+            /* Add custom scroll style */
+            .scroll-container::-webkit-scrollbar {
+                height: 8px; /* Horizontal scrollbar height */
+            }
+    
+            .scroll-container::-webkit-scrollbar-thumb {
+                background-color: darkgray;
+                border-radius: 10px;
+            }
+    
+            .scroll-container::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+        }
+    
+        /* For very small screens (portrait mobile view) */
+        @media screen and (max-width: 480px) {
+            /* Further reduce font size for very small screens */
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1.1rem; /* Further reduce heading sizes */
+            }
+    
+            .product-name {
+                font-size: 0.8rem; /* Smaller product name */
+            }
+    
+            .price, .rating {
+                font-size: 0.8rem; /* Smaller price and rating */
+            }
+    
+            .product-card {
+                width: 200px; /* Adjust product card width for very small screens */
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -59,8 +156,8 @@
             <div class="sidebar-content">
                 <span id="display-username">Username</span>
                 <button type="button" id="view-profile">View Profile</button>
-                <button type="button" id="logout-btn">Logout</button>
                 <button type="button" id="order-history">View Order History</button>
+                <button type="button" id="logout-btn">Logout</button>
             </div>
         </div>
     </section>

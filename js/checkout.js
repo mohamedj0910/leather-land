@@ -14,15 +14,186 @@ const totalElem = document.getElementById("total");
 const addressForm = document.getElementById("address-form");
 const editButton = document.getElementById("edit-address");
 const saveButton = document.getElementById('save-btn');
-const confirmOrderButton = document.getElementById("proceed-to-payment");
+const cashPayBtn = document.querySelector('.summary > button');
+const cashBtn = document.getElementById('cash');
+const cardBtn = document.getElementById('card');
+const paymentForm = document.getElementById('payment-form');
+const cardPayBtn = paymentForm.querySelector('button');
+
+//payment form validation
+
+const cardNumberInput = document.getElementById("card-number");
+const expiryDateInput = document.getElementById("expiry-date");
+const cvvInput = document.getElementById("cvv");
+const cardholderNameInput = document.getElementById("cardholder-name");
+const messageElement = document.getElementById("form-message");
+const cardholderNameError = document.getElementById("cardholder-name-error");
+const cardNumberError = document.getElementById("card-number-error");
+const expiryDateError = document.getElementById("expiry-date-error");
+const cvvError = document.getElementById("cvv-error");
+
+
+
+cardNumberInput.addEventListener("input", function (event) {
+  let inputValue = event.target.value.replace(/\D/g, "");
+  let formattedValue = inputValue.replace(/(\d{4})(?=\d)/g, "$1 ");
+  event.target.value = formattedValue;
+});
+
+expiryDateInput.addEventListener("input", function (event) {
+  let inputValue = event.target.value.replace(/\D/g, "");
+  if (inputValue.length <= 2) {
+    if (inputValue.length === 1 && inputValue > "2") {
+      inputValue = "0" + inputValue;
+    }
+    event.target.value = inputValue;
+  } else if (inputValue.length > 2 && inputValue.length <= 4) {
+    inputValue = inputValue.slice(0, 2) + "/" + inputValue.slice(2, 4);
+    event.target.value = inputValue;
+  }
+
+  if (inputValue.length > 5) {
+    event.target.value = inputValue.slice(0, 5);
+  }
+
+  if (inputValue.length === 5 && parseInt(inputValue.slice(0, 2)) > 12) {
+    event.target.value = "12/" + inputValue.slice(3, 5);
+  }
+
+  if (inputValue.length === 5) {
+    setTimeout(() => {
+      cvvInput.focus();
+    }, 100);
+  }
+});
+
+cvvInput.addEventListener("input", function (event) {
+  let inputValue = event.target.value.replace(/\D/g, "");
+  event.target.value = inputValue.slice(0, 3);
+});
+
+cardholderNameInput.addEventListener("input", function (event) {
+  let inputValue = event.target.value;
+  let validInput = inputValue.replace(/[^a-zA-Z\s]/g, "");
+  event.target.value = validInput;
+});
+
+function validateForm() {
+  let errorMessage = false;
+  const cardholderName = cardholderNameInput.value;
+  const cardNumber = cardNumberInput.value.replace(/\s/g, "");
+  const expiryDate = expiryDateInput.value;
+  const cvv = cvvInput.value;
+  if (!cardholderName || cardholderName.length < 3) {
+    cardholderNameError.textContent =
+      "Cardholder name must be at least 3 characters long.";
+    cardholderNameError.style.visibility = "visible";
+    errorMessage = true;
+  } else if (/[^a-zA-Z\s]/.test(cardholderName)) {
+    cardholderNameError.textContent =
+      "Cardholder name can only contain letters and spaces.";
+    cardholderNameError.style.visibility = "visible";
+    errorMessage = true;
+  } else {
+    cardholderNameError.style.visibility = "hidden";
+  }
+
+  const cardNumberRegex = /^\d{16}$/;
+  if (!cardNumber.match(cardNumberRegex)) {
+    cardNumberError.textContent = "Card number must be 16 digits.";
+    cardNumberError.style.visibility = "visible";
+    errorMessage = true;
+  } else {
+    cardNumberError.style.visibility = "hidden";
+  }
+
+  const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+  if (!expiryDate.match(expiryRegex)) {
+    expiryDateError.textContent = "Expiry date must be in MM/YY format.";
+    expiryDateError.style.visibility = "visible";
+    errorMessage = true;
+  } else {
+    const [month, year] = expiryDate.split("/");
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentYear = currentDate.getFullYear() % 100;
+    if (
+      parseInt(year) < currentYear ||
+      (parseInt(year) === currentYear && parseInt(month) < currentMonth)
+    ) {
+      expiryDateError.textContent = "Expiry date cannot be in the past.";
+      expiryDateError.style.visibility = "visible";
+      errorMessage = true;
+    } else {
+      expiryDateError.style.visibility = "hidden";
+    }
+  }
+
+  const cvvRegex = /^\d{3}$/;
+  if (!cvv.match(cvvRegex)) {
+    cvvError.textContent = "CVV must be 3 digits.";
+    cvvError.style.visibility = "visible";
+    errorMessage = true;
+  } else {
+    cvvError.style.visibility = "hidden";
+  }
+
+  if (errorMessage) {
+    messageElement.textContent = "Please correct the errors and try again.";
+    messageElement.classList.add("error");
+    messageElement.classList.remove("success");
+  } else {
+    messageElement.textContent = "Payment processed successfully!";
+    messageElement.classList.add("success");
+    messageElement.classList.remove("error");
+  }
+  return errorMessage;
+}
+
+if (!cardBtn.checked || !cashBtn.checked) {
+  cashPayBtn.disabled = true;
+}
+
+cardBtn.addEventListener('input', () => {
+  if (cardBtn.checked) {
+    cashPayBtn.removeAttribute('id');
+    paymentForm.style.display = 'block'
+    cardPayBtn.setAttribute('id', 'proceed-to-payment');
+    cashPayBtn.style.display = 'none'
+  } else {
+    cardPayBtn.removeAttribute('id');
+    paymentForm.style.display = 'none';
+  }
+});
+
+paymentForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if(!validateForm()){
+    cardPayBtn.addEventListener('click',confirmOrder())
+  }
+});
+cashBtn.addEventListener('input', () => {
+  if (cashBtn.checked) {
+    cardPayBtn.removeAttribute('id');
+    cashPayBtn.setAttribute('id', 'proceed-to-payment');
+    cashPayBtn.style.display = 'block';
+    cashPayBtn.disabled = false;
+    paymentForm.style.display = 'none';
+    cashPayBtn.addEventListener('click',confirmOrder)
+  }
+});
 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
 console.log(productId)
 // Fetch product details
+
 async function fetchProductDetails() {
 
-  if (!productId) return;
+  if (!productId) {
+    window.location.href = '/'
+    return
+  }
 
   try {
     const productRef = doc(db, "leatherProducts", productId);
@@ -48,7 +219,7 @@ async function fetchProductDetails() {
           <td>₹<span class="total-price">${basePrice}</span></td>
         </tr>
       `;
-      
+
       updateTotals(basePrice, 1);
     }
   } catch (error) {
@@ -104,9 +275,9 @@ async function loadAddress() {
 
       if (address) {
         // Prefill the form with the existing address
-        let addressData =  { 'fullName':address.fullName, 'phone':address.phone, 'address':address.address }
-  console.log(addressData);
-  localStorage.setItem('address', JSON.stringify(addressData));
+        let addressData = { 'fullName': address.fullName, 'phone': address.phone, 'address': address.address }
+        console.log(addressData);
+        localStorage.setItem('address', JSON.stringify(addressData));
         document.getElementById("full-name").value = address.fullName || "";
         document.getElementById("phone").value = address.phone || "";
         document.getElementById("address").value = address.address || "";
@@ -136,7 +307,7 @@ async function saveAddress(e) {
     alert("Please fill all fields.");
     return;
   }
-  
+
   let uid = localStorage.getItem("uid");
   if (!uid) {
     alert("User not logged in.");
@@ -195,7 +366,9 @@ addressForm.addEventListener("submit", saveAddress);
 fetchProductDetails();
 
 // Confirm order
+const confirmOrderButton = document.getElementById("proceed-to-payment");
 confirmOrderButton.addEventListener("click", confirmOrder);
+
 
 async function confirmOrder() {
   const uid = localStorage.getItem("uid");

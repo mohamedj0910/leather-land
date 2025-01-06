@@ -101,7 +101,7 @@ async function fetchAndDisplayBeltProducts(order = 'default') {
   if (order === 'ascending') {
     belts.sort((a, b) => a.price - b.price);  // Sort by price low to high
   } else if (order === 'descending') {
-    belts.sort((a, b) => b.price - a.price);  // Sort by price high to low
+    belts.sort((a, b)=> b.price - a.price);  // Sort by price high to low
   }
 
   // Render product cards
@@ -131,7 +131,7 @@ async function fetchAndDisplayBeltProducts(order = 'default') {
       e.preventDefault();
       window.location.href = `./product.html?id=${product.id}`;
     });
-    productImage.addEventListener('mouseenter', () => {
+    productImage.addEventListener('mouseover', () => {
       productImage.src = product.image[1];  // Swap to the second image
     });
     productImage.addEventListener('mouseleave', () => {
