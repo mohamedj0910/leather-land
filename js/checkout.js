@@ -31,6 +31,7 @@ const cardholderNameError = document.getElementById("cardholder-name-error");
 const cardNumberError = document.getElementById("card-number-error");
 const expiryDateError = document.getElementById("expiry-date-error");
 const cvvError = document.getElementById("cvv-error");
+const deliveryMode = document.querySelector('.del-mode');
 
 
 
@@ -155,7 +156,10 @@ if (!cardBtn.checked || !cashBtn.checked) {
 }
 
 cardBtn.addEventListener('input', () => {
+  deliveryMode.textContent = ''
   if (cardBtn.checked) {
+    deliveryMode.classList.remove('not');
+    deliveryMode.textContent = 'Cash on Delivery';
     cashPayBtn.removeAttribute('id');
     paymentForm.style.display = 'block'
     cardPayBtn.setAttribute('id', 'proceed-to-payment');
@@ -166,20 +170,25 @@ cardBtn.addEventListener('input', () => {
   }
 });
 
-paymentForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  if(!validateForm()){
-    cardPayBtn.addEventListener('click',confirmOrder())
-  }
-});
+
 cashBtn.addEventListener('input', () => {
+  deliveryMode.textContent = ''
   if (cashBtn.checked) {
+    deliveryMode.classList.remove('not');
+    deliveryMode.textContent = 'Card'
     cardPayBtn.removeAttribute('id');
     cashPayBtn.setAttribute('id', 'proceed-to-payment');
     cashPayBtn.style.display = 'block';
     cashPayBtn.disabled = false;
     paymentForm.style.display = 'none';
     cashPayBtn.addEventListener('click',confirmOrder)
+  }
+});
+
+paymentForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if(!validateForm()){
+    cardPayBtn.addEventListener('click',confirmOrder())
   }
 });
 
