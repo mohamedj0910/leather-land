@@ -77,26 +77,26 @@ viewProfile.addEventListener('click',()=>{
 });
 
 //Network loading
-if (navigator.onLine) {
-    productContainer.style.display = 'block'
-    networkLoader.style.display = 'none'
-    console.log("The browser is online");
-  } else {
-    productContainer.style.display = 'none'
-    networkLoader.style.display = 'flex'
-    console.log("The browser is offline");
-  }
+// if (navigator.onLine) {
+//     productContainer.style.display = 'block'
+//     networkLoader.style.display = 'none'
+//     console.log("The browser is online");
+//   } else {
+//     productContainer.style.display = 'none'
+//     networkLoader.style.display = 'flex'
+//     console.log("The browser is offline");
+//   }
   
-  window.addEventListener('online', function() {
-    productContainer.style.display = 'block'
-    networkLoader.style.display = 'none'
+//   window.addEventListener('online', function() {
+//     productContainer.style.display = 'block'
+//     networkLoader.style.display = 'none'
     
-    console.log("The browser is online");
-  });
+//     console.log("The browser is online");
+//   });
   
-  window.addEventListener('offline', function() {
-  productContainer.style.display = 'none'
-  networkLoader.style.display = 'flex'
-  console.log("The browser is offline");
-});
+//   window.addEventListener('offline', function() {
+//   productContainer.style.display = 'none'
+//   networkLoader.style.display = 'flex'
+//   console.log("The browser is offline");
+// });
 

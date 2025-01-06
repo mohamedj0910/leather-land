@@ -1,6 +1,6 @@
 import { getUserDetailsByEmail } from "./users.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, doc, getDoc, setDoc,updateDoc} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { firebaseConfig } from "./config.js";  // Adjust the path to your config file
 
@@ -11,33 +11,38 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
 
-
+let loader = document.querySelector('.loader-container');
 let saveBtn = document.querySelector(".save");
 let editBtn = document.querySelector(".edit");
 let email = localStorage.getItem('email');
-
-console.log(email)
 let firstName = document.getElementById('first-name');
 let lastName = document.getElementById('last-name');
 let address = document.getElementById('address');
 let phone = document.getElementById('phone');
 let emailVal = document.getElementById('email');
 let heading = document.getElementById('heading');
+let ProfileCont = document.querySelector('.profile-container')
 
-let uid = localStorage.getItem('uid')
+async function loadUserDeatils() {
+  loader.style.display = 'flex';
+  ProfileCont.style.display = 'none'
+  let uid = localStorage.getItem('uid')
 
-if(!uid){
-  alert("User not logged in")
-  window.location.href = '/'
+  if (!uid) {
+    alert("User not logged in")
+    window.location.href = '/'
+  }
+  const userInfo = await getUserDetailsByEmail(uid)
+
+  heading.textContent = `Hello...${userInfo.firstName}`;
+  firstName.value = userInfo.firstName;
+  lastName.value = userInfo.lastName;
+  address.value = userInfo.address?.address || '';
+  phone.value = userInfo.phone;
+  emailVal.value = email;
+  loader.style.display = 'none';
+  ProfileCont.style.display = 'block'
 }
-const userInfo = await getUserDetailsByEmail(uid)
-
-heading.textContent = `Hello...${userInfo.firstName}`
-firstName.value = userInfo.firstName
-lastName.value = userInfo.lastName
-address.value = userInfo.address?.address || ''
-phone.value = userInfo.phone
-emailVal.value = email
 
 saveBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -87,3 +92,4 @@ async function saveUserDetails(firstName, lastName, phone, address) {
 }
 
 
+loadUserDeatils();

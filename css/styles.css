@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -42,12 +43,14 @@ header .container {
   transition: all 0.3s ease-in-out;
 
   &:hover {
-      color: #ee962b;
+    color: #ee962b;
   }
 }
-.nav-active{
+
+.nav-active {
   color: #ee962b;
 }
+
 .nav-active::before,
 .nav-links::before {
   content: "";
@@ -75,10 +78,12 @@ header .container {
 }
 
 .nav-links:hover::before,
-.nav-links:hover::after,.nav-active::before,
+.nav-links:hover::after,
+.nav-active::before,
 .nav-active::after {
   width: 50%;
 }
+
 nav ul {
   display: flex;
   gap: 20px;
@@ -86,9 +91,10 @@ nav ul {
 }
 
 
-.img-div{
+.img-div {
   cursor: pointer;
 }
+
 .img-div img {
   width: 50px;
   height: 50px;
@@ -130,6 +136,8 @@ nav ul {
 .cart {
   display: none;
   position: relative;
+  font-size: xx-large;
+  cursor: pointer;
 }
 
 .cart-count {
@@ -148,9 +156,11 @@ nav ul {
   padding: 30px 15px;
   overflow-x: hidden;
 }
-.hero{
+
+.hero {
   margin: 20px 0;
 }
+
 .hero img {
   object-fit: cover;
   width: 100%;
@@ -295,12 +305,15 @@ nav ul {
 
 footer {
   margin-top: 30px;
-  background-color: #333; /* Light grey background */
+  background-color: #333;
+  /* Light grey background */
   padding: 30px 15px;
   text-align: center;
   font-size: 14px;
-  color: #fff; /* Muted text color */
-  border-top: 1px solid #e9ecef; /* Subtle border on top */
+  color: #fff;
+  /* Muted text color */
+  border-top: 1px solid #e9ecef;
+  /* Subtle border on top */
 }
 
 footer .container {
@@ -333,13 +346,15 @@ footer .nav {
 
 footer .nav a {
   text-decoration: none;
-  color: #fff; /* Primary color for links */
+  color: #fff;
+  /* Primary color for links */
   font-size: 14px;
   transition: color 0.3s;
 }
 
 footer .nav a:hover {
-  color: #ee962b; /* Black text on hover */
+  color: #ee962b;
+  /* Black text on hover */
 }
 
 footer .subscribe {
@@ -350,7 +365,8 @@ footer .subscribe {
 
 footer .subscribe input[type="email"] {
   padding: 10px;
-  border: 1px solid #ced4da; /* Light border */
+  border: 1px solid #ced4da;
+  /* Light border */
   border-radius: 5px;
   outline: none;
   flex: 1;
@@ -359,8 +375,10 @@ footer .subscribe input[type="email"] {
 
 footer .subscribe button {
   padding: 10px 20px;
-  background-color: #ee962b; /* Primary color for button background */
-  color: #fff; /* White text */
+  background-color: #ee962b;
+  /* Primary color for button background */
+  color: #fff;
+  /* White text */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -368,7 +386,8 @@ footer .subscribe button {
 }
 
 footer .subscribe button:hover {
-  background-color: #d87e24; /* Darker shade of primary color on hover */
+  background-color: #d87e24;
+  /* Darker shade of primary color on hover */
 }
 
 footer .copyright {
@@ -378,7 +397,7 @@ footer .copyright {
 
 
 
-.filter-cont{
+.filter-cont {
   position: fixed;
   z-index: 10;
   cursor: pointer;
@@ -386,32 +405,35 @@ footer .copyright {
   top: 100px;
   text-align: right;
   background-color: #f5f5f5;
+  border-radius: 10px;
+
+  & i {
     padding: 15px;
-    border-radius: 10px;
-  & i{
     font-size: 50px;
   }
 }
 
-.fl-ascending{
-  background-color: #d87e24;
-  color: white;
-}
-.fl-descending{
+.fl-ascending {
   background-color: #d87e24;
   color: white;
 }
 
-.filter-list{
+.fl-descending {
+  background-color: #d87e24;
+  color: white;
+}
+
+.filter-list {
+  padding: 5px 15px;
   display: none;
-  & div{
+  & div {
     padding: 5px;
     margin-top: 5px;
     border-radius: 5px;
   }
 }
 
-.fl-active{
+.fl-active {
   display: block;
 }
 
@@ -501,25 +523,26 @@ footer .copyright {
 
 
 
-/* Loader */ 
+/* Loader */
 
-.loader-container{
+.loader-container {
   width: 100%;
   display: none;
   height: 100dvh;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   /* display: flex; */
   flex-direction: column;
   gap: 20px;
   font-size: 30px;
   color: hsl(33, 75%, 50%);
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
-.loader-container::before{
+
+.loader-container::before {
   content: '';
   height: 100%;
   width: 100%;
@@ -530,6 +553,7 @@ footer .copyright {
   z-index: -1;
   left: 0;
 }
+
 .loader {
   --path: #2f3545;
   --dot: #5628ee;
@@ -550,8 +574,7 @@ footer .copyright {
   top: 37px;
   left: 19px;
   transform: translate(-18px, -18px);
-  animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 .loader svg {
@@ -573,8 +596,7 @@ footer .copyright {
 .loader svg polygon {
   stroke-dasharray: 145 76 145 76;
   stroke-dashoffset: 0;
-  animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 .loader svg rect {
@@ -586,8 +608,7 @@ footer .copyright {
 .loader svg circle {
   stroke-dasharray: 150 50 150 50;
   stroke-dashoffset: 75;
-  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 .loader.triangle {
@@ -597,8 +618,7 @@ footer .copyright {
 .loader.triangle:before {
   left: 21px;
   transform: translate(-10px, -18px);
-  animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
+  animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
 
 @keyframes pathTriangle {
@@ -687,7 +707,8 @@ footer .copyright {
   display: inline-block;
   margin: 0 16px;
 }
-.network-loader{
+
+.network-loader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -698,7 +719,8 @@ footer .copyright {
   align-items: center;
   justify-content: center;
 }
-.network-loader::before{
+
+.network-loader::before {
   content: "";
   height: 100%;
   width: 100%;
@@ -808,7 +830,8 @@ footer .copyright {
   letter-spacing: 0.2px;
 }
 
-#wifi-loader .text::before, #wifi-loader .text::after {
+#wifi-loader .text::before,
+#wifi-loader .text::after {
   content: attr(data-text);
 }
 
@@ -902,4 +925,3 @@ footer .copyright {
     clip-path: inset(0 0 0 100%);
   }
 }
- 

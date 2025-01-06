@@ -24,7 +24,8 @@ async function fetchAndDisplayProduct() {
   loader.style.display = 'flex';
   if (!productId) {
     loader.style.display = 'none';
-    productContainer.innerHTML = "<p>Product not found.</p>";
+    // productContainer.innerHTML = "<p>Product not found.</p>";
+    window.location.href = '/'
     return;
   }
 
@@ -175,6 +176,7 @@ async function displayRelatedProducts(category,container){
   const heading = document.createElement('h1');
     heading.classList.add('headings')
     heading.innerHTML = `<span>${capitalizeProductName("Related Product")}</span>`;
+     heading.innerHTML += `<a href="./${category}.html">View all</a>`
     container.appendChild(heading);
     const featuredContainer = document.createElement('div');
     featuredContainer.classList.add('scroll-container');

@@ -48,24 +48,24 @@
         <h2>Sign Up</h2>
         <form class="form-section" id="sign-up-form" novalidate>
           <div class="name-wrapper">
-          <div class="name-container">
-            <div class="input-container">
-              <div class="input-field">
-                <input type="text" id="fname" placeholder="First name" required minlength="3">
-                <i class="fas fa-user left-icon"></i>
+            <div class="name-container">
+              <div class="input-container">
+                <div class="input-field">
+                  <input type="text" id="fname" placeholder="First name" required minlength="3">
+                  <i class="fas fa-user left-icon"></i>
+                </div>
+                <span class="fname-error"></span>
               </div>
-              <span class="fname-error"></span>
-            </div>
-            <div class="input-container">
-              <div class="input-field">
-                <input type="text" id="lname" placeholder="Last name " required minlength="3">
-                <i class="fas fa-user left-icon"></i>
+              <div class="input-container">
+                <div class="input-field">
+                  <input type="text" id="lname" placeholder="Last name " required minlength="3">
+                  <i class="fas fa-user left-icon"></i>
+                </div>
+                <span class="lname-error"></span>
               </div>
-              <span class="lname-error"></span>
             </div>
+            <span class="check-name"></span>
           </div>
-          <span class="check-name"></span>
-        </div>
           <div class="input-container">
             <div class="input-field">
               <i class="fas fa-envelope left-icon"></i>
@@ -104,37 +104,34 @@
 
     <div class="image-section">
       <img src="../assets/icons/Login-amico.png" alt="login-image">
-    <!-- </div>
-    <i class="fa fa-spinner fa-spin"></i>
-  </div> -->
-  <div class="status-msg">
-  </div>
-  
-<div class="loader-container">
-  <div>
-    <div class="loader">
-      <svg viewBox="0 0 80 80">
-        <circle r="32" cy="40" cx="40" id="test"></circle>
-      </svg>
-    </div>
-    
-    <div class="loader triangle">
-      <svg viewBox="0 0 86 80">
-        <polygon points="43 8 79 72 7 72"></polygon>
-      </svg>
-    </div>
-    
-    <div class="loader">
-      <svg viewBox="0 0 80 80">
-        <rect height="64" width="64" y="8" x="8"></rect>
-      </svg>
+      <div class="status-msg">
+      </div>
     </div>
   </div>
-  <div> 
-    <p>Loading</p>
-  </div>
-</div>
+  <div class="loader-container">
+    <div>
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle r="32" cy="40" cx="40" id="test"></circle>
+            </svg>
+        </div>
 
+        <div class="loader triangle">
+            <svg viewBox="0 0 86 80">
+                <polygon points="43 8 79 72 7 72"></polygon>
+            </svg>
+        </div>
+
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <rect height="64" width="64" y="8" x="8"></rect>
+            </svg>
+        </div>
+    </div>
+    <div>
+        <p>Loading</p>
+    </div>
+</div>
   <script>
     document.getElementById('showSignUp').addEventListener('click', function (event) {
       event.preventDefault();
@@ -158,12 +155,12 @@
 
         }
         else {
-            signInpassword.type = "password";
-            signUpPassword.type = "password";
-            eye.classList.add('fa-eye-slash');
-            eye.classList.remove('fa-eye');
-          }
-        
+          signInpassword.type = "password";
+          signUpPassword.type = "password";
+          eye.classList.add('fa-eye-slash');
+          eye.classList.remove('fa-eye');
+        }
+
       });
     });
 
