@@ -118,7 +118,6 @@ button:hover {
 form div {
   margin-bottom: 15px;
 }
-
 label {
   display: inline-block;
   margin-bottom: 5px;
@@ -127,7 +126,10 @@ label {
 .del-mode{
   color: green;
   font-weight: bold;
-
+  
+}
+.not{
+  color: crimson;
 }
 input, textarea {
   width: 100%;
@@ -174,7 +176,10 @@ input[type="radio"]{
 }
 
 
-
+.delivery-details{
+  display: flex;
+  gap: 10px;
+}
 
 .payment-active{
   background-color: hsl(33, 75%, 50%);
