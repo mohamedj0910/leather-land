@@ -19,8 +19,29 @@ const cashBtn = document.getElementById('cash');
 const cardBtn = document.getElementById('card');
 const paymentForm = document.getElementById('payment-form');
 const cardPayBtn = paymentForm.querySelector('button');
+const phone = document.getElementById("phone");
 
-//payment form validation
+phone.addEventListener('input', function (e) {
+  e.preventDefault();
+  const phoneError = document.querySelector('.phone-error')
+  if (phone.value.length < 10) {
+    saveButton.disabled = true;
+    saveButton.style.opacity = '0.7'
+    phoneError.textContent = `You have to enter ${10 - phone.value.length} numbers`;
+    phoneError.style.color = 'crimson'
+    phone.style.borderColor = 'crimson';
+  }
+  else if (phone.value.length > 10) {
+    phone.value = phone.value.substring(0, 10)
+  }
+   else {
+    saveButton.disabled = false;
+    saveButton.style.opacity = '1'
+    phoneError.textContent = '';
+    phone.style.borderColor = '#ddd';
+  }
+});
+
 
 const cardNumberInput = document.getElementById("card-number");
 const expiryDateInput = document.getElementById("expiry-date");
@@ -181,14 +202,14 @@ cashBtn.addEventListener('input', () => {
     cashPayBtn.style.display = 'block';
     cashPayBtn.disabled = false;
     paymentForm.style.display = 'none';
-    cashPayBtn.addEventListener('click',confirmOrder)
+    cashPayBtn.addEventListener('click', confirmOrder)
   }
 });
 
 paymentForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  if(!validateForm()){
-    cardPayBtn.addEventListener('click',confirmOrder())
+  if (!validateForm()) {
+    cardPayBtn.addEventListener('click', confirmOrder())
   }
 });
 
@@ -375,8 +396,8 @@ addressForm.addEventListener("submit", saveAddress);
 fetchProductDetails();
 
 // Confirm order
-const confirmOrderButton = document.getElementById("proceed-to-payment");
-confirmOrderButton.addEventListener("click", confirmOrder);
+// const confirmOrderButton = document.getElementById("proceed-to-payment");
+// confirmOrderButton.addEventListener("click", confirmOrder);
 
 
 async function confirmOrder() {
@@ -454,7 +475,7 @@ async function confirmOrder() {
 }
 
 // Attach this function to the "Confirm Order" button
-document.getElementById("proceed-to-payment").addEventListener("click", confirmOrder);
+// document.getElementById("proceed-to-payment").addEventListener("click", confirmOrder);
 
 // Auto-update status after 7 days
 async function autoUpdateOrderStatus(uid) {

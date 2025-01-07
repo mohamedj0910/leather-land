@@ -47,7 +47,7 @@ if (signUpForm) {
         saveUserDetails(firstName, lastName, phone, user.email, user.uid)
           .then(() => {
             loader.style.display = 'none';
-            alert('Registered successfully! Logging in...');
+            // alert('Registered successfully! Logging in...');
             window.location.href = preUrl;
           })
           .catch((error) => {
@@ -56,8 +56,9 @@ if (signUpForm) {
           });
       })
       .catch((error) => {
+        loader.style.display = 'none';
         const errorMessage = error.message;
-        alert(errorMessage)
+        // alert(errorMessage)
         if (errorMessage == 'auth/invalid-email') {
           document.getElementById('email-error').textContent = 'invalid email'
         }
