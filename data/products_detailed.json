@@ -2173,5 +2173,243 @@
         "features": "Multiple card slots, RFID protection, slim design",
         "usage": "Compact wallet for everyday carry and travel",
         "careInstructions": "Keep dry, clean with leather conditioner"
+    },
+    {
+        "product_id": "1076",
+        "product_name": "mens wallet camel",
+        "price": 849,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1076%20mens%20wallet%20camel/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1076%20mens%20wallet%20camel/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1076%20mens%20wallet%20camel/s-img-2.webp"
+        ],
+        "rating": 4.5,
+        "description": "Stylish camel-colored wallet with a soft finish. Perfect for daily use.",
+        "stock_availability": true,
+        "categories": [
+            "wallets",
+            "trendingProduct"
+        ],
+        "material": "Genuine leather with soft fabric lining",
+        "dimensions": "4.5 x 3.5 inches",
+        "features": "Multiple card slots, RFID protection, slim design",
+        "usage": "Compact wallet for everyday carry and travel",
+        "careInstructions": "Keep dry, clean with leather conditioner"
+    },
+    {
+        "product_id": "1077",
+        "product_name": "women clutch olive green",
+        "price": 1199,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1077%20women%20clutch%20olive%20green/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1077%20women%20clutch%20olive%20green/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1077%20women%20clutch%20olive%20green/s-img-2.webp"
+        ],
+        "rating": 4.8,
+        "description": "Elegant olive green clutch with a sleek design. A perfect evening accessory for women.",
+        "stock_availability": true,
+        "categories": [
+            "clutches",
+            "featuredProduct"
+        ],
+        "material": "Premium fabric and metal accents",
+        "dimensions": "7 x 4 inches",
+        "features": "Compact and stylish, ideal for evenings",
+        "usage": "Perfect for formal occasions and night outs",
+        "careInstructions": "Keep dry, clean with fabric cleaner"
+    },
+    {
+        "product_id": "1078",
+        "product_name": "women clutch red",
+        "price": 1299,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1078%20women%20clutch%20red/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1078%20women%20clutch%20red/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1078%20women%20clutch%20red/s-img-2.webp"
+        ],
+        "rating": 4.9,
+        "description": "Bold red clutch for the modern woman. Features a sleek, minimalistic design.",
+        "stock_availability": true,
+        "categories": [
+            "clutches",
+            "trendingProduct"
+        ],
+        "material": "Premium fabric with a polished finish",
+        "dimensions": "7 x 4 inches",
+        "features": "Compact and elegant",
+        "usage": "Great for parties and formal events",
+        "careInstructions": "Keep dry, clean with fabric cleaner"
+    },
+    {
+        "product_id": "1079",
+        "product_name": "women box clutch silver",
+        "price": 1399,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1079%20women%20box%20clutch%20silver/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1079%20women%20box%20clutch%20silver/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1079%20women%20box%20clutch%20silver/s-img-2.jpg"
+        ],
+        "rating": 4.7,
+        "description": "A stylish silver box clutch. Perfect for evening parties and special occasions.",
+        "stock_availability": true,
+        "categories": [
+            "clutches",
+            "featuredProduct"
+        ],
+        "material": "Metal with a glossy finish",
+        "dimensions": "6 x 4 inches",
+        "features": "Compact, box-shaped, stylish",
+        "usage": "Ideal for evening events and special occasions",
+        "careInstructions": "Keep dry, clean with a soft cloth"
+    },
+    {
+        "product_id": "1080",
+        "product_name": "women fancy clutch golden",
+        "price": 1499,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1080%20women%20fancy%20clutch%20golden/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1080%20women%20fancy%20clutch%20golden/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1080%20women%20fancy%20clutch%20golden/s-img-2.webp"
+        ],
+        "rating": 4.9,
+        "description": "Glamorous golden clutch, ideal for fancy occasions and parties.",
+        "stock_availability": true,
+        "categories": [
+            "clutches",
+            "trendingProduct"
+        ],
+        "material": "Fabric with glittering finish",
+        "dimensions": "6.5 x 4 inches",
+        "features": "Elegant design, compact",
+        "usage": "Perfect for evening wear and festive occasions",
+        "careInstructions": "Keep dry, clean with a soft cloth"
+    },
+    {
+        "product_id": "1081",
+        "product_name": "women clutch navy",
+        "price": 1299,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1081%20women%20clutch%20navy/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1081%20women%20clutch%20navy/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1081%20women%20clutch%20navy/s-img-2.webp"
+        ],
+        "rating": 4.8,
+        "description": "Chic navy blue clutch for sophisticated occasions.",
+        "stock_availability": true,
+        "categories": [
+            "clutches",
+            "featuredProduct"
+        ],
+        "material": "Premium fabric with a smooth finish",
+        "dimensions": "7 x 4 inches",
+        "features": "Elegant and timeless design",
+        "usage": "Great for formal and casual events",
+        "careInstructions": "Keep dry, clean with fabric cleaner"
+    },
+    {
+        "product_id": "1082",
+        "product_name": "women clutch green",
+        "price": 1099,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1082%20women%20clutch%20green/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1082%20women%20clutch%20green/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1082%20women%20clutch%20green/s-img-2.webp"
+        ],
+        "rating": 4.6,
+        "description": "Trendy green clutch with a sleek and compact design.",
+        "stock_availability": true,
+        "categories": [
+            "clutches",
+            "trendingProduct"
+        ],
+        "material": "Soft fabric with metallic accents",
+        "dimensions": "7 x 4 inches",
+        "features": "Compact and chic",
+        "usage": "Perfect for evening events and casual outings",
+        "careInstructions": "Keep dry, clean with fabric cleaner"
+    },
+    {
+        "product_id": "1083",
+        "product_name": "mens wallet tan",
+        "price": 799,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1083%20mens%20wallet%20tan/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1083%20mens%20wallet%20tan/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1083%20mens%20wallet%20tan/s-img-2.jpg"
+        ],
+        "rating": 4.4,
+        "description": "Classic tan leather wallet with a slim, minimalist design.",
+        "stock_availability": true,
+        "categories": [
+            "wallets"
+        ],
+        "material": "Genuine leather",
+        "dimensions": "4.5 x 3.5 inches",
+        "features": "Slim design, RFID protection",
+        "usage": "Everyday carry and travel",
+        "careInstructions": "Keep dry, clean with leather conditioner"
+    },
+    {
+        "product_id": "1084",
+        "product_name": "mens wallet blue",
+        "price": 799,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1084%20mens%20wallet%20blue/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1084%20mens%20wallet%20blue/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1084%20mens%20wallet%20blue/s-img-2.jpg"
+        ],
+        "rating": 4.3,
+        "description": "A modern blue wallet with RFID protection and a slim profile.",
+        "stock_availability": true,
+        "categories": [
+            "wallets"
+        ],
+        "material": "Genuine leather",
+        "dimensions": "4.5 x 3.5 inches",
+        "features": "RFID protection, slim design",
+        "usage": "Everyday use and travel",
+        "careInstructions": "Keep dry, clean with leather conditioner"
+    },
+    {
+        "product_id": "1085",
+        "product_name": "mens wallet brown",
+        "price": 799,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1085%20mens%20wallet%20brown/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1085%20mens%20wallet%20brown/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1085%20mens%20wallet%20brown/s-img-2.jpg"
+        ],
+        "rating": 4.5,
+        "description": "Timeless brown leather wallet with a practical slim design.",
+        "stock_availability": true,
+        "categories": [
+            "wallets"
+        ],
+        "material": "Genuine leather",
+        "dimensions": "4.5 x 3.5 inches",
+        "features": "Slim design, multiple card slots",
+        "usage": "Everyday carry",
+        "careInstructions": "Keep dry, clean with leather conditioner"
+    },
+    {
+        "product_id": "1086",
+        "product_name": "mens wallet black",
+        "price": 999,
+        "image": [
+            "https://ik.imagekit.io/mommu/images/wallets/1086%20mens%20wallet%20black/m-img.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1086%20mens%20wallet%20black/s-img-1.webp",
+            "https://ik.imagekit.io/mommu/images/wallets/1086%20mens%20wallet%20black/s-img-2.webp"
+        ],
+        "rating": 4.7,
+        "description": "Sleek black wallet with RFID protection and a slim design.",
+        "stock_availability": true,
+        "categories": [
+            "wallets"
+        ],
+        "material": "Genuine leather",
+        "dimensions": "4.5 x 3.5 inches",
+        "features": "RFID protection, slim design",
+        "usage": "Everyday use and travel",
+        "careInstructions": "Keep dry, clean with leather conditioner"
     }
 ]
