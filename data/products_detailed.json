@@ -2187,8 +2187,7 @@
         "description": "Stylish camel-colored wallet with a soft finish. Perfect for daily use.",
         "stock_availability": true,
         "categories": [
-            "wallets",
-            "trendingProduct"
+            "wallets"
         ],
         "material": "Genuine leather with soft fabric lining",
         "dimensions": "4.5 x 3.5 inches",
@@ -2209,8 +2208,7 @@
         "description": "Elegant olive green clutch with a sleek design. A perfect evening accessory for women.",
         "stock_availability": true,
         "categories": [
-            "clutches",
-            "featuredProduct"
+            "wallets"
         ],
         "material": "Premium fabric and metal accents",
         "dimensions": "7 x 4 inches",
@@ -2231,8 +2229,7 @@
         "description": "Bold red clutch for the modern woman. Features a sleek, minimalistic design.",
         "stock_availability": true,
         "categories": [
-            "clutches",
-            "trendingProduct"
+            "wallets"
         ],
         "material": "Premium fabric with a polished finish",
         "dimensions": "7 x 4 inches",
@@ -2253,7 +2250,7 @@
         "description": "A stylish silver box clutch. Perfect for evening parties and special occasions.",
         "stock_availability": true,
         "categories": [
-            "clutches",
+            "wallets",
             "featuredProduct"
         ],
         "material": "Metal with a glossy finish",
@@ -2275,8 +2272,7 @@
         "description": "Glamorous golden clutch, ideal for fancy occasions and parties.",
         "stock_availability": true,
         "categories": [
-            "clutches",
-            "trendingProduct"
+            "wallets"
         ],
         "material": "Fabric with glittering finish",
         "dimensions": "6.5 x 4 inches",
@@ -2297,7 +2293,7 @@
         "description": "Chic navy blue clutch for sophisticated occasions.",
         "stock_availability": true,
         "categories": [
-            "clutches",
+            "wallets",
             "featuredProduct"
         ],
         "material": "Premium fabric with a smooth finish",
@@ -2319,8 +2315,7 @@
         "description": "Trendy green clutch with a sleek and compact design.",
         "stock_availability": true,
         "categories": [
-            "clutches",
-            "trendingProduct"
+            "wallets"
         ],
         "material": "Soft fabric with metallic accents",
         "dimensions": "7 x 4 inches",
