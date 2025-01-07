@@ -1,6 +1,6 @@
 //error fields
 const fnameError = document.querySelector('.fname-error');
-const lnameError = document.querySelector('.lname-error');
+// const lnameError = document.querySelector('.lname-error');
 const emailError = document.querySelector('.email-error');
 const phoneError = document.querySelector('.phone-error');
 const emailErr = document.querySelector('.email-err');
@@ -11,7 +11,7 @@ const checkName = document.querySelector('.check-name');
 
 //input fields
 const fname = document.getElementById('fname');
-const lname = document.getElementById('lname');
+// const lname = document.getElementById('lname');
 const email = document.getElementById('new-username');
 const phone = document.getElementById('phone');
 
@@ -26,7 +26,7 @@ function validateSignUpForm() {
 
     // Clear previous error messages and reset the input field border color
     fnameError.textContent = '';
-    lnameError.textContent = '';
+    // lnameError.textContent = '';
     emailError.textContent = '';
     phoneError.textContent = '';
 
@@ -38,11 +38,11 @@ function validateSignUpForm() {
       fnameError.textContent = 'First name cannot be empty';  // Show the error message
     }
     
-    if (lname.value.trim() == "") {
-      valid = false;
-      lname.style.borderColor = 'red';
-      lnameError.textContent = 'Last name cannot be empty';
-    }
+    // if (lname.value.trim() == "") {
+    //   valid = false;
+    //   lname.style.borderColor = 'red';
+    //   lnameError.textContent = 'Last name cannot be empty';
+    // }
     
     // Check if first name and last name are equal
     
@@ -74,19 +74,19 @@ function validateSignUpForm() {
     }
 
     // Validate Last Name
-    if (!lname.checkValidity()) {
-      valid = false;
-      if (lname.validity.valueMissing) {
-        lname.style.borderColor = 'red';
-        lnameError.textContent = 'Last name cannot be empty';
-      } else if (lname.validity.tooShort) {
-        lname.style.borderColor = 'red';
-        lnameError.textContent = 'Last name must be at least 2 characters';
-      }
-    } else {
-      lname.style.borderColor = 'green';  // Highlight the field with a green border
-      lnameError.textContent = '';  // Show the error message
-    }
+    // if (!lname.checkValidity()) {
+    //   valid = false;
+    //   if (lname.validity.valueMissing) {
+    //     lname.style.borderColor = 'red';
+    //     lnameError.textContent = 'Last name cannot be empty';
+    //   } else if (lname.validity.tooShort) {
+    //     lname.style.borderColor = 'red';
+    //     lnameError.textContent = 'Last name must be at least 2 characters';
+    //   }
+    // } else {
+    //   lname.style.borderColor = 'green';  // Highlight the field with a green border
+    //   lnameError.textContent = '';  // Show the error message
+    // }
 
     // Validate Email Address
     if (!email.checkValidity()) {
@@ -146,13 +146,13 @@ function wrongCharacters() {
     }
     fname.value = fname.value.replace(/[^a-zA-Z]/g, '').trim();
   });
-  lname.addEventListener('input', function (e) {
-    // Check if there are any non-alphabetic characters (not A-Z or a-z)
-    if (/[^a-zA-Z]/.test(e.target.value)) {
-      alert("Only alphabets are allowed in the last name");
-    }
-    lname.value = lname.value.replace(/[^a-zA-Z]/g, '').trim();
-  });
+  // lname.addEventListener('input', function (e) {
+  //   // Check if there are any non-alphabetic characters (not A-Z or a-z)
+  //   if (/[^a-zA-Z]/.test(e.target.value)) {
+  //     alert("Only alphabets are allowed in the last name");
+  //   }
+  //   lname.value = lname.value.replace(/[^a-zA-Z]/g, '').trim();
+  // });
 }
 
 function inputValidation() {
@@ -191,40 +191,40 @@ function inputValidation() {
   });
 
   // Check the last name input
-  lname.addEventListener('input', function (e) {
-    e.preventDefault();
+  // lname.addEventListener('input', function (e) {
+  //   e.preventDefault();
 
-    if (lname.value.length < 3) {
-      sBtn.style.pointerEvents = 'none';  // Disable click
-      sBtn.style.opacity = '0.5'; 
-      lnameError.textContent = 'Last name should be at least 3 characters';
-      lname.style.borderColor = 'crimson';
-    }
-     else {
-      sBtn.style.pointerEvents = 'auto';  // Allow click
-      sBtn.style.opacity = '1'; 
-      lnameError.textContent = '';
-      lname.style.borderColor = 'green';
-    }
-    if (fname.value === lname.value && lname.value !== '') {
-      checkName.textContent = 'First name and last name should be not same';
-      fname.style.borderColor = 'orange';
-      lname.style.borderColor = 'orange';
-      sBtn.style.pointerEvents = 'none';
-      sBtn.style.opacity = '0.5';
-    } else {
-      checkName.textContent = '';
-      if (fname.value.length >= 3) {
-        fname.style.borderColor = 'green';
-      }
-      if (lname.value.length >= 3) {
-        lname.style.borderColor = 'green';
-      }
-      sBtn.style.pointerEvents = 'auto';
-      sBtn.style.opacity = '1';
-    }
-    // toggleSubmitButton(); // Check the button state after each input
-  });
+  //   if (lname.value.length < 3) {
+  //     sBtn.style.pointerEvents = 'none';  // Disable click
+  //     sBtn.style.opacity = '0.5'; 
+  //     lnameError.textContent = 'Last name should be at least 3 characters';
+  //     lname.style.borderColor = 'crimson';
+  //   }
+  //    else {
+  //     sBtn.style.pointerEvents = 'auto';  // Allow click
+  //     sBtn.style.opacity = '1'; 
+  //     lnameError.textContent = '';
+  //     lname.style.borderColor = 'green';
+  //   }
+  //   if (fname.value === lname.value && lname.value !== '') {
+  //     checkName.textContent = 'First name and last name should be not same';
+  //     fname.style.borderColor = 'orange';
+  //     lname.style.borderColor = 'orange';
+  //     sBtn.style.pointerEvents = 'none';
+  //     sBtn.style.opacity = '0.5';
+  //   } else {
+  //     checkName.textContent = '';
+  //     if (fname.value.length >= 3) {
+  //       fname.style.borderColor = 'green';
+  //     }
+  //     if (lname.value.length >= 3) {
+  //       lname.style.borderColor = 'green';
+  //     }
+  //     sBtn.style.pointerEvents = 'auto';
+  //     sBtn.style.opacity = '1';
+  //   }
+  //   // toggleSubmitButton(); // Check the button state after each input
+  // });
 
   // Check the phone input
   phone.addEventListener('input', function (e) {

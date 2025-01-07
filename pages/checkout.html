@@ -43,18 +43,17 @@
             <div>
               <label for="full-name">Full Name</label>
               <input type="text" id="full-name" placeholder="Enter your name">
+              <span class="name-error"></span>
             </div>
             <div>
               <label for="phone">Phone Number</label>
-              <input type="text" id="phone" placeholder="Enter your phone number">
+              <input type="number" id="phone" placeholder="Enter your phone number">
+              <span class="phone-error"></span>
             </div>
             <div>
               <label for="address">Address</label>
               <textarea id="address" placeholder="Enter your address"></textarea>
-            </div>
-            <div class="delivery-details">
-              <label>Payment Mode : </label><span class="del-mode not">Not Selected</span>
-
+              <span class="address-error"></span>
             </div>
             <div class="btns">
               <button type="submit" id="save-btn">Save Address</button>
@@ -68,6 +67,9 @@
           <p>Subtotal: <span>₹<span id="subtotal">0</span></span></p>
           <p>Delivery Fee: <span>₹<span id="delivery-fee">50<span></span></p>
           <p>Total: <span>₹<span id="total">0</span></span></p>
+          <div class="delivery-details">
+            <label>Payment Mode : </label><span class="del-mode not">Not Selected</span>
+          </div>
           <div class="delivery-options">
             <input type="radio" id="card" name="payment" value="card">
             <label for="card" class="card-payment">
