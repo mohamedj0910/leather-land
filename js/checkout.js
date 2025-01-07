@@ -20,6 +20,9 @@ const cardBtn = document.getElementById('card');
 const paymentForm = document.getElementById('payment-form');
 const cardPayBtn = paymentForm.querySelector('button');
 const phone = document.getElementById("phone");
+const tick = document.querySelector('video');
+const successModal = document.querySelector('.modal');
+const successSound = document.querySelector('audio');
 
 phone.addEventListener('input', function (e) {
   e.preventDefault();
@@ -466,8 +469,24 @@ async function confirmOrder() {
       });
     }
 
-    alert("Order confirmed successfully!");
-    window.location.href = `../pages/order-status.html?orderId=${orderId}`; // Redirect to order status page
+    successModal.style.display = 'block';
+    successSound.play()
+    tick.play();
+    setTimeout(()=>{
+      tick.pause()
+    },3000)
+    const goHomeBtn = successModal.querySelector('.go-home');
+    const trakOrder =  successModal.querySelector('.track-order');
+    trakOrder.addEventListener('click',(e)=>{
+      e.preventDefault()
+      window.location.href = `../pages/order-status.html?orderId=${orderId}`;
+    });
+
+    goHomeBtn.addEventListener('click',(e)=>{
+      e.preventDefault();
+      window.location.href = '/'
+    })
+
   } catch (error) {
     console.error("Error confirming order:", error);
     alert("Error confirming order. Please try again.");

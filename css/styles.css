@@ -925,3 +925,168 @@ footer .copyright {
     clip-path: inset(0 0 0 100%);
   }
 }
+
+
+
+/* Contact Header */
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-header h1 {
+  font-size: 2.5em;
+  color: #ee962b;
+  margin-bottom: 10px;
+}
+
+.contact-header p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+/* Flex container for the contact-info and contact-form sections */
+.contact-info-form-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap; /* Ensure responsiveness on smaller screens */
+}
+
+.contact-info,
+.contact-form {
+  flex: 1;
+  min-width: 300px; /* Ensures both columns don’t get too narrow */
+}
+
+/* Contact Info Styles */
+.contact-info h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info ul li {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.contact-info ul li a {
+  color: #ee962b;
+  text-decoration: none;
+}
+
+.contact-info ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Form Styles */
+.contact-form h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.contact-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+  background-color: #fafafa;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color: #ee962b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact-form button:hover {
+  background-color: #eb8e1d;
+}
+
+/* Response Message Styles */
+#response-message {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#response-message.success {
+  color: green;
+  background-color: #d4edda;
+}
+
+#response-message.error {
+  color: red;
+  background-color: #f8d7da;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .contact-info-form-container {
+      flex-direction: column; /* Stack the form and info sections on smaller screens */
+      gap: 20px;
+  }
+
+  .contact-container {
+      width: 90%;
+      padding: 20px;
+  }
+
+  .contact-header h1 {
+      font-size: 2em;
+  }
+
+  .contact-header p {
+      font-size: 1em;
+  }
+
+  .contact-info ul li {
+      font-size: 1em;
+  }
+
+  .contact-form label,
+  .contact-form input,
+  .contact-form textarea {
+      font-size: 1em;
+  }
+
+  .contact-form button {
+      padding: 14px;
+  }
+}
