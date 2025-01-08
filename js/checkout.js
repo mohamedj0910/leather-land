@@ -25,6 +25,7 @@ const successModal = document.querySelector('.modal');
 const successSound = document.querySelector('audio');
 
 phone.addEventListener('input', function (e) {
+  phone.value = phone.value.replace(/[^0-9]/g, '');
   e.preventDefault();
   const phoneError = document.querySelector('.phone-error')
   if (phone.value.length < 10) {
@@ -44,6 +45,7 @@ phone.addEventListener('input', function (e) {
     phone.style.borderColor = '#ddd';
   }
 });
+
 
 
 const cardNumberInput = document.getElementById("card-number");
@@ -183,7 +185,7 @@ cardBtn.addEventListener('input', () => {
   deliveryMode.textContent = ''
   if (cardBtn.checked) {
     deliveryMode.classList.remove('not');
-    deliveryMode.textContent = 'Cash on Delivery';
+    deliveryMode.textContent = 'Card';
     cashPayBtn.removeAttribute('id');
     paymentForm.style.display = 'block'
     cardPayBtn.setAttribute('id', 'proceed-to-payment');
@@ -199,7 +201,7 @@ cashBtn.addEventListener('input', () => {
   deliveryMode.textContent = ''
   if (cashBtn.checked) {
     deliveryMode.classList.remove('not');
-    deliveryMode.textContent = 'Card'
+    deliveryMode.textContent = 'Cash on Delivery'
     cardPayBtn.removeAttribute('id');
     cashPayBtn.setAttribute('id', 'proceed-to-payment');
     cashPayBtn.style.display = 'block';
