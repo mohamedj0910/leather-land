@@ -22,7 +22,7 @@ let phone = document.getElementById('phone');
 let emailVal = document.getElementById('email');
 let heading = document.getElementById('heading');
 let ProfileCont = document.querySelector('.profile-container');
-
+let uid = localStorage.getItem('uid')
 
 
 async function loadUserDetails() {
@@ -90,7 +90,7 @@ editBtn.addEventListener("click", (e) => {
 // Save user details to Firestore
 async function saveUserDetails(firstName, lastName, phone,email, address) {
   try {
-    const userDocRef = doc(db, 'users', email);
+    const userDocRef = doc(db, 'users', uid);
     const userDoc = await getDoc(userDocRef);
 
     if (userDoc.exists()) {
@@ -99,9 +99,10 @@ async function saveUserDetails(firstName, lastName, phone,email, address) {
         lastName: lastName,
         phone: phone,
         email:email,
-        address: { address: address }
+        address: { firstName, phone, address }
       });
       console.log('User details updated successfully!');
+      localStorage.setItem("address", JSON.stringify({ firstName, phone, address }));
     } else {
       console.log('No user document found!');
     }
