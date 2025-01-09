@@ -35,7 +35,7 @@ if (signUpForm) {
     const firstName = document.getElementById('fname').value;
     const lastName = document.getElementById('lname').value;
     const phone = document.getElementById('phone').value;
-    if(!email || !password || !firstName || phone){
+    if(!email || !password || !firstName || !phone){
       loader.style.display = 'none'
       return;
 
@@ -52,7 +52,8 @@ if (signUpForm) {
           .then(() => {
             loader.style.display = 'none';
             // alert('Registered successfully! Logging in...');
-            window.location.href = preUrl;
+            // window.location.href = preUrl;
+            window.history.back();
           })
           .catch((error) => {
             loader.style.display = 'none'
@@ -118,7 +119,9 @@ if (loginForm) {
             loader.style.display = 'none'
             console.error('Error fetching user details:', error);
           });
-        window.location.href = preUrl || '/';
+        // window.location.href = preUrl || '/';
+        window.history.back();
+
       })
       .catch((error) => {
         loader.style.display = 'none'
@@ -134,7 +137,8 @@ onAuthStateChanged(auth, (user) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
     const uid = user.uid;
-    window.location.href = document.referrer;
+    // window.location.href = document.referrer;
+    window.history.back();
     // ...
   } else {
     // User is signed out
