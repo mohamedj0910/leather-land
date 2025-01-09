@@ -173,6 +173,7 @@
                     phone.style.borderColor = 'crimson';
                 }
                 else if (phone.value.length > 10) {
+                    phoneError.textContent = ``;
                     phone.value = phone.value.substring(0, 10)
                     phone.style.borderColor = 'green';
                 }
