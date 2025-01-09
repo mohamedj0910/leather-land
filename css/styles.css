@@ -316,6 +316,10 @@ footer {
   /* Subtle border on top */
 }
 
+footer h1{
+  color: #fff;
+}
+
 footer .container {
   max-width: 960px;
   margin: 0 auto;
@@ -957,8 +961,14 @@ footer .copyright {
 .contact-form {
   flex: 1;
   min-width: 300px; /* Ensures both columns don’t get too narrow */
+  & span{
+    color: crimson;
+    font-size: small;
+  }
 }
-
+input:focus{
+  outline: none;
+}
 /* Contact Info Styles */
 .contact-info h2 {
   font-size: 1.8em;

@@ -59,10 +59,10 @@ async function fetchAndDisplayFeaturedProducts() {
         e.preventDefault();
         window.location.href = `../pages/product.html?id=${product.id}`
       });
-      productImage.addEventListener('mouseenter', () => {
+      productCard.addEventListener('mouseenter', () => {
         productImage.src = product.image[1];
       });
-      productImage.addEventListener('mouseleave', () => {
+      productCard.addEventListener('mouseleave', () => {
         productImage.src = product.image[0];  // Revert to the original image
       });
       

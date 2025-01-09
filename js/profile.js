@@ -56,6 +56,36 @@ async function loadUserDetails() {
 saveBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
+  if(firstName.value || lastName.value){
+    let valid = true;
+    if(firstName.value.length<3){
+      document.querySelector('.fname-error').textContent = 'Firstname should be atleast three characters';
+      firstName.style.borderColor = 'crimson';
+      valid = false;
+    }
+    else{
+      document.querySelector('.fname-error').textContent = '';
+      firstName.style.borderColor = 'green';
+      valid = true
+    }
+  
+    if(lastName.value.length){
+      if(lastName.value.length<3){
+        document.querySelector('.lname-error').textContent = 'Lastname should be atleast three characters';
+        lastName.style.borderColor = 'crimson';
+        valid = false;
+      }
+      else{
+        document.querySelector('.lname-error').textContent = '';
+        lastName.style.borderColor = '#ccc';
+        valid = false;
+      }
+    }
+    if(!valid){
+      return
+    }
+  }
+
   // Validate inputs before saving
   if (!validateProfileForm()) {
     return; // Stop if validation fails
@@ -124,23 +154,7 @@ function validateProfileForm() {
   // Clear previous error messages
   clearErrorMessages();
 
-  // Validate first name (cannot contain spaces)
-  if (/\s/.test(firstNameValue) || firstNameValue === "") {
-    firstName.style.borderColor = "red";
-    document.querySelector('.fname-error').textContent = "First name cannot contain spaces or be empty.";
-    isValid = false;
-  } else {
-    firstName.style.borderColor = "green";
-  }
-
-  // Validate last name (optional but cannot contain spaces)
-  if (lastNameValue !== "" && /\s/.test(lastNameValue)) {
-    lastName.style.borderColor = "red";
-    document.querySelector('.lname-error').textContent = "Last name cannot contain spaces.";
-    isValid = false;
-  } else {
-    lastName.style.borderColor = "green";
-  }
+  
 
   // Validate phone number (must be exactly 10 digits)
   if (!/^\d{10}$/.test(phoneValue)) {
@@ -166,7 +180,15 @@ function validateProfileForm() {
     document.querySelector('.email-error').textContent = "Email cannot be empty.";
     isValid = false;
   } else {
-    emailVal.style.borderColor = "green";
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailRegex.test(emailValue)) {
+            emailVal.style.borderColor = "red";
+            emailError.textContent = "Please enter a valid email address.";
+            isValid = false;
+        } else {
+            emailVal.style.borderColor = "green";
+            isValid = true; // Set to true if the email is valid
+        }
   }
 
   return isValid;
@@ -185,16 +207,19 @@ function restrictInputCharacters() {
   firstName.addEventListener('input', (e) => {
     if (/\s/.test(e.target.value)) {
       firstName.value = firstName.value.replace(/\s+/g, '').trim();
-      alert("Spaces are not allowed in the first name.");
+    }
+  });
+
+  lastName.addEventListener('input', (e) => {
+    if (/\s/.test(e.target.value)) {
+      firstName.value = firstName.value.replace(/\s+/g, '').trim();
     }
   });
 
   phone.addEventListener('input', (e) => {
     if (/\D/.test(e.target.value)) {
       phone.value = phone.value.replace(/\D/g, '').trim();
-      alert("Only digits are allowed in the phone number.");
     }
-    // Ensure phone number does not exceed 10 digits
     if (phone.value.length > 10) {
       phone.value = phone.value.substring(0, 10);
     }

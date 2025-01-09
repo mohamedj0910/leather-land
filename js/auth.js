@@ -35,7 +35,11 @@ if (signUpForm) {
     const firstName = document.getElementById('fname').value;
     const lastName = document.getElementById('lname').value;
     const phone = document.getElementById('phone').value;
+    if(!email || !password || !firstName || phone){
+      loader.style.display = 'none'
+      return;
 
+    }
     lengthError.textContent = '';
     if (password.length < 8) {
       lengthError.textContent = "Password should be at least 8 characters";
@@ -130,7 +134,7 @@ onAuthStateChanged(auth, (user) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
     const uid = user.uid;
-    window.location.href = '/'
+    window.location.href = document.referrer;
     // ...
   } else {
     // User is signed out

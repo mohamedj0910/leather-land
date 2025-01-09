@@ -7,7 +7,7 @@ import { firebaseConfig } from "./config.js";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-let belts = [];
+let products = [];
 let loader = document.querySelector('.loader-container');
 let url = new URL(window.location.href)
 let category = url.pathname.split('/')[2].replace('.html','')
@@ -83,29 +83,29 @@ async function fetchAndDisplayBeltProducts(order = 'default') {
   heading.textContent = `${category.toUpperCase()}`;
   container.appendChild(heading);
 
-  const beltsContainer = document.createElement('div');
-  beltsContainer.classList.add('scroll-container');
-  container.appendChild(beltsContainer);
+  const productsContainer = document.createElement('div');
+  productsContainer.classList.add('scroll-container');
+  container.appendChild(productsContainer);
 
   // Fetch featured products from Firestore
-  const beltsCollection = collection(db, "leatherProducts");
-  const querySnapshot = await getDocs(query(beltsCollection, where("categories", "array-contains", category)));
-  belts = [];
+  const productsCollection = collection(db, "leatherProducts");
+  const querySnapshot = await getDocs(query(productsCollection, where("categories", "array-contains", category)));
+  products = [];
   querySnapshot.forEach((doc) => {
     const product = doc.data();
     product.id = doc.id;  // This will add the Firestore document ID to the product object
-    belts.push(product);
+    products.push(product);
   });
 
   // Apply sorting if required (ascending or descending)
   if (order === 'ascending') {
-    belts.sort((a, b) => a.price - b.price);  // Sort by price low to high
+    products.sort((a, b) => a.price - b.price);  // Sort by price low to high
   } else if (order === 'descending') {
-    belts.sort((a, b)=> b.price - a.price);  // Sort by price high to low
+    products.sort((a, b)=> b.price - a.price);  // Sort by price high to low
   }
 
   // Render product cards
-  belts.forEach((product) => {
+  products.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.classList.add("product-card");
 
@@ -131,15 +131,15 @@ async function fetchAndDisplayBeltProducts(order = 'default') {
       e.preventDefault();
       window.location.href = `./product.html?id=${product.id}`;
     });
-    productImage.addEventListener('mouseover', () => {
+    productCard.addEventListener('mouseover', () => {
       productImage.src = product.image[1];  // Swap to the second image
     });
-    productImage.addEventListener('mouseleave', () => {
+    productCard.addEventListener('mouseleave', () => {
       productImage.src = product.image[0];  // Revert to the original image
     });
 
     // Append product card to the container
-    beltsContainer.appendChild(productCard);
+    productsContainer.appendChild(productCard);
   });
 
   // Hide the loader after the products are rendered
