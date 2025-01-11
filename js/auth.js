@@ -38,7 +38,6 @@ if (signUpForm) {
     if(!email || !password || !firstName || !phone){
       loader.style.display = 'none'
       return;
-
     }
     lengthError.textContent = '';
     if (password.length < 8) {
@@ -52,8 +51,8 @@ if (signUpForm) {
           .then(() => {
             loader.style.display = 'none';
             // alert('Registered successfully! Logging in...');
-            // window.location.href = preUrl;
-            window.history.back();
+            window.location.href = preUrl;
+            // window.history.back();
           })
           .catch((error) => {
             loader.style.display = 'none'
@@ -119,8 +118,8 @@ if (loginForm) {
             loader.style.display = 'none'
             console.error('Error fetching user details:', error);
           });
-        // window.location.href = preUrl || '/';
-        window.history.back();
+        window.location.href = preUrl || '/';
+        // window.history.back();
 
       })
       .catch((error) => {

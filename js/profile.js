@@ -77,8 +77,8 @@ saveBtn.addEventListener("click", (e) => {
       }
       else{
         document.querySelector('.lname-error').textContent = '';
-        lastName.style.borderColor = '#ccc';
-        valid = false;
+        lastName.style.borderColor = 'green';
+        valid = true;
       }
     }
     if(!valid){
