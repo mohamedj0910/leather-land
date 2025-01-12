@@ -8,7 +8,7 @@ import { firebaseConfig } from "./config.js";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+let loader = document.querySelector('.loader-container')
 
 async function uploadProductsFromJson() {
   const collectionName = "leatherProducts";
@@ -46,6 +46,7 @@ async function uploadProductsFromJson() {
   } catch (error) {
     console.error("Error uploading products:", error);
   }
+  loader.style.display = 'none';
 }
 // Run the function
 uploadProductsFromJson();

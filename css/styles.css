@@ -139,7 +139,9 @@ nav ul {
   font-size: xx-large;
   cursor: pointer;
 }
-
+.sign-in{
+  display: none;
+}
 .cart-count {
   position: absolute;
   top: -80%;

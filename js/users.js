@@ -9,13 +9,12 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore and Auth
 const db = getFirestore(app);
-const auth = getAuth();
+const auth = getAuth(app);
 
 async function saveUserDetails(firstName, lastName, phone, email, userId) {
   try {
     const userDocRef = doc(db, 'users', userId);
 
-    
     const userDoc = await getDoc(userDocRef);
 
     if (userDoc.exists()) {
@@ -23,7 +22,6 @@ async function saveUserDetails(firstName, lastName, phone, email, userId) {
       return;
     }
 
-  
     await setDoc(userDocRef, {
       firstName: firstName,
       lastName: lastName,
