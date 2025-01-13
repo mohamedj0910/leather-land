@@ -1,7 +1,7 @@
 import { getUserDetailsByEmail } from "./users.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged,updateEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, updateEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { firebaseConfig } from "./config.js";  // Adjust the path to your config file
 
 // Initialize Firebase
@@ -17,7 +17,11 @@ let editBtn = document.querySelector(".edit");
 let email = localStorage.getItem('email');
 let firstName = document.getElementById('first-name');
 let lastName = document.getElementById('last-name');
-let address = document.getElementById('address');
+let doorno = document.getElementById('doorno');
+let street = document.getElementById('street');
+let city = document.getElementById('city');
+let pincode = document.getElementById('pincode');
+let state = document.getElementById('state');
 let phone = document.getElementById('phone');
 let emailVal = document.getElementById('email');
 let heading = document.getElementById('heading');
@@ -41,9 +45,13 @@ async function loadUserDetails() {
     heading.textContent = `Hello, ${userInfo.firstName}`;
     firstName.value = userInfo.firstName;
     lastName.value = userInfo.lastName || '';
-    address.value = userInfo.address?.address || '';
+    doorno.value = userInfo.address?.doorno || '';
+    street.value = userInfo.address?.streetname || '';
+    city.value = userInfo.address?.city || '';
+    pincode.value = userInfo.address?.pincode || '';
+    state.value = userInfo.address?.state || '';
     phone.value = userInfo.phone;
-    emailVal.value = email;
+    emailVal.value = userInfo.email;
   } catch (error) {
     console.error("Error loading user details:", error);
     alert("Failed to load user details.");
@@ -56,36 +64,6 @@ async function loadUserDetails() {
 saveBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if(firstName.value || lastName.value){
-    let valid = true;
-    if(firstName.value.length<3){
-      document.querySelector('.fname-error').textContent = 'Firstname should be atleast three characters';
-      firstName.style.borderColor = 'crimson';
-      valid = false;
-    }
-    else{
-      document.querySelector('.fname-error').textContent = '';
-      firstName.style.borderColor = 'green';
-      valid = true
-    }
-  
-    if(lastName.value.length){
-      if(lastName.value.length<3){
-        document.querySelector('.lname-error').textContent = 'Lastname should be atleast three characters';
-        lastName.style.borderColor = 'crimson';
-        valid = false;
-      }
-      else{
-        document.querySelector('.lname-error').textContent = '';
-        lastName.style.borderColor = 'green';
-        valid = true;
-      }
-    }
-    if(!valid){
-      return
-    }
-  }
-
   // Validate inputs before saving
   if (!validateProfileForm()) {
     return; // Stop if validation fails
@@ -94,14 +72,28 @@ saveBtn.addEventListener("click", (e) => {
   const updatedFirstName = firstName.value;
   const updatedLastName = lastName.value;
   const updatedPhone = phone.value;
-  const updatedAddress = address.value;
   const updatedEmail = emailVal.value;
 
+  const updatedAddress = {
+    doorno: doorno.value,
+    streetname: street.value,
+    city: city.value,
+    pincode: pincode.value,
+    state: state.value
+  };
+
+  if(!updatedFirstName || !updatedAddress.doorno || !updatedAddress.city || !updatedAddress.pincode || !updatedPhone) {
+    return;
+  }
+
+  saveUserDetails(updatedFirstName, updatedLastName, updatedPhone, updatedAddress);
   
-  saveUserDetails(updatedFirstName, updatedLastName, updatedPhone,updatedEmail, updatedAddress);
   // Disable input fields after save
   const inputs = document.querySelectorAll("#profile-form input");
-  inputs.forEach((input) => input.setAttribute("readonly", "readonly"));
+  inputs.forEach((input) => {
+    input.setAttribute("readonly", "readonly");
+    input.style.borderColor = '#ccc'
+  });
   editBtn.style.display = "inline-block";
   saveBtn.style.display = "none";
   alert("Profile saved successfully!");
@@ -115,10 +107,11 @@ editBtn.addEventListener("click", (e) => {
   inputs.forEach((input) => input.removeAttribute("readonly"));
   editBtn.style.display = "none";
   saveBtn.style.display = "inline-block";
+  emailVal.setAttribute("readonly","readonly")
 });
 
 // Save user details to Firestore
-async function saveUserDetails(firstName, lastName, phone,email, address) {
+async function saveUserDetails(firstName, lastName, phone, address) {
   try {
     const userDocRef = doc(db, 'users', uid);
     const userDoc = await getDoc(userDocRef);
@@ -128,33 +121,35 @@ async function saveUserDetails(firstName, lastName, phone,email, address) {
         firstName: firstName,
         lastName: lastName,
         phone: phone,
-        email:email,
-        address: { firstName, phone, address }
+        address: address
       });
       console.log('User details updated successfully!');
-      localStorage.setItem("address", JSON.stringify({ firstName, phone, address }));
+      localStorage.setItem("address", JSON.stringify(address)); 
     } else {
       console.log('No user document found!');
     }
+    clearErrorMessages();
   } catch (error) {
     console.error('Error saving user details: ', error);
   }
 }
 
 // Validate the profile form
+// Validate the profile form
 function validateProfileForm() {
   const firstNameValue = firstName.value.trim();
   const lastNameValue = lastName.value.trim();
   const phoneValue = phone.value.trim();
-  const addressValue = address.value.trim();
-  const emailValue = emailVal.value.trim();
+  const doornoValue = doorno.value.trim();
+  const streetValue = street.value.trim();
+  const cityValue = city.value.trim();
+  const pincodeValue = pincode.value.trim();
+  const stateValue = state.value.trim();
 
   let isValid = true;
 
   // Clear previous error messages
   clearErrorMessages();
-
-  
 
   // Validate phone number (must be exactly 10 digits)
   if (!/^\d{10}$/.test(phoneValue)) {
@@ -165,69 +160,124 @@ function validateProfileForm() {
     phone.style.borderColor = "green";
   }
 
-  // Validate address (cannot be empty)
-  if (addressValue === "") {
-    address.style.borderColor = "red";
-    document.querySelector('.address-error').textContent = "Address cannot be empty.";
+  // Validate door number (must be a number only)
+  if (!/^\d+$/.test(doornoValue)) {
+    doorno.style.borderColor = "red";
+    document.querySelector('.doorno-error').textContent = "Door number must be a valid number.";
     isValid = false;
   } else {
-    address.style.borderColor = "green";
+    doorno.style.borderColor = "green";
   }
 
-  // Validate email (basic check for empty value, more can be added for better email validation)
-  if (emailValue === "") {
-    emailVal.style.borderColor = "red";
-    document.querySelector('.email-error').textContent = "Email cannot be empty.";
+  // Validate street name (must contain alphabets or a combination of numbers and alphabets)
+  if (!/^[a-zA-Z0-9\s]+$/.test(streetValue) || /^[0-9]+$/.test(streetValue)) {
+    street.style.borderColor = "red";
+    document.querySelector('.street-error').textContent = "Street name must contain letters and/or numbers, but not only numbers.";
     isValid = false;
   } else {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        if (!emailRegex.test(emailValue)) {
-            emailVal.style.borderColor = "red";
-            emailError.textContent = "Please enter a valid email address.";
-            isValid = false;
-        } else {
-            emailVal.style.borderColor = "green";
-            isValid = true; // Set to true if the email is valid
-        }
+    street.style.borderColor = "green";
+  }
+
+  // Validate city (must only contain alphabets)
+  if (!/^[a-zA-Z\s]+$/.test(cityValue)) {
+    city.style.borderColor = "red";
+    document.querySelector('.city-error').textContent = "City must only contain letters.";
+    isValid = false;
+  } else {
+    city.style.borderColor = "green";
+  }
+
+  // Validate pincode (must be exactly 6 digits)
+  if (!/^\d{6}$/.test(pincodeValue)) {
+    pincode.style.borderColor = "red";
+    document.querySelector('.pincode-error').textContent = "Pincode must be exactly 6 digits.";
+    isValid = false;
+  } else {
+    pincode.style.borderColor = "green";
+  }
+
+  // Validate state (no specific validation mentioned, but it should not be empty)
+  if (stateValue === "") {
+    state.style.borderColor = "red";
+    document.querySelector('.state-error').textContent = "State cannot be empty.";
+    isValid = false;
+  } else {
+    state.style.borderColor = "green";
   }
 
   return isValid;
 }
 
-// Clear all error messages
 function clearErrorMessages() {
-  const errorMessages = document.querySelectorAll('.fname-error, .lname-error, .address-error, .phone-error, .email-error');
-  errorMessages.forEach((errorMessage) => {
-    errorMessage.textContent = "";
-  });
+    const errorMessages = document.querySelectorAll('form-group span');
+    errorMessages.forEach((errorMessage) => {
+      errorMessage.textContent = "";
+    });
+  }
+  
+  // Real-time validation for phone number and first name
+  function restrictInputCharacters() {
+    firstName.addEventListener('input', (e) => {
+      if (/[^a-zA-Z]/.test(e.target.value)) {
+        firstName.value = firstName.value.replace(/[^a-zA-Z]/g, '').trim();
+      }
+    });
+  
+    lastName.addEventListener('input', (e) => {
+      if (/[^a-zA-Z]/.test(e.target.value)) {
+        lastName.value = lastName.value.replace(/[^a-zA-Z]/g, '').trim();
+      }
+    });
+  
+    doorno.addEventListener('input', (e) => {
+      // Only allow numbers, letters, and slashes, with a max length of 8
+      if (/[^a-zA-Z0-9/]/.test(e.target.value)) {
+        doorno.value = doorno.value.replace(/[^a-zA-Z0-9/]/g, '').trim();
+      }
+      if (doorno.value.length > 8) {
+        doorno.value = doorno.value.substring(0, 8);
+      }
+    });
+  
+    street.addEventListener('input', (e) => {
+      // Allow anything for street (optional, can restrict if needed)
+    });
+  
+    city.addEventListener('input', (e) => {
+      if (/[^a-zA-Z]/.test(e.target.value)) {
+        city.value = city.value.replace(/[^a-zA-Z]/g, '').trim();
+      }
+    });
+  
+    pincode.addEventListener('input', (e) => {
+      // Only allow 6-digit number for pincode
+      if (/[^0-9]/.test(e.target.value)) {
+        pincode.value = pincode.value.replace(/[^0-9]/g, '').trim();
+      }
+      if (pincode.value.length > 6) {
+        pincode.value = pincode.value.substring(0, 6);
+      }
+    });
+  
+    state.addEventListener('input', (e) => {
+      if (/[^a-zA-Z]/.test(e.target.value)) {
+        state.value = state.value.replace(/[^a-zA-Z]/g, '').trim();
+      }
+    });
+  
+    phone.addEventListener('input', (e) => {
+      if (/\D/.test(e.target.value)) {
+        phone.value = phone.value.replace(/\D/g, '').trim();
+      }
+      if (phone.value.length > 10) {
+        phone.value = phone.value.substring(0, 10);
+      }
+    });
 }
 
-// Real-time validation for phone number and first name
-function restrictInputCharacters() {
-  firstName.addEventListener('input', (e) => {
-    if (/\s/.test(e.target.value)) {
-      firstName.value = firstName.value.replace(/\s+/g, '').trim();
-    }
-  });
+  
+  // Call the function to restrict unwanted characters
+  restrictInputCharacters();
 
-  lastName.addEventListener('input', (e) => {
-    if (/\s/.test(e.target.value)) {
-      firstName.value = firstName.value.replace(/\s+/g, '').trim();
-    }
-  });
-
-  phone.addEventListener('input', (e) => {
-    if (/\D/.test(e.target.value)) {
-      phone.value = phone.value.replace(/\D/g, '').trim();
-    }
-    if (phone.value.length > 10) {
-      phone.value = phone.value.substring(0, 10);
-    }
-  });
-}
-
-// Call the function to restrict unwanted characters
-restrictInputCharacters();
-
-// Load the user details when the page loads
+// Call the function to load the user details when the page loads
 loadUserDetails();

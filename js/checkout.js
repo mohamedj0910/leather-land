@@ -24,6 +24,14 @@ const tick = document.querySelector('video');
 const successModal = document.querySelector('.modal');
 const successSound = document.querySelector('audio');
 
+let fullName = document.getElementById('full-name');
+let doorno = document.getElementById('doorno');
+let street = document.getElementById('street');
+let city = document.getElementById('city');
+let pincode = document.getElementById('pincode');
+let state = document.getElementById('state');
+
+
 phone.addEventListener('input', function (e) {
   phone.value = phone.value.replace(/[^0-9]/g, '');
   e.preventDefault();
@@ -38,7 +46,7 @@ phone.addEventListener('input', function (e) {
   else if (phone.value.length > 10) {
     phone.value = phone.value.substring(0, 10)
   }
-   else {
+  else {
     saveButton.disabled = false;
     saveButton.style.opacity = '1'
     phoneError.textContent = '';
@@ -306,16 +314,23 @@ async function loadAddress() {
 
     if (userSnapshot.exists()) {
       const userData = userSnapshot.data();
-      const address = userData.address || null; // Default to null if no address is present
-
+      const address = userData.address;
+      fullName.value = `${userData.firstName} ${userData.lastName}`;
+      phone.value = userData.phone;
       if (address) {
+        if(address.fullName){
+          fullName.value = address.fullName;
+        }
         // Prefill the form with the existing address
-        let addressData = { 'fullName': address.fullName, 'phone': address.phone, 'address': address.address }
-        console.log(addressData);
-        localStorage.setItem('address', JSON.stringify(addressData));
-        document.getElementById("full-name").value = address.fullName || "";
-        document.getElementById("phone").value = address.phone || "";
-        document.getElementById("address").value = address.address || "";
+        if(address.phone){
+
+          phone.value = address.phone;
+        }
+        doorno.value = address.doorno || "";
+        street.value = address.streetname || "";
+        city.value = address.city || "";
+        pincode.value = address.pincode || "";
+        state.value = address.state || "";
 
         // Enable read-only mode and show the Edit button
         setReadOnlyMode(true);
@@ -330,15 +345,19 @@ async function loadAddress() {
   }
 }
 
-// Save address
+// Save address to Firestore
 async function saveAddress(e) {
   e.preventDefault();
 
-  const fullName = document.getElementById("full-name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
+  const fullNameValue = fullName.value.trim();
+  const phoneValue = phone.value.trim();
+  const doornoValue = doorno.value.trim();
+  const streetValue = street.value.trim();
+  const cityValue = city.value.trim();
+  const pincodeValue = pincode.value.trim();
+  const stateValue = state.value.trim();
 
-  if (!fullName || !phone || !address) {
+  if (!fullNameValue || !phoneValue || !doornoValue || !streetValue || !cityValue || !pincodeValue || !stateValue) {
     alert("Please fill all fields.");
     return;
   }
@@ -352,13 +371,29 @@ async function saveAddress(e) {
   try {
     const userRef = doc(db, "users", uid);
 
-    // Save the address as a single object in Firestore
+    // Save the address to Firestore
     await updateDoc(userRef, {
-      address: { fullName, phone, address }
+      address: {
+        fullName: fullNameValue,
+        phone: phoneValue,
+        doorno: doornoValue,
+        street: streetValue,
+        city: cityValue,
+        pincode: pincodeValue,
+        state: stateValue
+      }
     });
 
     // Save the address in localStorage as well
-    localStorage.setItem("address", JSON.stringify({ fullName, phone, address }));
+    localStorage.setItem("address", JSON.stringify({
+      fullName: fullNameValue,
+      phone: phoneValue,
+      doorno: doornoValue,
+      street: streetValue,
+      city: cityValue,
+      pincode: pincodeValue,
+      state: stateValue
+    }));
 
     alert("Address updated successfully!");
     setReadOnlyMode(true);
@@ -368,31 +403,29 @@ async function saveAddress(e) {
     alert("Failed to update address.");
   }
 }
+
 // Set fields to read-only mode
 function setReadOnlyMode(isReadOnly) {
-  const fullNameInput = document.getElementById("full-name");
-  const phoneInput = document.getElementById("phone");
-  const addressInput = document.getElementById("address");
-  const saveButton = addressForm.querySelector("button[type='submit']");
-  editButton.disabled = false;
-  editButton.style.opacity = '1'
-
-  fullNameInput.readOnly = isReadOnly;
-  phoneInput.readOnly = isReadOnly;
-  addressInput.readOnly = isReadOnly;
-  saveButton.disabled = isReadOnly;
+  const inputs = document.querySelectorAll("#address-form input, #address-form textarea");
+  inputs.forEach((input) => {
+    if (isReadOnly) {
+      input.setAttribute("readonly", "readonly");
+    } else {
+      input.removeAttribute("readonly");
+    }
+  });
 }
 
-// Enable editing mode
-function enableEditing() {
+editButton.addEventListener("click", (e) => {
+  e.preventDefault();
   setReadOnlyMode(false);
-  editButton.disabled = true;
-  editButton.style.opacity = '0.6'
-}
+  saveButton.style.display = "inline-block";
+  editButton.style.display = "none";
+});
+
+
 
 // Add event listener to the edit button
-editButton.addEventListener("click", enableEditing);
-
 // Load existing address on page load
 loadAddress();
 
@@ -474,17 +507,17 @@ async function confirmOrder() {
     successModal.style.display = 'block';
     successSound.play()
     tick.play();
-    setTimeout(()=>{
+    setTimeout(() => {
       tick.pause()
-    },3000)
+    }, 3000)
     const goHomeBtn = successModal.querySelector('.go-home');
-    const trakOrder =  successModal.querySelector('.track-order');
-    trakOrder.addEventListener('click',(e)=>{
+    const trakOrder = successModal.querySelector('.track-order');
+    trakOrder.addEventListener('click', (e) => {
       e.preventDefault()
       window.location.href = `../pages/order-status.html?orderId=${orderId}`;
     });
 
-    goHomeBtn.addEventListener('click',(e)=>{
+    goHomeBtn.addEventListener('click', (e) => {
       e.preventDefault();
       window.location.href = '/'
     })
