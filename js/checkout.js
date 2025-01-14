@@ -327,24 +327,28 @@ async function loadAddress() {
           phone.value = address.phone;
         }
         doorno.value = address.doorno || "";
-        street.value = address.streetname || "";
+        street.value = address.street || "";
         city.value = address.city || "";
         pincode.value = address.pincode || "";
         state.value = address.state || "";
 
         // Enable read-only mode and show the Edit button
-        setReadOnlyMode(true);
-        editButton.style.display = "block";
-      } else {
-        // Hide the Edit button if no address exists
-        editButton.style.display = "none";
+      }
+      if(!fullName.value || !phone.value || !doorno.value || !street.value || !city.value || !pincode.value ||!state.value){
+        setReadOnlyMode(false)
+        editButton.style.display = 'none';
+        saveButton.style.display = 'block'
+      }
+      else{
+        setReadOnlyMode(true)
+        editButton.style.display = 'block';
+        saveButton.style.display = 'none'
       }
     }
   } catch (error) {
     console.error("Error loading address:", error);
   }
 }
-
 // Save address to Firestore
 async function saveAddress(e) {
   e.preventDefault();
@@ -398,6 +402,7 @@ async function saveAddress(e) {
     alert("Address updated successfully!");
     setReadOnlyMode(true);
     editButton.style.display = "block";
+    saveButton.style.display = 'none';
   } catch (error) {
     console.error("Error updating address:", error);
     alert("Failed to update address.");
@@ -566,5 +571,55 @@ async function autoUpdateOrderStatus(uid) {
   }
 }
 
+function restrictInputCharacters() {
+
+  fullName.addEventListener('input', (e) => {
+    if (/[^a-zA-Z]/.test(e.target.value)) {
+      lastName.value = lastName.value.replace(/[^a-zA-Z]/g, '').trim();
+    }
+  });
+
+  doorno.addEventListener('input', (e) => {
+    // Only allow numbers, letters, and slashes, with a max length of 8
+    if (/[^a-zA-Z0-9/]/.test(e.target.value)) {
+      doorno.value = doorno.value.replace(/[^a-zA-Z0-9/]/g, '').trim();
+    }
+    if (doorno.value.length > 8) {
+      doorno.value = doorno.value.substring(0, 8);
+    }
+  });
+
+  city.addEventListener('input', (e) => {
+    if (/[^a-zA-Z]/.test(e.target.value)) {
+      city.value = city.value.replace(/[^a-zA-Z]/g, '').trim();
+    }
+  });
+
+  pincode.addEventListener('input', (e) => {
+    // Only allow 6-digit number for pincode
+    if (/[^0-9]/.test(e.target.value)) {
+      pincode.value = pincode.value.replace(/[^0-9]/g, '').trim();
+    }
+    if (pincode.value.length > 6) {
+      pincode.value = pincode.value.substring(0, 6);
+    }
+  });
+
+  state.addEventListener('input', (e) => {
+    if (/[^a-zA-Z]/.test(e.target.value)) {
+      state.value = state.value.replace(/[^a-zA-Z]/g, '').trim();
+    }
+  });
+
+  phone.addEventListener('input', (e) => {
+    if (/\D/.test(e.target.value)) {
+      phone.value = phone.value.replace(/\D/g, '').trim();
+    }
+    if (phone.value.length > 10) {
+      phone.value = phone.value.substring(0, 10);
+    }
+  });
+}
+restrictInputCharacters()
 // Call the function to update the order status
 autoUpdateOrderStatus(localStorage.getItem("uid"));

@@ -94,6 +94,10 @@ button:hover {
   background-color: #555;
 }
 
+#save-btn{
+  background-color: #ee962b;
+}
+
 /* Address Section */
 .address {
   /* flex: 1 1 100%; */

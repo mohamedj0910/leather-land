@@ -46,7 +46,7 @@ async function loadUserDetails() {
     firstName.value = userInfo.firstName;
     lastName.value = userInfo.lastName || '';
     doorno.value = userInfo.address?.doorno || '';
-    street.value = userInfo.address?.streetname || '';
+    street.value = userInfo.address?.street || '';
     city.value = userInfo.address?.city || '';
     pincode.value = userInfo.address?.pincode || '';
     state.value = userInfo.address?.state || '';
@@ -76,7 +76,7 @@ saveBtn.addEventListener("click", (e) => {
 
   const updatedAddress = {
     doorno: doorno.value,
-    streetname: street.value,
+    street: street.value,
     city: city.value,
     pincode: pincode.value,
     state: state.value
@@ -160,14 +160,15 @@ function validateProfileForm() {
     phone.style.borderColor = "green";
   }
 
-  // Validate door number (must be a number only)
-  if (!/^\d+$/.test(doornoValue)) {
+
+  if (!/^[A-Za-z0-9]{1,6}$/.test(doornoValue)) {
     doorno.style.borderColor = "red";
-    document.querySelector('.doorno-error').textContent = "Door number must be a valid number.";
+    document.querySelector('.doorno-error').textContent = "Door number must be exactly 6 characters long and can only contain alphabets and numbers.";
     isValid = false;
   } else {
     doorno.style.borderColor = "green";
   }
+  
 
   // Validate street name (must contain alphabets or a combination of numbers and alphabets)
   if (!/^[a-zA-Z0-9\s]+$/.test(streetValue) || /^[0-9]+$/.test(streetValue)) {
@@ -235,7 +236,7 @@ function clearErrorMessages() {
         doorno.value = doorno.value.replace(/[^a-zA-Z0-9/]/g, '').trim();
       }
       if (doorno.value.length > 8) {
-        doorno.value = doorno.value.substring(0, 8);
+        doorno.value = doorno.value.substring(0, 6);
       }
     });
   
