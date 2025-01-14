@@ -11,7 +11,7 @@ const DELIVERY_FEE = 50;
 
 const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get("orderId");
-
+const uid = localStorage.getItem('uid');
 
 async function fetchOrderDetails() {
   try {
@@ -94,12 +94,16 @@ async function fetchOrderDetails() {
   }
 }
 
-function updateAddress() {
-  const address = JSON.parse(localStorage.getItem("address"));
+async function updateAddress() {
+   const userDocRef = doc(db, 'users', uid);
+  const userDoc = await getDoc(userDocRef);
+  const address = userDoc.data().address;
+  // const address = JSON.parse(localStorage.getItem("address"));
   if (address) {
     document.getElementById("full-name").textContent = address.fullName || "";
     document.getElementById("phone").textContent = address.phone || "";
-    document.getElementById("address").textContent = address.address || "";
+    document.getElementById("address").textContent = `${address.doorno} ,${address.street} ,${address.city} ,${address.state} - ${address.pincode}` || "";
+    console.log(Object.values(address))
   }
 }
 
