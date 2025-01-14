@@ -452,7 +452,7 @@ async function confirmOrder() {
 
   // Check if address fields are empty
   const address = JSON.parse(localStorage.getItem("address"));
-  if (!address || !address.fullName || !address.phone || !address.address) {
+  if (!address) {
     alert("Please fill in your address before confirming the order.");
     return;
   }
