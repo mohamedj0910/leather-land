@@ -9,22 +9,22 @@ const auth = getAuth();
 
 
 // DOM Elements
+const signInButton = document.getElementById('signIn');
+const profileButton = document.getElementById('profileButton');
+// const cartButton = document.getElementById('cartButton');
+const logoutBtn = document.getElementById('logout-btn');
 const loader = document.querySelector('.loader-container');
 
 const invalidCred = document.querySelector('.invalid-cred');
 
 // Handle authentication state changes
 onAuthStateChanged(auth, (user) => {
-  const signInButton = document.getElementById('signIn');
-  const profileButton = document.getElementById('profileButton');
-  // const cartButton = document.getElementById('cartButton');
-  const logoutBtn = document.getElementById('logout-btn');
 
   if (user) {
     // User is signed in
-    localStorage.setItem("uid",user.uid)
     signInButton.style.display = 'none';
     profileButton.style.display = 'block';
+    localStorage.setItem("uid",user.uid)
     // cartButton.style.display = 'block';
     logoutBtn.style.display = 'block';
     // Fetch user details after login using email as the document ID
@@ -57,7 +57,6 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // Handle logout
-const logoutBtn = document.getElementById('logout-btn');
 if (logoutBtn) {
   logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -65,6 +64,7 @@ if (logoutBtn) {
       loader.style.display = 'flex'
       setTimeout(()=>{
         signOut(auth).then(() => {
+          localStorage.clear()
           loader.style.display = 'none'
           alert("Logged out successfully");
           window.location.href = '/';  // Redirect after logout

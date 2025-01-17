@@ -32,7 +32,6 @@
           <tbody id="order-items">
 
 
-
           </tbody>
         </table>
       </section>
@@ -40,28 +39,59 @@
         <section class="address">
           <h2>Address</h2>
           <form id="address-form">
-            <div>
+            <div class="form-group">
               <label for="full-name">Full Name</label>
-              <input type="text" id="full-name" placeholder="Enter your name">
+              <input type="text" id="full-name" placeholder="Enter your name" readonly>
               <span class="name-error"></span>
             </div>
-            <div>
+            <div class="form-group">
               <label for="phone">Phone Number</label>
-              <input type="text" id="phone" placeholder="Enter your phone number">
+              <input type="text" id="phone" placeholder="Enter your phone number" readonly>
               <span class="phone-error"></span>
             </div>
-            <div>
-              <label for="address">Address</label>
-              <textarea id="address" placeholder="Enter your address"></textarea>
-              <span class="address-error"></span>
+        
+            <!-- Door No and Street in one row -->
+            <div class="form-group row">
+              <div class="half-width">
+                <label for="doorno">Door No / Flat No</label>
+                <input type="text" id="doorno" placeholder="Enter door number or flat number" readonly>
+                <span class="doorno-error"></span>
+              </div>
+              <div class="half-width">
+                <label for="street">Street / Area</label>
+                <input type="text" id="street" placeholder="Enter street or area" readonly>
+                <span class="street-error"></span>
+              </div>
             </div>
+        
+            <!-- City and Pincode in one row -->
+            <div class="form-group row">
+              <div class="half-width">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Enter city" readonly>
+                <span class="city-error"></span>
+              </div>
+              <div class="half-width">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" placeholder="Enter pincode" readonly>
+                <span class="pincode-error"></span>
+              </div>
+            </div>
+        
+            <!-- State in its own row -->
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" id="state" placeholder="Enter state" readonly>
+              <span class="state-error"></span>
+            </div>
+        
             <div class="btns">
-              <button type="submit" id="save-btn">Save Address</button>
-              <button type="button" id="edit-address" style="display: none;">Edit</button>
+              <button type="submit" id="save-btn" style="display: none;">Save Address</button>
+              <button type="button" id="edit-address">Edit</button>
             </div>
-
           </form>
         </section>
+        
         <section class="summary">
           <h2>Summary</h2>
           <p>Subtotal: <span>₹<span id="subtotal">0</span></span></p>

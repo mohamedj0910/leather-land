@@ -11,7 +11,7 @@ const DELIVERY_FEE = 50;
 
 const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get("orderId");
-
+const uid = localStorage.getItem('uid');
 
 async function fetchOrderDetails() {
   try {
@@ -48,7 +48,7 @@ async function fetchOrderDetails() {
 
         const productDetailsContainer = document.getElementById("product-details");
         let totalPrice = 0;
-
+        updateAddress(order.address.fullName,order.address.phone,`${order.address.doorno} ,${order.address.street} ,${order.address.city} ,${order.address.state} - ${order.address.pincode}`)
         order.items.forEach(product => {
           const productDiv = document.createElement("div");
           productDiv.classList.add("product");
@@ -94,13 +94,11 @@ async function fetchOrderDetails() {
   }
 }
 
-function updateAddress() {
-  const address = JSON.parse(localStorage.getItem("address"));
-  if (address) {
-    document.getElementById("full-name").textContent = address.fullName || "";
-    document.getElementById("phone").textContent = address.phone || "";
-    document.getElementById("address").textContent = address.address || "";
-  }
+async function updateAddress(fullName,phone,address) {
+  // const address = JSON.parse(localStorage.getItem("address"));
+    document.getElementById("full-name").textContent = fullName || "";
+    document.getElementById("phone").textContent = phone || "";
+    document.getElementById("address").textContent = address || "";
 }
 
 goHome.addEventListener('click',(e)=>{

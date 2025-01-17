@@ -139,7 +139,9 @@ nav ul {
   font-size: xx-large;
   cursor: pointer;
 }
-
+.sign-in{
+  display: none;
+}
 .cart-count {
   position: absolute;
   top: -80%;
@@ -314,6 +316,10 @@ footer {
   /* Muted text color */
   border-top: 1px solid #e9ecef;
   /* Subtle border on top */
+}
+
+footer h1{
+  color: #fff;
 }
 
 footer .container {
@@ -957,8 +963,14 @@ footer .copyright {
 .contact-form {
   flex: 1;
   min-width: 300px; /* Ensures both columns don’t get too narrow */
+  & span{
+    color: crimson;
+    font-size: small;
+  }
 }
-
+input:focus{
+  outline: none;
+}
 /* Contact Info Styles */
 .contact-info h2 {
   font-size: 1.8em;

@@ -28,13 +28,17 @@ const spcharError = document.querySelector('.spchar-error');
 
 if (signUpForm) {
   signUpForm.addEventListener('submit', function (event) {
-    loader.style.display = 'flex';
-    event.preventDefault();
     const email = document.getElementById('new-username').value;
     const password = document.getElementById('new-password').value;
     const firstName = document.getElementById('fname').value;
     const lastName = document.getElementById('lname').value;
     const phone = document.getElementById('phone').value;
+    if (!email || !password || !firstName || !phone) {
+      return;
+    }
+    loader.style.display = 'flex';
+    event.preventDefault();
+
 
     lengthError.textContent = '';
     if (password.length < 8) {
@@ -44,16 +48,18 @@ if (signUpForm) {
       .then((userCredential) => {
         const user = userCredential.user;
         // Save user details after successful registration
-        saveUserDetails(firstName, lastName, phone, user.email, user.uid)
+        saveUserDetails(firstName, lastName, phone, email, user.uid)
           .then(() => {
             loader.style.display = 'none';
-            // alert('Registered successfully! Logging in...');
+            alert('Registered successfully! Logging in...');
             window.location.href = preUrl;
           })
           .catch((error) => {
-            loader.style.display = 'none'
+            alert('Error saving user details');
+            loader.style.display = 'none';
             console.error('Error saving user details: ', error);
           });
+
       })
       .catch((error) => {
         loader.style.display = 'none';
@@ -114,7 +120,9 @@ if (loginForm) {
             loader.style.display = 'none'
             console.error('Error fetching user details:', error);
           });
-        window.location.href = preUrl || '/';
+        window.location.href = preUrl;
+        // window.history.back();
+
       })
       .catch((error) => {
         loader.style.display = 'none'
@@ -124,3 +132,19 @@ if (loginForm) {
       });
   });
 }
+
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    getUserDetailsByEmail(user.uid)
+      .then((userDetails) => {
+        if (userDetails) {
+          window.history.back();
+          console.log('User details fetched: ', userDetails);
+        }
+      })
+      .catch((error) => console.log('Error fetching user details:', error));
+  } else {
+    console.log('No user is signed in.');
+  }
+});

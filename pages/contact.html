@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contact Us</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
@@ -57,7 +57,7 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-content">
                 <span id="display-username">Username</span>
-                
+
                 <button type="button" id="view-profile">View Profile</button>
                 <button type="button" id="order-history">View Order History</button>
                 <button type="button" id="logout-btn">Logout</button>
@@ -67,17 +67,18 @@
     <div class="container contact-container">
         <div class="contact-header">
             <h1>Contact Us</h1>
-            <p>We love hearing from our customers! Whether you have a question, feedback, or need assistance, we're here to help.</p>
+            <p>We love hearing from our customers! Whether you have a question, feedback, or need assistance, we're here
+                to help.</p>
         </div>
-    
+
         <!-- Contact Info and Form Container -->
         <section class="contact-info-form-container">
             <!-- Contact Info Section -->
             <section class="contact-info">
                 <h2>Our Contact Information</h2>
                 <ul>
-                    <li><strong>Phone:</strong>+91 95666 34294</li>
-                    <li><strong>Email:</strong><a href="mailto:mrmazz800@gmail.com">leatherland@gmail.com</a></li>
+                    <li><strong>Phone:</strong>+91 9xxxxxxxx4</li>
+                    <li><strong>Email:</strong><a href="mailto:leatherland@gmail.com">leatherland@gmail.com</a></li>
                     <li><strong>Store Address:</strong>123 , New bazaar ,Perungudi ,Chennai - 6000096</li>
                     <li><strong>Operating Hours:</strong>
                         <ul>
@@ -88,75 +89,229 @@
                     </li>
                 </ul>
             </section>
-    
+
             <!-- Contact Form Section -->
             <section class="contact-form">
                 <h2>Contact Form</h2>
                 <form id="contact-form">
                     <label for="full-name">Full Name:</label>
-                    <input type="text" id="full-name" name="full-name" required>
-    
+                    <input type="text" id="full-name" name="full-name">
+                    <span class="name-error"></span>
                     <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required>
-    
+                    <input type="email" id="email" name="email">
+                    <span class="email-error"></span>
+
                     <label for="phone">Phone Number (Optional):</label>
-                    <input type="tel" id="phone" name="phone">
-    
+                    <input type="text" id="phone" name="phone">
+                    <span class="phone-error"></span>
+
                     <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject" required>
-    
+                    <input type="text" id="subject" name="subject">
+                    <span class="sub-error"></span>
+
                     <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-    
+                    <textarea id="message" name="message" rows="5"></textarea>
+                    <span class="message-error"></span>
+
                     <button type="submit">Send Message</button>
                 </form>
                 <div id="response-message"></div>
             </section>
         </section>
     </div>
+    <footer id="footer">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/main-logo.png" alt="Footer Logo">
+                <h1>Leather Land</h1>
+            </div>
+            <!-- <ul class="nav">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <div class="subscribe">
+                <input type="email" placeholder="Subscribe to our newsletter">
+                <button>Subscribe</button>
+            </div> -->
+            <div class="copyright">
+                &copy; 2024 Leather Land. All rights reserved.
+            </div>
+        </div>
+
+
+
+    </footer>
+    <div class="loader-container">
+        <div>
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle r="32" cy="40" cx="40" id="test"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect height="64" width="64" y="8" x="8"></rect>
+                </svg>
+            </div>
+        </div>
+        <div>
+            <p>Loading</p>
+        </div>
+    </div>
     <script type="module" src="../js/statecheck.js"></script>
     <script src="../js/menu.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
-    <script type="text/javascript">
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getUserDetailsByEmail } from '../js/users.js';  // Import functions from users.js
+        import { firebaseConfig } from "../js/config.js";
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+
+
+        const fullName = document.getElementById("full-name");
+        const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
+        const phone = document.getElementById("phone");
+        const nameError = document.querySelector('.name-error');
+        const emailError = document.querySelector('.email-error');
+        const phoneError = document.querySelector('.phone-error');
+        const subError = document.querySelector('.sub-error');
+        const messageError = document.querySelector('.message-error');
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                getUserDetailsByEmail(user.uid)
+                    .then((userDetails) => {
+                        if (userDetails) {
+                            fullName.setAttribute('readonly', 'readonly')
+                            email.setAttribute('readonly', 'readonly')
+                            phone.setAttribute('readonly', 'readonly')
+                            fullName.value = `${userDetails.firstName} ${userDetails.lastName}` || ''
+                            email.value = `${user.email}` || ''
+                            phone.value = userDetails.phone
+                        }
+                    })
+                    .catch((error) => console.log('Error fetching user details:', error));
+            } else {
+                window.location.href = '/'
+                console.log('No user is signed in.');
+            }
+        });
 
         (function () {
             emailjs.init("8bnIKnwoFMS5pWgMC");
         })();
 
+        // phone.addEventListener('input', function (e) {
+        //     phone.value = phone.value.replace(/[^0-9]/g, '');
+        //     e.preventDefault();
+        //     if (phone.value.length) {
+        //         if (phone.value.length < 10) {
+        //             phoneError.textContent = `You have to enter ${10 - phone.value.length} numbers`;
+        //             phone.style.borderColor = 'crimson';
+        //         }
+        //         else if (phone.value.length > 10) {
+        //             phoneError.textContent = ``;
+        //             phone.value = phone.value.substring(0, 10)
+        //             phone.style.borderColor = 'green';
+        //         }
+        //     }
+        //     else {
+        //         phoneError.textContent = '';
+        //         phone.style.borderColor = '#ccc';
+        //     }
+        //     // toggleSubmitButton(); // Check the button state after each input
+        // });
+
+        // fullName.addEventListener('input', function (e) {
+        //     e.preventDefault();
+        //     if (fullName.value[0] == ' ') {
+        //         fullName.value = fullName.value.trim()
+        //     }
+        //     if (fullName.value.length < 3) {
+        //         nameError.textContent = 'Name should be at least 3 characters';
+        //         fullName.style.borderColor = 'crimson';
+        //     } else {
+        //         nameError.textContent = '';
+        //         fullName.style.borderColor = 'green';
+        //     }
+        //     fullName.value = fullName.value.replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, ' ');
+        //     // toggleSubmitButton(); // Check the button state after each input
+        // });
+        subject.addEventListener('input', function (e) {
+            let value = subject.value;
+            value = value.replace(/[^a-zA-Z0-9-\s]/g, '').replace(/\s+/g, ' ');
+            subject.value = value;
+        });
+        // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        // email.addEventListener('input', () => {
+        //     if (emailRegex.test(email.value)) {
+        //         emailError.textContent = ''
+        //         email.style.borderColor = 'green'
+        //     }
+        //     else {
+        //         email.style.borderColor = 'crimson'
+        //         emailError.textContent = "Please enter a valid email address.";
+        //     }
+        // });
         document.getElementById("contact-form").addEventListener("submit", function (event) {
             event.preventDefault();
 
 
-            const fullName = document.getElementById("full-name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const subject = document.getElementById("subject").value.trim();
-            const message = document.getElementById("message").value.trim();
 
-            if (!fullName || !email || !subject || !message) {
+
+            if (!subject.value || !message.value) {
                 displayResponse("All fields are required.", "error");
                 return;
             }
 
-            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            if (!emailRegex.test(email)) {
-                displayResponse("Please enter a valid email address.", "error");
+            // if (fullName.value < 3) {
+            //     displayResponse("Name should be at least 3 characters", "error");
+            //     return;
+            // }
+            // if (phone.value) {
+            //     if (phone.value.length < 10) {
+            //         return
+            //     }
+            // }
+            // if (!emailRegex.test(email.value)) {
+            //     displayResponse("Please enter a valid email address.", "error");
+            //     return;
+            // }
+
+            if (/^\d+$/.test(subject.value)) {
+                displayResponse("subject contains only numeric values. Please enter letters or alphanumeric characters.", "error");
                 return;
             }
 
             const templateParams = {
-                userName: fullName,
-                email: email,
-                phone: document.getElementById("phone").value.trim(),
-                subject: subject,
-                message: message
+                userName: fullName.value.trim(),
+                email: email.value.trim(),
+                phone: phone.value.trim(),
+                subject: subject.value.trim(),
+                message: message.value.trim()
             };
 
             emailjs.send("service_z56qxze", "template_k7ttg1a", templateParams)
                 .then(function (response) {
                     console.log("Success:", response);
                     displayResponse("Your message has been sent successfully. We'll get back to you soon!", "success");
-                    document.getElementById("contact-form").reset(); // Reset the form after successful submission
+                    subject.value = '';
+                    message.value = ''
                 }, function (error) {
                     console.log("Error:", error);
                     displayResponse("Oops! Something went wrong. Please try again later.", "error");
@@ -173,7 +328,6 @@
                 responseMessageDiv.style.color = "red";
             }
         }
-
     </script>
 </body>
 

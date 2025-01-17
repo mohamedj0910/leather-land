@@ -1,6 +1,6 @@
 //error fields
 const fnameError = document.querySelector('.fname-error');
-// const lnameError = document.querySelector('.lname-error');
+const lnameError = document.querySelector('.lname-error');
 const emailError = document.querySelector('.email-error');
 const phoneError = document.querySelector('.phone-error');
 const emailErr = document.querySelector('.email-err');
@@ -146,13 +146,13 @@ function wrongCharacters() {
     }
     fname.value = fname.value.replace(/[^a-zA-Z]/g, '').trim();
   });
-  // lname.addEventListener('input', function (e) {
-  //   // Check if there are any non-alphabetic characters (not A-Z or a-z)
-  //   if (/[^a-zA-Z]/.test(e.target.value)) {
-  //     alert("Only alphabets are allowed in the last name");
-  //   }
-  //   lname.value = lname.value.replace(/[^a-zA-Z]/g, '').trim();
-  // });
+  lname.addEventListener('input', function (e) {
+    // Check if there are any non-alphabetic characters (not A-Z or a-z)
+    if (/[^a-zA-Z]/.test(e.target.value)) {
+      alert("Only alphabets are allowed in the last name");
+    }
+    lname.value = lname.value.replace(/[^a-zA-Z]/g, '').trim();
+  });
 }
 
 function inputValidation() {
@@ -191,45 +191,51 @@ function inputValidation() {
   });
 
   // Check the last name input
-  // lname.addEventListener('input', function (e) {
-  //   e.preventDefault();
+  lname.addEventListener('input', function (e) {
+    e.preventDefault();
 
-  //   if (lname.value.length < 3) {
-  //     sBtn.style.pointerEvents = 'none';  // Disable click
-  //     sBtn.style.opacity = '0.5'; 
-  //     lnameError.textContent = 'Last name should be at least 3 characters';
-  //     lname.style.borderColor = 'crimson';
-  //   }
-  //    else {
-  //     sBtn.style.pointerEvents = 'auto';  // Allow click
-  //     sBtn.style.opacity = '1'; 
-  //     lnameError.textContent = '';
-  //     lname.style.borderColor = 'green';
-  //   }
-  //   if (fname.value === lname.value && lname.value !== '') {
-  //     checkName.textContent = 'First name and last name should be not same';
-  //     fname.style.borderColor = 'orange';
-  //     lname.style.borderColor = 'orange';
-  //     sBtn.style.pointerEvents = 'none';
-  //     sBtn.style.opacity = '0.5';
-  //   } else {
-  //     checkName.textContent = '';
-  //     if (fname.value.length >= 3) {
-  //       fname.style.borderColor = 'green';
-  //     }
-  //     if (lname.value.length >= 3) {
-  //       lname.style.borderColor = 'green';
-  //     }
-  //     sBtn.style.pointerEvents = 'auto';
-  //     sBtn.style.opacity = '1';
-  //   }
-  //   // toggleSubmitButton(); // Check the button state after each input
-  // });
+    if(lname.value.length){
+      if (lname.value.length < 3) {
+        sBtn.style.pointerEvents = 'none';  // Disable click
+        sBtn.style.opacity = '0.5'; 
+        lnameError.textContent = 'Last name should be at least 3 characters';
+        lname.style.borderColor = 'crimson';
+      }
+       else {
+        sBtn.style.pointerEvents = 'auto';  // Allow click
+        sBtn.style.opacity = '1'; 
+        lnameError.textContent = '';
+        lname.style.borderColor = 'green';
+      }
+      if (fname.value === lname.value && lname.value !== '') {
+        checkName.textContent = 'First name and last name should be not same';
+        fname.style.borderColor = 'orange';
+        lname.style.borderColor = 'orange';
+        sBtn.style.pointerEvents = 'none';
+        sBtn.style.opacity = '0.5';
+      } else {
+        checkName.textContent = '';
+        if (fname.value.length >= 3) {
+          fname.style.borderColor = 'green';
+        }
+        if (lname.value.length >= 3) {
+          lname.style.borderColor = 'green';
+        }
+        sBtn.style.pointerEvents = 'auto';
+        sBtn.style.opacity = '1';
+      }
+    }
+    else{
+      lname.style.borderColor = '';
+      lnameError.textContent = '';
+    }
+    // toggleSubmitButton(); // Check the button state after each input
+  });
 
   // Check the phone input
   phone.addEventListener('input', function (e) {
+    phone.value = phone.value.replace(/[^0-9]/g, '');
     e.preventDefault();
-
     if (phone.value.length < 10) {
       sBtn.style.pointerEvents = 'none';  // Disable click
       sBtn.style.opacity = '0.5'; 

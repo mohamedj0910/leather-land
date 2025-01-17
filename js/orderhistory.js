@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { firebaseConfig } from "./config.js"; // Replace with your Firebase config
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const uid = localStorage.getItem("uid");
@@ -11,7 +11,7 @@ goHome.addEventListener('click', (e) => {
   e.preventDefault();
   window.location.href = '/'
 });
-// Fetch and render order history
+
 async function fetchOrderHistory() {
   if (!uid) {
     alert("User not logged in.");
@@ -119,7 +119,7 @@ async function cancelOrderHandler(uid, orderId) {
 
       await updateDoc(orderRef, { orders: updatedOrders });
       alert("Order cancelled successfully!");
-      fetchOrderHistory(); // Refresh the order list
+      fetchOrderHistory();
     } else {
       alert("Order not found.");
     }
