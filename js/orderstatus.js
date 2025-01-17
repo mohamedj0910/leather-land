@@ -48,7 +48,7 @@ async function fetchOrderDetails() {
 
         const productDetailsContainer = document.getElementById("product-details");
         let totalPrice = 0;
-
+        updateAddress(order.address.fullName,order.address.phone,`${order.address.doorno} ,${order.address.street} ,${order.address.city} ,${order.address.state} - ${order.address.pincode}`)
         order.items.forEach(product => {
           const productDiv = document.createElement("div");
           productDiv.classList.add("product");
@@ -94,17 +94,11 @@ async function fetchOrderDetails() {
   }
 }
 
-async function updateAddress() {
-   const userDocRef = doc(db, 'users', uid);
-  const userDoc = await getDoc(userDocRef);
-  const address = userDoc.data().address;
+async function updateAddress(fullName,phone,address) {
   // const address = JSON.parse(localStorage.getItem("address"));
-  if (address) {
-    document.getElementById("full-name").textContent = address.fullName || "";
-    document.getElementById("phone").textContent = address.phone || "";
-    document.getElementById("address").textContent = `${address.doorno} ,${address.street} ,${address.city} ,${address.state} - ${address.pincode}` || "";
-    console.log(Object.values(address))
-  }
+    document.getElementById("full-name").textContent = fullName || "";
+    document.getElementById("phone").textContent = phone || "";
+    document.getElementById("address").textContent = address || "";
 }
 
 goHome.addEventListener('click',(e)=>{

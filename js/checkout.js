@@ -318,11 +318,11 @@ async function loadAddress() {
       fullName.value = `${userData.firstName} ${userData.lastName}`;
       phone.value = userData.phone;
       if (address) {
-        if(address.fullName){
+        if (address.fullName) {
           fullName.value = address.fullName;
         }
         // Prefill the form with the existing address
-        if(address.phone){
+        if (address.phone) {
 
           phone.value = address.phone;
         }
@@ -334,12 +334,12 @@ async function loadAddress() {
 
         // Enable read-only mode and show the Edit button
       }
-      if(!fullName.value || !phone.value || !doorno.value || !street.value || !city.value || !pincode.value ||!state.value){
+      if (!fullName.value || !phone.value || !doorno.value || !street.value || !city.value || !pincode.value || !state.value) {
         setReadOnlyMode(false)
         editButton.style.display = 'none';
         saveButton.style.display = 'block'
       }
-      else{
+      else {
         setReadOnlyMode(true)
         editButton.style.display = 'block';
         saveButton.style.display = 'none'
@@ -491,6 +491,7 @@ async function confirmOrder() {
       ],
       orderDate: new Date().toISOString(),
       status: "Pending",
+      address: address
     };
 
     if (orderSnapshot.exists()) {
@@ -574,9 +575,7 @@ async function autoUpdateOrderStatus(uid) {
 function restrictInputCharacters() {
 
   fullName.addEventListener('input', (e) => {
-    if (/[^a-zA-Z]/.test(e.target.value)) {
-      lastName.value = lastName.value.replace(/[^a-zA-Z]/g, '').trim();
-    }
+    e.target.value = e.target.value.replace(/[^a-zA-Z ]/g, '').replace(/\s+/g, ' ');                  
   });
 
   doorno.addEventListener('input', (e) => {

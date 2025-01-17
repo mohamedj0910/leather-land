@@ -138,15 +138,47 @@
                 &copy; 2024 Leather Land. All rights reserved.
             </div>
         </div>
-   
-            
+
+
 
     </footer>
+    <div class="loader-container">
+        <div>
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle r="32" cy="40" cx="40" id="test"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect height="64" width="64" y="8" x="8"></rect>
+                </svg>
+            </div>
+        </div>
+        <div>
+            <p>Loading</p>
+        </div>
+    </div>
     <script type="module" src="../js/statecheck.js"></script>
     <script src="../js/menu.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
-    <script type="text/javascript">
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getUserDetailsByEmail } from '../js/users.js';  // Import functions from users.js
+        import { firebaseConfig } from "../js/config.js";
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
 
 
         const fullName = document.getElementById("full-name");
@@ -160,88 +192,106 @@
         const subError = document.querySelector('.sub-error');
         const messageError = document.querySelector('.message-error');
 
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                getUserDetailsByEmail(user.uid)
+                    .then((userDetails) => {
+                        if (userDetails) {
+                            fullName.setAttribute('readonly', 'readonly')
+                            email.setAttribute('readonly', 'readonly')
+                            phone.setAttribute('readonly', 'readonly')
+                            fullName.value = `${userDetails.firstName} ${userDetails.lastName}` || ''
+                            email.value = `${user.email}` || ''
+                            phone.value = userDetails.phone
+                        }
+                    })
+                    .catch((error) => console.log('Error fetching user details:', error));
+            } else {
+                window.location.href = '/'
+                console.log('No user is signed in.');
+            }
+        });
+
         (function () {
             emailjs.init("8bnIKnwoFMS5pWgMC");
         })();
 
-        phone.addEventListener('input', function (e) {
-            phone.value = phone.value.replace(/[^0-9]/g, '');
-            e.preventDefault();
-            if (phone.value.length) {
-                if (phone.value.length < 10) {
-                    phoneError.textContent = `You have to enter ${10 - phone.value.length} numbers`;
-                    phone.style.borderColor = 'crimson';
-                }
-                else if (phone.value.length > 10) {
-                    phoneError.textContent = ``;
-                    phone.value = phone.value.substring(0, 10)
-                    phone.style.borderColor = 'green';
-                }
-            }
-            else {
-                phoneError.textContent = '';
-                phone.style.borderColor = '#ccc';
-            }
-            // toggleSubmitButton(); // Check the button state after each input
-        });
+        // phone.addEventListener('input', function (e) {
+        //     phone.value = phone.value.replace(/[^0-9]/g, '');
+        //     e.preventDefault();
+        //     if (phone.value.length) {
+        //         if (phone.value.length < 10) {
+        //             phoneError.textContent = `You have to enter ${10 - phone.value.length} numbers`;
+        //             phone.style.borderColor = 'crimson';
+        //         }
+        //         else if (phone.value.length > 10) {
+        //             phoneError.textContent = ``;
+        //             phone.value = phone.value.substring(0, 10)
+        //             phone.style.borderColor = 'green';
+        //         }
+        //     }
+        //     else {
+        //         phoneError.textContent = '';
+        //         phone.style.borderColor = '#ccc';
+        //     }
+        //     // toggleSubmitButton(); // Check the button state after each input
+        // });
 
-        fullName.addEventListener('input', function (e) {
-            e.preventDefault();
-            if(fullName.value[0]==' '){
-                fullName.value = fullName.value.trim()
-            }
-            if (fullName.value.length < 3) {
-                nameError.textContent = 'Name should be at least 3 characters';
-                fullName.style.borderColor = 'crimson';
-            } else {
-                nameError.textContent = '';
-                fullName.style.borderColor = 'green';
-            }
-            fullName.value = fullName.value.replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, ' ');
-            // toggleSubmitButton(); // Check the button state after each input
-        });
-
+        // fullName.addEventListener('input', function (e) {
+        //     e.preventDefault();
+        //     if (fullName.value[0] == ' ') {
+        //         fullName.value = fullName.value.trim()
+        //     }
+        //     if (fullName.value.length < 3) {
+        //         nameError.textContent = 'Name should be at least 3 characters';
+        //         fullName.style.borderColor = 'crimson';
+        //     } else {
+        //         nameError.textContent = '';
+        //         fullName.style.borderColor = 'green';
+        //     }
+        //     fullName.value = fullName.value.replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, ' ');
+        //     // toggleSubmitButton(); // Check the button state after each input
+        // });
         subject.addEventListener('input', function (e) {
-            e.preventDefault();
-            fullName.value = fullName.value.replace(/^[a-zA-Z0-9]+$/g, '').trim();
-            // toggleSubmitButton(); // Check the button state after each input
+            let value = subject.value;
+            value = value.replace(/[^a-zA-Z0-9-\s]/g, '').replace(/\s+/g, ' ');
+            subject.value = value;
         });
-
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        email.addEventListener('input', () => {
-            if (emailRegex.test(email.value)) {
-                emailError.textContent = ''
-                email.style.borderColor = 'green'
-            }
-            else {
-                email.style.borderColor = 'crimson'
-                emailError.textContent = "Please enter a valid email address.";
-            }
-        });
+        // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        // email.addEventListener('input', () => {
+        //     if (emailRegex.test(email.value)) {
+        //         emailError.textContent = ''
+        //         email.style.borderColor = 'green'
+        //     }
+        //     else {
+        //         email.style.borderColor = 'crimson'
+        //         emailError.textContent = "Please enter a valid email address.";
+        //     }
+        // });
         document.getElementById("contact-form").addEventListener("submit", function (event) {
             event.preventDefault();
 
 
 
 
-            if (!fullName.value || !email.value || !subject.value || !message.value) {
+            if (!subject.value || !message.value) {
                 displayResponse("All fields are required.", "error");
                 return;
             }
 
-            if (fullName.value < 3) {
-                displayResponse("Name should be at least 3 characters", "error");
-                return;
-            }
-            if (phone.value) {
-                if (phone.value.length < 10) {
-                    return
-                }
-            }
-            if (!emailRegex.test(email.value)) {
-                displayResponse("Please enter a valid email address.", "error");
-                return;
-            }
+            // if (fullName.value < 3) {
+            //     displayResponse("Name should be at least 3 characters", "error");
+            //     return;
+            // }
+            // if (phone.value) {
+            //     if (phone.value.length < 10) {
+            //         return
+            //     }
+            // }
+            // if (!emailRegex.test(email.value)) {
+            //     displayResponse("Please enter a valid email address.", "error");
+            //     return;
+            // }
 
             if (/^\d+$/.test(subject.value)) {
                 displayResponse("subject contains only numeric values. Please enter letters or alphanumeric characters.", "error");
@@ -260,7 +310,8 @@
                 .then(function (response) {
                     console.log("Success:", response);
                     displayResponse("Your message has been sent successfully. We'll get back to you soon!", "success");
-                    document.getElementById("contact-form").reset(); // Reset the form after successful submission
+                    subject.value = '';
+                    message.value = ''
                 }, function (error) {
                     console.log("Error:", error);
                     displayResponse("Oops! Something went wrong. Please try again later.", "error");
@@ -277,7 +328,6 @@
                 responseMessageDiv.style.color = "red";
             }
         }
-
     </script>
 </body>
 
